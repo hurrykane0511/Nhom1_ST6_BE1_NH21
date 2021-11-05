@@ -710,6 +710,7 @@ a {
   transform: translate(0);
 }
 #cart-container {
+  font-family: "Montserrat", sans-serif;
   transition: transform 0.5s ease-in;
   z-index: 999;
   --padding-cart: 40px;
@@ -751,6 +752,7 @@ a {
     scroll-snap-type: y mandatory;
     overflow-y: auto;
     height: 65vh;
+    color: $fontclr;
     .cart-items {
       .cart-item {
         display: flex;
@@ -780,10 +782,12 @@ a {
           }
           .remove-btn {
             background: transparent;
+            text-align: center;
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 14px;
             padding: 5px;
+            color: $fontclr;
           }
         }
         .item-contents {
@@ -805,8 +809,8 @@ a {
         #note {
           width: 100%;
           background: transparent;
-          border: none;
-          border-bottom: 1px solid #000;
+          border: solid 1px $fontclr;
+          color: $fontclr;
           padding: 5px;
           font-size: 18px;
         }
@@ -825,7 +829,7 @@ a {
     }
     p {
       margin: 18px 0;
-      text-align: center;
+      
       color: gray;
       padding: 6px;
       background: rgba(255, 255, 255, 0.342);
@@ -840,4 +844,17 @@ a {
       color: gray;
     }
   }
+}
+.cover.active{
+  display: block;
+}
+.cover{
+  display: none;
+  position: fixed;
+  border: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.219);
 }

@@ -43,6 +43,7 @@ if (isset($_GET['id'])) {
 <?php
 if (!empty($_SESSION['cart'])) {
     $sp_cart = $_SESSION['cart'];
+    $total = 0;
    
 ?>
      <form action="checkout.php" method="post" class="cart-form">
@@ -63,7 +64,9 @@ if (!empty($_SESSION['cart'])) {
       </div>
       <div class="cart__scrollable">
         <div class="cart-items">
-        <?php  foreach ($sp_cart as $key => $item) { ?>
+        <?php  foreach ($sp_cart as $key => $item) { 
+          $total += $item['price'] * $item['quantity'];
+          ?>
           <div class="cart-item">
             <a
               href="#"
@@ -75,8 +78,8 @@ if (!empty($_SESSION['cart'])) {
             <div class="item-contents">
               <div class="item-name"><?php echo $item['name'] ?></div>
               <p>
-                <span class="capicity"><?php echo $item['capicity'] ?></span>
-                <span class="price"><?php echo $item['price'] ?></span>
+                <span class="capicity"><?php echo $item['capicity'] ?></span>/
+                <span class="price">£<?php echo $item['price'] ?></span>
               </p>
             </div>
             <div class="item-quantity">
@@ -94,7 +97,7 @@ if (!empty($_SESSION['cart'])) {
       <div class="cart-footer">
         <div class="cart-details">
           <div class="cart-title">Subtotal</div>
-          <div class="cart-total">$200</div>
+          <div class="cart-total">£<?php echo $total ?></div>
         </div>
         <p>Shipping, taxes, and discount codes calculated at checkout.</p>
         <button type="submit" name="checkout" id="checkout">
