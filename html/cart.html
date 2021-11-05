@@ -1,0 +1,58 @@
+<div class="cart-container">
+    <form action="" method="post" class="cart-form">
+      <div class="drawer__header">
+        <div class="drawer__close text-right">
+          <button type="button" class="drawer__close-button js-drawer-close">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="icon icon-close"
+              viewBox="0 0 64 64"
+            >
+              <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cart__scrollable">
+        <div class="cart-items">
+          <div class="cart-item">
+            <a
+              href="#"
+              class="img-item"
+              style="background-image: url('./CHANEL-CHANCE-EAU-TENDRE.jfif')"
+            >
+            </a>
+            <div class="item-contents">
+              <div class="item-name">CHANEL-CHANCE-EAU-TENDRE</div>
+              <p>
+                <span class="capicity">100ml</span>
+                <span class="price">$56</span>
+              </p>
+            </div>
+            <div class="item-quantity">
+              <input type="number" step="1" min="0" value="1" />
+              <button name="remove" class="remove-btn">remove</button>
+            </div>
+          </div>
+
+          <div class="cart-note">
+            <label for="note">Order note</label>
+            <textarea name="note" id="note" cols="30" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-details">
+          <div class="cart-title">Subtotal</div>
+          <div class="cart-total">$200</div>
+        </div>
+        <p>Shipping, taxes, and discount codes calculated at checkout.</p>
+        <button type="submit" name="checkout" id="checkout">
+          <span>Check out</span>
+        </button>
+      </div>
+    
+    </form>
+  </div>
