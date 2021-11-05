@@ -2,7 +2,7 @@
     <div class="header__inner">
         <div class="above-header">
             <p class="-contact"><span>Contact Us</span><span>123 456 789</span></p>
-            <a href="../fragranceshopee/index.php" class="logo">THE<span>FRAGRANCE</span></a>
+            <a href="./index.php" class="logo">THE<span>FRAGRANCE</span></a>
             <div class="header-action-icon">
                 <div class="header-action search-site-wrap">
                     <button class="search-box-handle">
@@ -51,7 +51,7 @@
                         </svg>
                     </a>
                     <div id="cart-container">
-
+                        
                     </div>
                 </div>
             </div>
