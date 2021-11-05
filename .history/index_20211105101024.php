@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/sass/style.css">
-  <title>Fragrance Shop haha cc</title>
+  <title>Fragrance Shop hahaha</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -220,35 +220,35 @@ $pf = new Perfume;
 </html>
 
 <script>
-  "use strict";
+    "use strict";
 
-  function addCart(item) {
-    var xhttp;
-    xhttp = new XMLHttpRequest();
-    const cart = document.querySelector('#cart-container');
-    xhttp.onreadystatechange = function() {
-      cart.innerHTML = this.responseText;
+    function addCart(item) {
+      var xhttp;
+      xhttp = new XMLHttpRequest();
+      const cart = document.querySelector('#cart-container');
+      xhttp.onreadystatechange = function() {
+        cart.innerHTML = this.responseText;
+      }
+      cart.classList.add("active");
+      xhttp.open("POST", "loadcart.php?id=" + item.getAttribute("id"), true);
+      xhttp.send()
+      $('body').on('click', '.drawer__close-button', function(e) {
+        cart.classList.remove("active");
+      })
     }
-    cart.classList.add("active");
-    xhttp.open("POST", "loadcart.php?id=" + item.getAttribute("id"), true);
-    xhttp.send()
-    $('body').on('click', '.drawer__close-button', function(e) {
-      cart.classList.remove("active");
-    })
-  }
 
-  function del_cart(id) {
-    var xhttp;
-    xhttp = new XMLHttpRequest();
-    const cart = document.querySelector('#cart-container');
-    xhttp.onreadystatechange = function() {
-      cart.innerHTML = this.responseText;
+    function del_cart(id){
+      var xhttp;
+      xhttp = new XMLHttpRequest();
+      const cart = document.querySelector('#cart-container');
+      xhttp.onreadystatechange = function() {
+        cart.innerHTML = this.responseText;
+      }
+      cart.classList.add("active");
+      xhttp.open("POST", "loadcart.php?del=" + id, true);
+      xhttp.send()
+      $('body').on('click', '.drawer__close-button', function(e) {
+        cart.classList.remove("active");
+      })
     }
-    cart.classList.add("active");
-    xhttp.open("POST", "loadcart.php?del=" + id, true);
-    xhttp.send()
-    $('body').on('click', '.drawer__close-button', function(e) {
-      cart.classList.remove("active");
-    })
-  }
-</script>
+  </script>
