@@ -51,7 +51,20 @@
                         </svg>
                     </a>
                     <div id="cart-container">
-                        
+                        <form action="checkout.php" method="post" class="cart-form">
+                            <div class="drawer__header">
+                                <div class="drawer__close text-right">
+                                    <button type="button" class="drawer__close-button js-drawer-close">
+                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                                            <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="cart_inner">
+                                
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -61,7 +74,7 @@
                 <li><a href="#" class="menu-link">MEN'S COLOGNE</a></li>
                 <li><a href="#" class="menu-link">WOMEN'S PERFUME</a></li>
                 <li><a href="#" class="menu-link">UNISEX</a></li>
-                <li><a href=".php?d=1" class="menu-link">BRANDS</a></li>
+                <li><a href="#" class="menu-link">BRANDS</a></li>
             </ul>
         </div>
     </div>

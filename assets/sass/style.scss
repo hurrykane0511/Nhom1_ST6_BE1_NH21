@@ -644,7 +644,7 @@ a {
         margin-top: auto;
         text-align: center;
         flex-direction: column;
-      
+
         .product-link {
           display: block;
           margin-top: 16px;
@@ -706,7 +706,7 @@ a {
 }
 
 //cart
-#cart-container.active{
+#cart-container.active {
   transform: translate(0);
 }
 #cart-container {
@@ -749,11 +749,11 @@ a {
 
   .cart__scrollable {
     padding: var(--padding-cart) var(--padding-cart) 0 var(--padding-cart);
-    scroll-snap-type: y mandatory;
-    overflow-y: auto;
-    height: 65vh;
     color: $fontclr;
     .cart-items {
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      height: 50vh;
       .cart-item {
         display: flex;
         align-items: center;
@@ -771,7 +771,7 @@ a {
           flex-direction: column;
           justify-content: space-around;
           width: 75px;
-
+          padding-left: 10px;
           input {
             text-align: end;
             background: transparent;
@@ -783,10 +783,12 @@ a {
           .remove-btn {
             background: transparent;
             text-align: center;
+            white-space: nowrap;
             border: none;
             cursor: pointer;
             font-size: 14px;
             padding: 5px;
+            margin-top: 5px;
             color: $fontclr;
           }
         }
@@ -794,26 +796,33 @@ a {
           text-align: justify;
           width: 100%;
           padding-left: 15px;
+          p {
+            padding-top: 15px;
+          }
           .capicity,
           .price {
             font-size: 16px;
           }
+          .price {
+            font-weight: 600;
+          }
         }
       }
-      .cart-note {
-        margin-top: 16px;
-        label {
-          display: block;
-          font-size: 18px;
-        }
-        #note {
-          width: 100%;
-          background: transparent;
-          border: solid 1px $fontclr;
-          color: $fontclr;
-          padding: 5px;
-          font-size: 18px;
-        }
+    }
+    .cart-note {
+      margin-top: 16px;
+      label {
+        padding: 16px;
+        display: block;
+        font-size: 18px;
+      }
+      #note {
+        width: 100%;
+        background: transparent;
+        border: solid 1px $fontclr;
+        color: $fontclr;
+        padding: 5px;
+        font-size: 18px;
       }
     }
   }
@@ -829,7 +838,6 @@ a {
     }
     p {
       margin: 18px 0;
-      
       color: gray;
       padding: 6px;
       background: rgba(255, 255, 255, 0.342);
@@ -845,10 +853,10 @@ a {
     }
   }
 }
-.cover.active{
+.cover.active {
   display: block;
 }
-.cover{
+.cover {
   display: none;
   position: fixed;
   border: 0;
@@ -857,4 +865,5 @@ a {
   right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.219);
+  z-index: 998;
 }

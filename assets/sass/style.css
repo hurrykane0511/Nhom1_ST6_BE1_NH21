@@ -836,10 +836,12 @@ a:hover {
 }
 #cart-container .cart__scrollable {
   padding: var(--padding-cart) var(--padding-cart) 0 var(--padding-cart);
-  scroll-snap-type: y mandatory;
-  overflow-y: auto;
-  height: 65vh;
   color: #362222;
+}
+#cart-container .cart__scrollable .cart-items {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: 50vh;
 }
 #cart-container .cart__scrollable .cart-items .cart-item {
   display: flex;
@@ -859,6 +861,7 @@ a:hover {
   flex-direction: column;
   justify-content: space-around;
   width: 75px;
+  padding-left: 10px;
 }
 #cart-container .cart__scrollable .cart-items .cart-item .item-quantity input {
   text-align: end;
@@ -871,10 +874,12 @@ a:hover {
 #cart-container .cart__scrollable .cart-items .cart-item .item-quantity .remove-btn {
   background: transparent;
   text-align: center;
+  white-space: nowrap;
   border: none;
   cursor: pointer;
   font-size: 14px;
   padding: 5px;
+  margin-top: 5px;
   color: #362222;
 }
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents {
@@ -882,18 +887,25 @@ a:hover {
   width: 100%;
   padding-left: 15px;
 }
+#cart-container .cart__scrollable .cart-items .cart-item .item-contents p {
+  padding-top: 15px;
+}
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents .capicity,
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents .price {
   font-size: 16px;
 }
-#cart-container .cart__scrollable .cart-items .cart-note {
+#cart-container .cart__scrollable .cart-items .cart-item .item-contents .price {
+  font-weight: 600;
+}
+#cart-container .cart__scrollable .cart-note {
   margin-top: 16px;
 }
-#cart-container .cart__scrollable .cart-items .cart-note label {
+#cart-container .cart__scrollable .cart-note label {
+  padding: 16px;
   display: block;
   font-size: 18px;
 }
-#cart-container .cart__scrollable .cart-items .cart-note #note {
+#cart-container .cart__scrollable .cart-note #note {
   width: 100%;
   background: transparent;
   border: solid 1px #362222;
@@ -941,6 +953,7 @@ a:hover {
   right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.219);
+  z-index: 998;
 }
 
 /*# sourceMappingURL=style.css.map */

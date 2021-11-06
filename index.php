@@ -18,21 +18,22 @@ $pf = new Perfume;
     <div class="wrap">
       <div class="visual">
 
-       <?php echo include './Template/header.php' ?>
-
+        <?= include './Template/header.php'?>
+        
         <div class="-scroll">
           <span class="-border"></span>
           <span class="-text">SCROLL</span>
         </div>
-
+        
         <a href="#" class="-move">
           <span>Click Move</span>
           <div class="-circle">
             <img src="assets/images/arrow.svg" alt="Move">
           </div>
         </a>
-
+        
         <?php include("./Template/slider.php") ?>
+
       </div>
       <!-- Intro -->
       <div class="intro">
@@ -147,12 +148,13 @@ $pf = new Perfume;
 <script>
   "use strict";
 
+  const cart = document.querySelector('#cart-container');
+
   function addCart(item) {
     var xhttp;
     xhttp = new XMLHttpRequest();
-    const cart = document.querySelector('#cart-container');
     xhttp.onreadystatechange = function() {
-      cart.innerHTML = this.responseText;
+      document.querySelector('#cart_inner').innerHTML = this.responseText;
     }
     cart.classList.add("active");
     xhttp.open("POST", "loadcart.php?id=" + item.getAttribute("id"), true);
@@ -165,15 +167,41 @@ $pf = new Perfume;
   function del_cart(id) {
     var xhttp;
     xhttp = new XMLHttpRequest();
-    const cart = document.querySelector('#cart-container');
+
     xhttp.onreadystatechange = function() {
-      cart.innerHTML = this.responseText;
+      document.querySelector('#cart_inner').innerHTML = this.responseText;
     }
     cart.classList.add("active");
     xhttp.open("POST", "loadcart.php?del=" + id, true);
     xhttp.send()
-    $('body').on('click', '.drawer__close-button', function(e) {
-      cart.classList.remove("active");
-    })
+
   }
+
+  function qtyChange(id, newQty) {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      document.querySelector('#cart_inner').innerHTML = this.responseText;
+    }
+    cart.classList.add("active");
+    xhttp.open("POST", `loadcart.php?idchange=${id}&qty=${newQty}`, true);
+    xhttp.send()
+  }
+
+  (function() {
+    document.querySelector('#cart-link').addEventListener('click', () => {
+      cart.classList.add("active");
+      var xhttp;
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        document.querySelector('#cart_inner').innerHTML = this.responseText;
+      }
+      cart.classList.add("active");
+      xhttp.open("POST", `loadcart.php`, true);
+      xhttp.send()
+      $('body').on('click', '.drawer__close-button', function(e) {
+        cart.classList.remove("active");
+      })
+    })
+  })();
 </script>
