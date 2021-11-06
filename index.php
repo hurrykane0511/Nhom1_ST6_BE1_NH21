@@ -18,20 +18,20 @@ $pf = new Perfume;
     <div class="wrap">
       <div class="visual">
 
-        <?= include './Template/header.php'?>
-        
+        <?= include './Template/header.php' ?>
+
         <div class="-scroll">
           <span class="-border"></span>
           <span class="-text">SCROLL</span>
         </div>
-        
+
         <a href="#" class="-move">
           <span>Click Move</span>
           <div class="-circle">
             <img src="assets/images/arrow.svg" alt="Move">
           </div>
         </a>
-        
+
         <?php include("./Template/slider.php") ?>
 
       </div>
@@ -52,17 +52,30 @@ $pf = new Perfume;
           <p>Some of our favourite picks this week.</p>
         </div>
         <div class="showcase-inner">
-          <?php foreach ($pf->getAllPerfume() as $row) {
+          <?php foreach ($pf->getTopSell() as $row) {
           ?>
             <div class="product-card">
               <a href="#" class="img-link">
                 <div class="product-img" style="background-image: url(./assets/images/products/<?php echo $row['image'] ?>);"></div>
               </a>
               <div class="card-content">
-                <a href="#" class="product-link"><?php echo $row['perfume_name'] ?></a>
+                <a href="#" class="product-link"><?php echo $row['pf_name'] ?></a>
                 <a href="#" class="producer"><?php echo $row['brand_name'] ?></a>
-                <p class="price">£ <?php echo $row['price'] ?></p>
-                <a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-<?php echo $row['perfume_id'] ?>">add to cart</a>
+                <p class="price">
+                  <?php 
+                  if ($row['sales_price'] != null) {
+                    ?>
+                    <del>£<?=$row['sales_price']?></del>&emsp;<big>£<?=$row['regular_price']?></big>
+                    <?php
+                  }
+                  else{
+                    ?>
+                    <big>£<?=$row['regular_price']?></big>
+                    <?php
+                  }
+                  ?>
+                </p>
+                <a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-<?php echo $row['pf_id'] ?>">add to cart</a>
               </div>
             </div>
           <?php

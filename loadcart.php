@@ -27,10 +27,11 @@ if (isset($_GET['id'])) {
   if (isset($_SESSION['cart'])) {
     if (!array_key_exists($id, $_SESSION['cart'])) {
       $item = array(
-        'name' => $pf['perfume_name'],
+        'pf_name' => $pf['pf_name'],
         'image' => $pf['image'],
-        'price' => $pf['price'],
-        'capicity' => $pf['capicity'],
+        'sales_price' => $pf['sales_price'],
+        'regular_price' => $pf['regular_price'],
+        'capacity' => $pf['capacity'],
         'quantity' => 1
       );
       $_SESSION['cart'][$id] = $item;
@@ -39,10 +40,11 @@ if (isset($_GET['id'])) {
     }
   } else {
     $item = array(
-      'name' => $pf['perfume_name'],
+      'pf_name' => $pf['pf_name'],
       'image' => $pf['image'],
-      'price' => $pf['price'],
-      'capicity' => $pf['capicity'],
+      'sales_price' => $pf['sales_price'],
+      'regular_price' => $pf['regular_price'],
+      'capacity' => $pf['capacity'],
       'quantity' => 1
     );
     $_SESSION['cart'][$id] = $item;
@@ -54,23 +56,35 @@ if (isset($_GET['id'])) {
 if (!empty($_SESSION['cart'])) {
   $sp_cart = $_SESSION['cart'];
   $total = 0;
-
+  $price;
 ?>
 
   <div class="cart__scrollable">
     <div class="cart-items">
       <?php foreach ($sp_cart as $key => $item) {
-        $total += $item['price'] * $item['quantity'];
+        $item['sales_price'] != null ? $price =  $item['sales_price'] : $price = $item['regular_price'];
+        $total += $price  * $item['quantity'];
       ?>
         <div class="cart-item">
           <a href="#" class="img-item" style="background-image: url('./assets/images/products/<?php echo $item['image']; ?>')">
 
           </a>
           <div class="item-contents">
-            <div class="item-name"><?php echo $item['name'] ?></div>
+            <div class="item-name"><?php echo $item['pf_name'] ?></div>
             <p>
-              <span class="capicity"><?php echo $item['capicity'] ?></span>/
-              <span class="price">£<?php echo $item['price'] ?></span>
+              <span class="capacity"><?php echo $item['capacity'] ?></span>/
+              <span class="price">
+                <?php
+                if ($item['sales_price'] != null) {
+                ?>
+                  <del>£<?= $item['sales_price'] ?></del>&emsp;<big>£<?= $item['regular_price'] ?></big>
+                <?php
+                } else {
+                ?>
+                  <big>£<?= $item['regular_price'] ?></big>
+                <?php
+                }
+                ?></span>
             </p>
           </div>
           <div class="item-quantity">

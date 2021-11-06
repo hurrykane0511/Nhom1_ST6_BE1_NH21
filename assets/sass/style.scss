@@ -659,6 +659,7 @@ a {
         }
         .price {
           margin-top: 16px;
+         
         }
         .add-cart-link {
           display: block;
@@ -799,12 +800,13 @@ a {
           p {
             padding-top: 15px;
           }
-          .capicity,
+          .capacity,
           .price {
+            text-align-last: center;
             font-size: 16px;
           }
           .price {
-            font-weight: 600;
+            font-weight: 500;
           }
         }
       }

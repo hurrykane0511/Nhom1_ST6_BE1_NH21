@@ -890,12 +890,13 @@ a:hover {
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents p {
   padding-top: 15px;
 }
-#cart-container .cart__scrollable .cart-items .cart-item .item-contents .capicity,
+#cart-container .cart__scrollable .cart-items .cart-item .item-contents .capacity,
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents .price {
+  text-align-last: center;
   font-size: 16px;
 }
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents .price {
-  font-weight: 600;
+  font-weight: 500;
 }
 #cart-container .cart__scrollable .cart-note {
   margin-top: 16px;
