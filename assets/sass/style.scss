@@ -209,8 +209,7 @@ a {
   padding: 36px 56px;
   position: relative;
   width: 100%;
-  height: 100vh;
-
+  min-height: 100vh;
   .-scroll {
     display: flex;
     align-items: center;
@@ -314,11 +313,10 @@ a {
 
   .-slide-item {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     background-size: cover;
     background-position: center;
-
     border-radius: var(--radius) var(--radius) 0 0;
     box-shadow: 0px 0px 6px rgba($color: #000000, $alpha: 0.16);
     overflow: hidden;
@@ -350,7 +348,7 @@ a {
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    margin-top: 32px;
+    margin-top: 10vh;
     .slider-bar {
       height: 2px;
       width: 150px;
@@ -501,7 +499,7 @@ a {
 }
 
 .visual-login {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   padding: 36px 56px;
   .invalid {
@@ -749,7 +747,7 @@ a {
   }
 
   .cart__scrollable {
-    padding: var(--padding-cart) var(--padding-cart) 0 var(--padding-cart);
+    padding: 0 var(--padding-cart) 0 var(--padding-cart);
     color: $fontclr;
     .cart-items {
       overflow-y: auto;
@@ -832,7 +830,6 @@ a {
     padding: var(--padding-cart);
     display: flex;
     flex-direction: column;
-    margin-top: auto;
     .cart-details {
       display: flex;
       justify-content: space-between;
