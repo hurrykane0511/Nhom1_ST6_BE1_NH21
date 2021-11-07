@@ -402,14 +402,14 @@ a:hover {
   width: 47.52vh;
   height: 71.22vh;
   position: relative;
-  margin: 16px auto 0;
+  margin: 0 auto;
 }
 .visual__slider .visual__slider-inner p {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 7.6rem;
+  font-size: 7vh;
   color: #953cf5;
   opacity: 0.8;
   z-index: 1;
@@ -417,8 +417,8 @@ a:hover {
 }
 .visual__slider .-slide-item {
   position: relative;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   border-radius: var(--radius) var(--radius) 0 0;
@@ -448,7 +448,6 @@ a:hover {
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
 }
 .visual__slider .slider-bar__inner .slider-bar {
   height: 2px;
@@ -475,14 +474,12 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 150%;
+  width: 120%;
   transition: width 0.3s ease;
 }
 .visual__slider .control-slide .pre,
 .visual__slider .control-slide .next {
+  position: absolute;
   opacity: 0.5;
   border-radius: 100%;
   transition: opacity 0.4s ease-out, border 0.2s linear;
@@ -492,6 +489,12 @@ a:hover {
 .visual__slider .control-slide .pre:hover,
 .visual__slider .control-slide .next:hover {
   border: 1px #362222 solid;
+}
+.visual__slider .control-slide .pre {
+  left: -10%;
+}
+.visual__slider .control-slide .next {
+  right: -10%;
 }
 .visual__slider .control-slide svg {
   position: relative;
@@ -810,6 +813,9 @@ a:hover {
   width: 500px;
   background: #f1e4e4;
   transform: translate(100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #cart-container #cart-form {
   display: flex;
@@ -840,8 +846,8 @@ a:hover {
 }
 #cart-container .cart__scrollable .cart-items {
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  height: 50vh;
+  height: 100%;
+  max-height: calc(100vh - 431px);
 }
 #cart-container .cart__scrollable .cart-items .cart-item {
   display: flex;
@@ -898,9 +904,6 @@ a:hover {
 #cart-container .cart__scrollable .cart-items .cart-item .item-contents .price {
   font-weight: 500;
 }
-#cart-container .cart__scrollable .cart-note {
-  margin-top: 16px;
-}
 #cart-container .cart__scrollable .cart-note label {
   padding: 16px;
   display: block;
@@ -918,6 +921,7 @@ a:hover {
   padding: var(--padding-cart);
   display: flex;
   flex-direction: column;
+  height: 220px;
 }
 #cart-container .cart-footer .cart-details {
   display: flex;
