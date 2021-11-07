@@ -95,11 +95,12 @@ if (!empty($_SESSION['cart'])) {
       <?php } ?>
 
     </div>
-    <div class="cart-note">
-      <label for="note">Order note</label>
-      <textarea name="note" id="note" cols="30" rows="3"></textarea>
-    </div>
+      <div class="cart-note">
+        <label for="note">Order note</label>
+        <textarea name="note" id="note" cols="30" rows="3"></textarea>
+      </div>
   </div>
+ 
   <div class="cart-footer">
     <div class="cart-details">
       <div class="cart-title">Subtotal</div>

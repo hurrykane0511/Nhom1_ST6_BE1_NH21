@@ -296,14 +296,14 @@ a {
     width: 47.52vh;
     height: 71.22vh;
     position: relative;
-    margin: 16px auto 0;
+    margin: 0 auto;
 
     p {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 7.6rem;
+      font-size: 7vh;
       color: #953cf5;
       opacity: 0.8;
       z-index: 1;
@@ -313,8 +313,8 @@ a {
 
   .-slide-item {
     position: relative;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     border-radius: var(--radius) var(--radius) 0 0;
@@ -348,7 +348,7 @@ a {
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
+
     .slider-bar {
       height: 2px;
       width: 150px;
@@ -376,15 +376,14 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 150%;
+    width: 120%;
     transition: width 0.3s ease;
 
     .pre,
     .next {
+      position: absolute;
       opacity: 0.5;
+
       border-radius: 100%;
       transition: opacity 0.4s ease-out, border 0.2s linear;
       padding: 12px;
@@ -393,6 +392,12 @@ a {
       &:hover {
         border: 1px $fontclr solid;
       }
+    }
+    .pre {
+      left: -10%;
+    }
+    .next {
+      right: -10%;
     }
     svg {
       position: relative;
@@ -657,7 +662,6 @@ a {
         }
         .price {
           margin-top: 16px;
-         
         }
         .add-cart-link {
           display: block;
@@ -720,6 +724,9 @@ a {
   width: 500px;
   background: rgb(241, 228, 228);
   transform: translate(100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   #cart-form {
     display: flex;
     flex-direction: column;
@@ -727,6 +734,7 @@ a {
   }
   .drawer__header {
     height: 80px;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -749,10 +757,11 @@ a {
   .cart__scrollable {
     padding: 0 var(--padding-cart) 0 var(--padding-cart);
     color: $fontclr;
+    
     .cart-items {
       overflow-y: auto;
-      scroll-snap-type: y mandatory;
-      height: 50vh;
+      height: 100%;
+      max-height: calc(100vh - 431px);
       .cart-item {
         display: flex;
         align-items: center;
@@ -810,7 +819,6 @@ a {
       }
     }
     .cart-note {
-      margin-top: 16px;
       label {
         padding: 16px;
         display: block;
@@ -830,6 +838,7 @@ a {
     padding: var(--padding-cart);
     display: flex;
     flex-direction: column;
+    height: 220px;
     .cart-details {
       display: flex;
       justify-content: space-between;
