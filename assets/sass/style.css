@@ -1094,6 +1094,70 @@ span.price {
     margin-bottom: 20px;
   }
 }
+.visual-login {
+  min-height: 100vh;
+  width: 100%;
+  padding: 36px 56px;
+}
+.visual-login .invalid {
+  font-size: 2.5rem;
+  color: red;
+  border: 1px solid red;
+  color: #000;
+}
+.visual-login .invalid .dot {
+  background: red;
+}
+.visual-login .form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.visual-login .form-container .form-title {
+  padding-top: 36px;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.visual-login .form-container .login-form {
+  width: 100%;
+  max-width: 400px;
+}
+.visual-login .form-container .login-form .input-group {
+  padding-top: 72px;
+}
+.visual-login .form-container .login-form .input-group label {
+  display: block;
+}
+.visual-login .form-container .login-form .input-group #email,
+.visual-login .form-container .login-form .input-group #pass,
+.visual-login .form-container .login-form .input-group #lastname,
+.visual-login .form-container .login-form .input-group #firstname {
+  margin-top: 5px;
+  background: transparent;
+  width: 100%;
+  border: none;
+  padding: 8px;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #362222;
+}
+.visual-login .form-container .login-form .input-group .login-btn {
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  background: #fff;
+  color: #575757;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.visual-login .form-container .create-account {
+  display: block;
+  padding-top: 72px;
+  color: #362222;
+  align-self: flex-start;
+}
+
 @font-face {
   font-family: ChloeRegular;
   src: url("../fonts/Chloe-Regular.otf") format("opentype");
