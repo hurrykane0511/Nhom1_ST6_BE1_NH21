@@ -25,4 +25,19 @@ class Perfume extends Db{
             echo "Lỗi: ".$e;
         }
     }
+    function getPerfumeSearch($keyword)
+    {
+        try{
+            $sql = self::$connection->prepare("SELECT * FROM tbl_perfume WHERE `pf_name` LIKE ?");
+            $keyword = "%$keyword%";
+            $sql->bind_param('s', $keyword);
+            $sql->execute();
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $items;
+        }
+        catch(mysqli_sql_exception $e){
+            echo "Lỗi: ".$e;
+        }
+    }
 }
