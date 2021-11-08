@@ -20,7 +20,7 @@
                                 </svg>
                             </div>
                             <form action="">
-                                <input type="text" name="text-search" class="search-inp" placeholder="Search our store">
+                                <input type="text" name="text-search" class="search-inp" onkeyup="showHint(this.value)" placeholder="Search our store">
                                 <button type="submit" name="search" class="search-btn">
                                     <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 451 451" style="enable-background:new 0 0 451 451;" xml:space="preserve">
                                         <g>
@@ -29,6 +29,9 @@
                                     </svg>
                                 </button>
                             </form>
+                            <div class="product-search__inner">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,8 +64,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div id="cart_inner">
-                                
+                            <div id="cart_inner"> 
                             </div>
                         </form>
                     </div>

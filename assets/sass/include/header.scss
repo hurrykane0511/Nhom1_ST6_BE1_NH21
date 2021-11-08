@@ -64,18 +64,19 @@
         }
         .search-popup {
           background: rgba(0, 0, 0, 0.4);
+     
           position: fixed;
           left: 0;
           top: 0;
           bottom: 0;
           right: 0;
           display: flex;
-          align-items: center;
           justify-content: center;
-          z-index: 99;
+          z-index: 999;
           opacity: 0;
           pointer-events: none;
           .search-popup__inner {
+            padding: 36px;
             position: absolute;
             border-radius: 5px;
             background-color: $bgclr2;
@@ -84,6 +85,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             z-index: 999;
             form {
               border-bottom: 1px solid $fontclr;
@@ -97,6 +99,7 @@
                 height: 100%;
                 padding: $inputpad;
                 border: none;
+                margin: 0 !important;
               }
               .search-btn {
                 position: absolute;
@@ -177,6 +180,15 @@
     }
   }
 }
+@keyframes loadingEffect {
+  0%{
+      transform: rotate(0) scale(.5);
+  }
+  100%{
+      transform: rotate(360deg) scale(1);
+  }
+}
+
 @media only screen and (max-width: 700px){
   .menu{
     flex-direction: column;

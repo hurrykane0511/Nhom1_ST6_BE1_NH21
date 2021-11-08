@@ -32,3 +32,5 @@
 <script type="module" src="./modules/login.js"></script>
 
 </html>
+
+<?php include './Template/ajax.php' ?>

@@ -28,7 +28,7 @@ class Perfume extends Db{
     function getPerfumeSearch($keyword)
     {
         try{
-            $sql = self::$connection->prepare("SELECT * FROM tbl_perfume WHERE `pf_name` LIKE ?");
+            $sql = self::$connection->prepare("SELECT * FROM tbl_perfume WHERE `pf_name` LIKE ? LIMIT 10");
             $keyword = "%$keyword%";
             $sql->bind_param('s', $keyword);
             $sql->execute();
