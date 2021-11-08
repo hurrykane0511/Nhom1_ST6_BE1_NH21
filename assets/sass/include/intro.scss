@@ -1,0 +1,23 @@
+.intro {
+  min-height: 300px;
+  display: flex;
+  background: $bgclr;
+  color: $fontclr;
+  font-style: normal;
+  .slogan-box__inner {
+    margin: auto;
+    text-align: center;
+    min-height: 100px;
+  }
+  p {
+    padding: 26px;
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    color: #333029;
+    font-weight: lighter;
+    max-width: 666px;
+    margin: auto;
+    font-weight: 300;
+    line-height: 30px;
+  }
+}

@@ -1,0 +1,32 @@
+.brands-list {
+  background: $bgclr;
+  --col: 5;
+  .brands-list__inner {
+    max-width: 1112px;
+    margin: 36px auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    .brand-box {
+      width: calc(100% / var(--col));
+      display: flex;
+      justify-content: center;
+      a {
+        img {
+          height: 150px;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  .brands-list {
+    --col: 4;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .brands-list {
+    --col: 2;
+  }
+}

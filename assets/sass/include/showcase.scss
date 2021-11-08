@@ -1,0 +1,96 @@
+.showcase {
+  display: flex;
+  flex-direction: column;
+  padding: 72px 0;
+  .showcase-title-box {
+    margin-top: 72px;
+    height: 72px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    .showcase-title {
+      font-size: 5rem;
+      font-family: ChloeRegular;
+    }
+    p {
+      margin-top: auto;
+    }
+  }
+  .showcase-inner {
+    padding-bottom: 72px;
+    padding-top: 72px;
+    display: flex;
+    justify-content: flex-start;
+    cursor: grab;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    .product-card {
+      background: #fff;
+      margin: 16px;
+      font-family: "Montserrat", sans-serif;
+      padding: 0 36px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      .img-link {
+        display: block;
+        overflow: hidden;
+        opacity: 1;
+        .product-img {
+          transition: transform 1s;
+          height: 450px;
+          width: 300px;
+         
+          background: center/contain no-repeat;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .card-content {
+        margin-top: auto;
+        text-align: center;
+        flex-direction: column;
+
+        .product-link {
+          display: block;
+          margin-top: 16px;
+          color: $fontclr;
+          padding: 0 12px;
+        }
+        .producer {
+          margin-top: 16px;
+          display: block;
+          color: $fontclr;
+          font-size: 1.4rem;
+        }
+        .price {
+          margin-top: 16px;
+        }
+        .add-cart-link {
+          display: block;
+          color: $fontclrlight;
+          background: $gray;
+          border-radius: 20px;
+          padding: 10px 20px;
+          width: max-content;
+          margin: 16px auto;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 700px) {
+    .product-card{
+        padding: 0 14px !important;
+    }
+    .product-img { 
+        height: 200px !important;
+        width: 200px !important;
+    }
+
+}
