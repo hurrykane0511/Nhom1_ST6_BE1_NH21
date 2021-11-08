@@ -1,0 +1,64 @@
+.visual-login {
+  min-height: 100vh;
+  width: 100%;
+  padding: 36px 56px;
+  .invalid {
+    font-size: 2.5rem;
+    color: red;
+    border: 1px solid red;
+    color: #000;
+    .dot {
+      background: red;
+    }
+  }
+  .form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .form-title {
+      padding-top: 36px;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    .login-form {
+      width: 100%;
+      max-width: 400px;
+      .input-group {
+        padding-top: 72px;
+        label {
+          display: block;
+        }
+        #email,
+        #pass,
+        #lastname,
+        #firstname {
+          margin-top: 5px;
+          background: transparent;
+          width: 100%;
+          border: none;
+          padding: 8px;
+          font-size: 1.6rem;
+          border-bottom: 1px solid $fontclr;
+        }
+        .login-btn {
+          width: 100%;
+          padding: 8px 0;
+          border: none;
+          background: $fontclrlight;
+          color: $gray;
+          font-size: 1.8rem;
+
+          cursor: pointer;
+        }
+      }
+    }
+    .create-account {
+      display: block;
+      padding-top: 72px;
+      color: $fontclr;
+      align-self: flex-start;
+    }
+  }
+}
