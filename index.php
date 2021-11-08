@@ -22,7 +22,7 @@ $pf = new Perfume;
 
         <div class="-scroll">
           <span class="-border"></span>
-          <span class="-text">SCROLL</span>
+          <span class="-text">SCROLL1</span>
         </div>
 
         <a href="#" class="-move">
