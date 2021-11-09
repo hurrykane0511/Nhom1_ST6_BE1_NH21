@@ -42,7 +42,7 @@
   }
 
   function showHint(str) {
-    const rs = document.querySelector(".product-search__inner");
+    const rs = document.querySelector(".display-search-items");
     if (str.length == 0) {
       rs.innerHTML = "";
     } else {

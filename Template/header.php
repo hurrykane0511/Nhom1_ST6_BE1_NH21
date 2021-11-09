@@ -20,7 +20,7 @@
                                 </svg>
                             </div>
                             <form action="">
-                                <input type="text" name="text-search" class="search-inp" onkeyup="showHint(this.value)" placeholder="Search our store">
+                                <input type="text" name="text-search" class="search-inp" onkeyup="" placeholder="Search our store">
                                 <button type="submit" name="search" class="search-btn">
                                     <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 451 451" style="enable-background:new 0 0 451 451;" xml:space="preserve">
                                         <g>
@@ -30,7 +30,25 @@
                                 </button>
                             </form>
                             <div class="product-search__inner">
-                                
+                                <div class="display-search-items">
+                                    <div class="item">
+                                        <a href="#"><img class="item-img" src="./assets/images/products/Emporio-Armani-Diamonds-for-Men-Eau-de-Toilette-75ml.jfif" alt=""></a>
+                                        <a href="#">
+                                            <p class="item-brand">Armani</p>
+                                        </a>
+                                        <a href="#">
+                                            <p class="item-name">Armani Lorem ipsum dolor sit.</p>
+                                        </a>
+                                        <div class="link-wrap">
+                                            <a href="#" class="addcart">
+                                                <p>Add to cart</p>
+                                            </a>
+                                            <a href="#" class="detail">
+                                                <p>See detail...</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +82,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div id="cart_inner"> 
+                            <div id="cart_inner">
                             </div>
                         </form>
                     </div>
