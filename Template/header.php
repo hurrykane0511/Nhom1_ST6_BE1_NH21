@@ -47,7 +47,7 @@
                                                 <p>See detail...</p>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div>   
                                 </div>
                             </div>
                         </div>

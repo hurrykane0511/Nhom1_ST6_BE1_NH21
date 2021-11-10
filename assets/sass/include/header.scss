@@ -195,7 +195,7 @@
     align-items: stretch;
     margin-left: calc(-1 * var(--spacing));
     flex-wrap: wrap;
-
+    height: fit-content;
     .item {
       --col: 4;
       padding: 16px;
