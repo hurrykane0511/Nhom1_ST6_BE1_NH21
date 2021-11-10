@@ -30,24 +30,7 @@
                                 </button>
                             </form>
                             <div class="product-search__inner">
-                                <div class="display-search-items">
-                                    <div class="item">
-                                        <a href="#"><img class="item-img" src="./assets/images/products/Emporio-Armani-Diamonds-for-Men-Eau-de-Toilette-75ml.jfif" alt=""></a>
-                                        <a href="#">
-                                            <p class="item-brand">Armani</p>
-                                        </a>
-                                        <a href="#">
-                                            <p class="item-name">Armani Lorem ipsum dolor sit.</p>
-                                        </a>
-                                        <div class="link-wrap">
-                                            <a href="#" class="addcart">
-                                                <p>Add to cart</p>
-                                            </a>
-                                            <a href="#" class="detail">
-                                                <p>See detail...</p>
-                                            </a>
-                                        </div>
-                                    </div>   
+                                <div class="display-search-items">  
                                 </div>
                             </div>
                         </div>
