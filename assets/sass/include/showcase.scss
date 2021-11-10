@@ -31,19 +31,19 @@
       background: #fff;
       margin: 16px;
       font-family: "Montserrat", sans-serif;
-      padding: 0 36px;
-      border-radius: 16px;
+      padding: 26px 36px;
+      // border-radius: 16px;
       display: flex;
       flex-direction: column;
       .img-link {
         display: block;
         overflow: hidden;
         opacity: 1;
+        padding: 24px 0;
         .product-img {
           transition: transform 1s;
-          height: 450px;
-          width: 300px;
-         
+          height: 30.9vh;
+          width: 29.75vh;
           background: center/contain no-repeat;
           &:hover {
             transform: scale(1.2);
@@ -89,8 +89,11 @@
         padding: 0 14px !important;
     }
     .product-img { 
-        height: 200px !important;
-        width: 200px !important;
+        height: 250px !important;
+        width: 250px !important;
     }
-
+    .showcase-inner {
+      padding-bottom: 36px !important;
+      padding-top: 36px !important;
+    }
 }

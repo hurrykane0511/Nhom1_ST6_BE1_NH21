@@ -5,12 +5,13 @@
 <body>
     <div class="wraper">
         <div class="wrap">
+
             <div class="visual-login">
                 <?php include './Template/header.php' ?>
-                <div class="form-container">
-                    <h2 class="form-title">Login</h2>
 
+                <div class="form-container">
                     <form action="./index.php" class="login-form">
+                        <h2 class="form-title">Login</h2>
                         <div class="msg-invalid">Incorrect email or password.</div>
                         <div class="input-group">
                             <label for="email">Email</label>
@@ -20,12 +21,14 @@
                             <label for="pass">Password</label>
                             <input type="password" name="password" id="pass">
                         </div>
+                        <a href="signup.php" class="handle-link forgot">Forgot password?</a>
                         <div class="input-group">
                             <input type="submit" name="signin" class="login-btn" value="Sign In">
                         </div>
-                        <a href="signup.php" class="create-account">Create account</a>
+                        <a href="signup.php" class="handle-link create">Create account</a>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>

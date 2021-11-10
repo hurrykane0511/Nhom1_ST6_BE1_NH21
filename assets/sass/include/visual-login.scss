@@ -2,15 +2,8 @@
   min-height: 100vh;
   width: 100%;
   padding: 36px 56px;
-  .invalid {
-    font-size: 2.5rem;
-    color: red;
-    border: 1px solid red;
-    color: #000;
-    .dot {
-      background: red;
-    }
-  }
+  display: flex;
+  flex-direction: column;
   .msg-invalid{
     font-size: 1.5rem;
     color: red;
@@ -31,29 +24,29 @@
       border-radius: 100%;
       transform: translateY(-50%);
     }
-    opacity: 0;
-    user-select: none;
-    pointer-events: none;
+    display: none;
   }
   .msg-invalid.show{
-    opacity: 0;
-    user-select: none;
-    pointer-events: none;
+    display: block;
   }
   .form-container {
-    width: 100%;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 15px 0;
     .form-title {
-      padding-top: 36px;
       font-size: 3rem;
       font-weight: 600;
+      text-align: center;
     }
     .login-form {
       width: 100%;
       max-width: 400px;
+    
       .input-group {
         margin-top: 20px;
         label {
@@ -79,13 +72,19 @@
           color: $gray;
           font-size: 1.8rem;
           cursor: pointer;
-          margin-top: 20px;
+        
         }
       }
     }
-    .create-account {
+    .forgot{
+      text-align: end;
+      margin-top: 16px;
+    }
+    .create{
+      margin-top: 16px;
+    }
+    .handle-link {
       display: block;
-      padding-top: 36px;
       color: $fontclr;
       align-self: flex-start;
     }
