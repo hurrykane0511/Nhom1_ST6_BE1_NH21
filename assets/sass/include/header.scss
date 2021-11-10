@@ -245,14 +245,6 @@
     }
   }
 }
-@keyframes loadingEffect {
-  0% {
-    transform: rotate(0) scale(0.5);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
 @media only screen and (max-width: 1000px) {
   .item {
     --col: 3 !important;

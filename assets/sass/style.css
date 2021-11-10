@@ -363,14 +363,6 @@ button {
   margin-top: auto;
 }
 
-@keyframes loadingEffect {
-  0% {
-    transform: rotate(0) scale(0.5);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
 @media only screen and (max-width: 1000px) {
   .item {
     --col: 3 !important;
@@ -1018,186 +1010,14 @@ button {
   line-height: 30px;
 }
 
-.checkout-wraper {
-  min-height: 100vh;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-.checkout-wraper .checkout-box {
-  width: 100%;
-  max-width: 1222px;
-  height: 100%;
-}
-.checkout-wraper .visually-hidden {
-  visibility: hidden;
-}
-.checkout-wraper .product-table {
-  max-width: 500px;
-}
-.checkout-wraper .product-table td {
-  vertical-align: middle;
-}
-.checkout-wraper .product-table .product__description {
-  width: 60%;
-  padding-left: 10px;
-}
-.checkout-wraper .product-table .product__description span {
-  display: block;
-}
-.checkout-wraper .product-table .product__price {
-  width: 20%;
-}
-.checkout-wraper .product-table .product__image {
-  width: 20%;
-}
-.checkout-wraper .product-table .product-thumbnail {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-.checkout-wraper .product-table .product-thumbnail .product-thumbnail__quantity {
-  position: absolute;
-  font-size: 0.8571428571em;
-  font-weight: 500;
-  line-height: 1.75em;
-  white-space: nowrap;
-  text-align: center;
-  border-radius: 1.75rem;
-  background-color: rgba(114, 114, 114, 0.9);
-  color: #fff;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  min-width: 1.75 em;
-  height: 1.75 em;
-  padding: 0 0.5833333333em;
-  position: absolute;
-  right: -0.75em;
-  top: -0.75em;
-  z-index: 3;
-}
-.checkout-wraper .product-table .product-thumbnail::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 8px;
-  border: 1px rgba(0, 0, 0, 0.1) solid;
-  z-index: 2;
-}
-.checkout-wraper .row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.col-25 {
-  -ms-flex: 25%;
-  /* IE10 */
-  flex: 25%;
-}
-
-.col-50 {
-  -ms-flex: 50%;
-  /* IE10 */
-  flex: 50%;
-}
-
-.col-75 {
-  -ms-flex: 75%;
-  /* IE10 */
-  flex: 75%;
-}
-
-.col-100 {
-  flex: 100%;
-}
-
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
-}
-
-.gray-light {
-  background: rgba(128, 128, 128, 0.2);
-}
-
-.container {
-  border-radius: 3px;
-  width: 100%;
-}
-
-input[type=text] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-label {
-  margin-bottom: 10px;
-  display: block;
-}
-
-.icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
-}
-
-.btn {
-  background-color: #000;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 100%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-.buy {
-  display: block;
-  background: rgba(128, 128, 128, 0.363);
-  text-align: center;
-  padding: 12px;
-  color: #000;
-}
-
-hr {
-  border: 1px solid lightgrey;
-}
-
-span.price {
-  float: right;
-  color: grey;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-
-  .col-25 {
-    margin-bottom: 20px;
-  }
-}
-.visual-login {
+.visual-page {
   min-height: 100vh;
   width: 100%;
   padding: 36px 56px;
   display: flex;
   flex-direction: column;
 }
-.visual-login .msg-invalid {
+.visual-page .msg-invalid {
   font-size: 1.5rem;
   color: red;
   border: 1px solid red;
@@ -1208,7 +1028,7 @@ span.price {
   position: relative;
   display: none;
 }
-.visual-login .msg-invalid::before {
+.visual-page .msg-invalid::before {
   content: "";
   position: absolute;
   background: red;
@@ -1219,10 +1039,10 @@ span.price {
   border-radius: 100%;
   transform: translateY(-50%);
 }
-.visual-login .msg-invalid.show {
+.visual-page .msg-invalid.show {
   display: block;
 }
-.visual-login .form-container {
+.visual-page .form-container {
   margin: auto;
   display: flex;
   justify-content: center;
@@ -1232,26 +1052,26 @@ span.price {
   width: 100%;
   padding: 15px 0;
 }
-.visual-login .form-container .form-title {
+.visual-page .form-container .form-title {
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
 }
-.visual-login .form-container .login-form {
+.visual-page .form-container .login-form {
   width: 100%;
   max-width: 400px;
 }
-.visual-login .form-container .login-form .input-group {
+.visual-page .form-container .login-form .input-group {
   margin-top: 20px;
 }
-.visual-login .form-container .login-form .input-group label {
+.visual-page .form-container .login-form .input-group label {
   display: block;
   margin: 0;
 }
-.visual-login .form-container .login-form .input-group #email,
-.visual-login .form-container .login-form .input-group #pass,
-.visual-login .form-container .login-form .input-group #lastname,
-.visual-login .form-container .login-form .input-group #firstname {
+.visual-page .form-container .login-form .input-group #email,
+.visual-page .form-container .login-form .input-group #pass,
+.visual-page .form-container .login-form .input-group #lastname,
+.visual-page .form-container .login-form .input-group #firstname {
   background: transparent;
   width: 100%;
   border: none;
@@ -1259,7 +1079,7 @@ span.price {
   font-size: 1.6rem;
   border-bottom: 1px solid #362222;
 }
-.visual-login .form-container .login-form .input-group .login-btn {
+.visual-page .form-container .login-form .input-group .login-btn {
   width: 100%;
   padding: 8px 0;
   border: none;
@@ -1268,19 +1088,110 @@ span.price {
   font-size: 1.8rem;
   cursor: pointer;
 }
-.visual-login .form-container .forgot {
+.visual-page .form-container .forgot {
   text-align: end;
   margin-top: 16px;
 }
-.visual-login .form-container .create {
+.visual-page .form-container .create {
   margin-top: 16px;
 }
-.visual-login .form-container .handle-link {
+.visual-page .form-container .handle-link {
   display: block;
   color: #362222;
   align-self: flex-start;
 }
 
+.visual-page .search-title {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.visual-page .search-title .keyword {
+  font-weight: 600;
+}
+.visual-page .filter-wraper {
+  --col: 4;
+  display: flex;
+  justify-content: center;
+}
+.visual-page .filter-wraper .filter-inner {
+  max-width: 1222px;
+  width: 100%;
+}
+.visual-page .filter-wraper .filter-inner .select-boxs {
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(128, 128, 128, 0.1);
+  padding: 15px;
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .select-box {
+  width: calc(100% / var(--col));
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .select-box select {
+  text-align: center;
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 5px 10px;
+  border: rgba(128, 128, 128, 0.8) 1px solid;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .sort-by {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .sort-by select {
+  text-align: center;
+  padding: 5px 10px;
+  margin-left: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .price-box {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .price-box span {
+  padding-left: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.visual-page .filter-wraper .filter-inner .select-boxs .price-box span input[type=number] {
+  text-align: center;
+  margin: 0 5px;
+  width: 100%;
+  padding: 5px 10px;
+  border: rgba(128, 128, 128, 0.8) 1px solid;
+}
+
+@media only screen and (max-width: 700px) {
+  .select-boxs {
+    --col: 2;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .select-boxs {
+    --col: 1;
+  }
+
+  .sort-by {
+    margin: auto;
+  }
+}
 @font-face {
   font-family: ChloeRegular;
   src: url("../fonts/Chloe-Regular.otf") format("opentype");

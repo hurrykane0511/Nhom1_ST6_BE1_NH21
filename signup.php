@@ -5,7 +5,7 @@
 <body>
     <div class="wraper">
         <div class="wrap">
-            <div class="visual-login">
+            <div class="visual-page">
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
