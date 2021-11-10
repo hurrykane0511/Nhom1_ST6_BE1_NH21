@@ -1,7 +1,9 @@
 <?php
+session_start();
 include './model/dbconnect.php';
 include './model/config.php';
 include './model/perfume.php';
+
 
 $pf = new Perfume();
 if (isset($_GET['kw'])) {
@@ -13,13 +15,13 @@ if (isset($_GET['kw'])) {
         <div class="item">
             <a href="#"><img class="item-img" src="./assets/images/products/<?php echo $value['image'] ?>" alt=""></a>
             <a href="#">
-                <p class="item-brand">Armani</p>
+                <p class="item-brand"><?php echo $value['brand_name'] ?></p>
             </a>
             <a href="#">
                 <p class="item-name"><?php echo $value['pf_name'] ?></p>
             </a>
             <div class="link-wrap">
-                <a href="#" class="addcart">
+                <a href="#" onclick="addCart(this);" class="addcart" id="item-<?php echo $value['pf_id'] ?>">
                     <p>Add to cart</p>
                 </a>
                 <a href="#" class="detail">
