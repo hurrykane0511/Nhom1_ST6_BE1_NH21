@@ -11,6 +11,35 @@
       background: red;
     }
   }
+  .msg-invalid{
+    font-size: 1.5rem;
+    color: red;
+    border: 1px solid red;
+    background: #fff6f6;
+    padding: 12px 32px;
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      background:red;
+      left: 10px;
+      top: 50%;
+      height: 5px;
+      width: 5px;
+      border-radius: 100%;
+      transform: translateY(-50%);
+    }
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+  .msg-invalid.show{
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+  }
   .form-container {
     width: 100%;
     display: flex;
@@ -26,15 +55,15 @@
       width: 100%;
       max-width: 400px;
       .input-group {
-        padding-top: 72px;
+        margin-top: 20px;
         label {
           display: block;
+          margin: 0;
         }
         #email,
         #pass,
         #lastname,
         #firstname {
-          margin-top: 5px;
           background: transparent;
           width: 100%;
           border: none;
@@ -49,14 +78,14 @@
           background: $fontclrlight;
           color: $gray;
           font-size: 1.8rem;
-
           cursor: pointer;
+          margin-top: 20px;
         }
       }
     }
     .create-account {
       display: block;
-      padding-top: 72px;
+      padding-top: 36px;
       color: $fontclr;
       align-self: flex-start;
     }

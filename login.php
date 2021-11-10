@@ -9,7 +9,9 @@
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Login</h2>
+
                     <form action="./index.php" class="login-form">
+                        <div class="msg-invalid">Incorrect email or password.</div>
                         <div class="input-group">
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email">

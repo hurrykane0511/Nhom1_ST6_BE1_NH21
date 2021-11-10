@@ -1197,6 +1197,35 @@ span.price {
 .visual-login .invalid .dot {
   background: red;
 }
+.visual-login .msg-invalid {
+  font-size: 1.5rem;
+  color: red;
+  border: 1px solid red;
+  background: #fff6f6;
+  padding: 12px 32px;
+  margin-top: 15px;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.visual-login .msg-invalid::before {
+  content: "";
+  position: absolute;
+  background: red;
+  left: 10px;
+  top: 50%;
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  transform: translateY(-50%);
+}
+.visual-login .msg-invalid.show {
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
 .visual-login .form-container {
   width: 100%;
   display: flex;
@@ -1214,16 +1243,16 @@ span.price {
   max-width: 400px;
 }
 .visual-login .form-container .login-form .input-group {
-  padding-top: 72px;
+  margin-top: 20px;
 }
 .visual-login .form-container .login-form .input-group label {
   display: block;
+  margin: 0;
 }
 .visual-login .form-container .login-form .input-group #email,
 .visual-login .form-container .login-form .input-group #pass,
 .visual-login .form-container .login-form .input-group #lastname,
 .visual-login .form-container .login-form .input-group #firstname {
-  margin-top: 5px;
   background: transparent;
   width: 100%;
   border: none;
@@ -1239,10 +1268,11 @@ span.price {
   color: #575757;
   font-size: 1.8rem;
   cursor: pointer;
+  margin-top: 20px;
 }
 .visual-login .form-container .create-account {
   display: block;
-  padding-top: 72px;
+  padding-top: 36px;
   color: #362222;
   align-self: flex-start;
 }

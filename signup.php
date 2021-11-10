@@ -10,6 +10,7 @@
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
                     <form action="./index.php" class="login-form">
+                        <div class="msg-invalid">Incorrect email or password.</div>
                         <div class="input-group">
                             <label for="firstname">First name</label>
                             <input type="text" name="firstname" id="firstname">
