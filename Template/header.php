@@ -31,7 +31,8 @@
                                 </button>
                             </form>
                             <div class="product-search__inner">
-                                
+                                <div class="display-search-items">
+                                </div>
                             </div>
                         </div>
                     </div>
