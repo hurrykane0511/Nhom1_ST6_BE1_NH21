@@ -10,6 +10,7 @@ if (isset($_GET['kw'])) {
     foreach ($result as $value) {
     
 ?>
+aa
             <div class="item">
                 <a href="#"><img class="item-img" src="./assets/images/products/<?php echo $value['image'] ?>" alt=""></a>
                 <a href="#">
