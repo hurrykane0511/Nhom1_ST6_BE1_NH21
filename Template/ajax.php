@@ -42,7 +42,7 @@
   }
 
   function showHint(str) {
-    const rs = document.querySelector(".display-search-items");
+    const rs = document.querySelector(".product-search__inner");
     if (str.length == 0) {
       rs.innerHTML = "";
     } else {
@@ -52,7 +52,7 @@
           rs.innerHTML = this.responseText;
         }
       };
-      xmlhttp.open("POST", "loadsearch.php?kw=" + str, true);
+      xmlhttp.open("GET", "loadsearch.php?kw=" + str, true);
       xmlhttp.send();
     }
   }
