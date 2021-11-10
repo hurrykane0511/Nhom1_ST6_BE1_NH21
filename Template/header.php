@@ -1,4 +1,4 @@
-<?php include './Template/ajax.php' ?>
+
 <header class="header">
     <div class="header__inner">
         <div class="above-header">
