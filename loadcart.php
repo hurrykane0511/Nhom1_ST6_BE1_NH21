@@ -23,7 +23,9 @@ if (isset($_GET['id'])) {
 
   $id = explode("-", $_GET['id'])[1];
   $pf = $dbc->getPerfumeByID($id);
-
+  if($pf == null){
+    return;
+  }
   if (isset($_SESSION['cart'])) {
     if (!array_key_exists($id, $_SESSION['cart'])) {
       $item = array(
@@ -116,7 +118,7 @@ if (!empty($_SESSION['cart'])) {
 
 } else {
 ?>
-  <div class="empty-cart">Your cart is empty now, <a href="">continue buy</a></div>
+  <div class="empty-cart">Your cart is empty now, <a href="#">continue buy</a></div>
 <?php
 }
 ?>

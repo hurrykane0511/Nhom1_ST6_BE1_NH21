@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment page</title>
+    <link rel="stylesheet" href="../assets/sass/style.css" />
+  </head>
+  <body style="background-color: #fff">
+    <div class="payment-wraper">
+      <div class="container">
+        <div class="pay-form">
+          <p class="order-title">The frangance king</p>
+          <ul class="breadcrumb">
+            <li><a href="#">Cart ></a></li>
+            <li>Shipping ></li>
+            <li>Payment</li>
+          </ul>
+          <form method="POST" class="payform-inner">
+  
+            <div class="contact-box">
+              <p class="inp-title">Contact Information</p>
+              <div class="input-group">
+                <label for="email">Email contact</label>
+                <input type="text" name="email" id="email" />
+              </div>
+              <p class="inp-title">Shipping Address</p>
+              <div class="input-group">
+                <label for="firstname">First name</label>
+                <input type="text" name="firstname" id="firstname" />
+              </div>
+              <div class="input-group">
+                <label for="lastname">Last name</label>
+                <input type="text" name="lastname" id="lastname" />
+              </div>
+              <div class="input-group">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" />
+              </div>
+              <div class="input-group">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" />
+              </div>
+              <div class="input-group">
+                <select name="country" class="country-select">
+                  <option value="" selected disabled hidden>-- Country --</option>
+                  <option value="1">Vietname</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <input type="text" placeholder="Phone number" name="phone" />
+              </div>
+              <div class="input-group">
+                <button type="submit" id="toshipping">
+                  Countinue to shipping
+                </button>
+                <a href="index.php" class="countinue">Continue to buy</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="order-cart">
+        <div class="order-items">
+          <div class="order-item">
+            <div
+              class="pf-img"
+              style="
+                background-image: url(../assets/images/products/CHANEL-COCO-MADEMOISELLE-100ml.jpg);
+              "
+            >
+              <span class="qty">1</span>
+            </div>
+            <div class="pf-contents">
+              <div class="name">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. At,
+                ipsum!
+              </div>
+              <div class="capacity">100ml</div>
+            </div>
+            <div class="price">£95</div>
+          </div>
+          <div class="order-item">
+            <div
+              class="pf-img"
+              style="
+                background-image: url(../assets/images/products/CHANEL-COCO-MADEMOISELLE-100ml.jpg);
+              "
+            >
+              <span class="qty">1</span>
+            </div>
+            <div class="pf-contents">
+              <div class="name">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. At,
+                ipsum!
+              </div>
+              <div class="capacity">100ml</div>
+            </div>
+            <div class="price">£95</div>
+          </div>
+          <div class="order-item">
+            <div
+              class="pf-img"
+              style="
+                background-image: url(../assets/images/products/CHANEL-COCO-MADEMOISELLE-100ml.jpg);
+              "
+            >
+              <span class="qty">1</span>
+            </div>
+            <div class="pf-contents">
+              <div class="name">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. At,
+                ipsum!
+              </div>
+              <div class="capacity">100ml</div>
+            </div>
+            <div class="price">£95</div>
+          </div>
+        </div>
+        <div class="subtototal">
+          <p class="total-line_name">Subtotal</p>
+          <p class="total-line_price">£400</p>
+        </div>
+        <div class="shipping">
+          <p class="total-line_name">Shipping</p>
+          <p class="total-line_price">Calculated at next step</p>
+        </div>
+        <div class="total">
+          <p class="total_name">Total</p>
+          <p class="total_price">£600</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

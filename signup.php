@@ -6,39 +6,43 @@
 <body>
     <div class="wraper">
         <div class="wrap">
-            <div class="visual-login">
+            <div class="visual-page">
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
-                    <form action="signup.php" class="login-form" method="POST">
-                        <div class="input-group">
-                            <label for="firstname">First name</label>
-                            <input type="text" name="firstname" id="firstname" require>
-                        </div>
-                        <div class="input-group">
-                            <label for="lastname">Last name</label>
-                            <input type="text" name="lastname" id="lastname" require>
-                        </div>
-                        <div class="input-group">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" require>
-                        </div>
-                        <div class="input-group">
-                            <label for="pass">Password</label>
-                            <input type="password" name="password" id="pass" require>
-                        </div>
-                        <div class="input-group">
-                            <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
-                        </div>
-                        <?php require 'xuly.php'; ?>
-                    </form>
-                    <?php
-                    if (isset($_POST['submit'])) {
-                        $user = new User($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
-                        header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.php?signin');
-                    }
-                    ?>
-                    ?>
+                    <<<<<<< HEAD <form action="signup.php" class="login-form" method="POST">
+                        =======
+                        <form action="./index.php" class="login-form">
+                            <div class="msg-invalid">Incorrect email or password.</div>
+                            >>>>>>> ea91ed1af100a2e1ed6afd6814642582de17fb9c
+                            <div class="input-group">
+                                <label for="firstname">First name</label>
+                                <input type="text" name="firstname" id="firstname" require>
+                            </div>
+                            <div class="input-group">
+                                <label for="lastname">Last name</label>
+                                <input type="text" name="lastname" id="lastname" require>
+                            </div>
+                            <div class="input-group">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" id="email" require>
+                            </div>
+                            <div class="input-group">
+                                <label for="pass">Password</label>
+                                <input type="password" name="password" id="pass" require>
+                            </div>
+                            <div class="input-group">
+                                <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
+                            </div>
+                            <?php require 'xuly.php'; ?>
+                        </form>
+                        <?php
+                        if (isset($_POST['submit'])) {
+                            //   $user = new User($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
+                            header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.php?signin');
+                        }
+                        ?>
+                        ?>
                 </div>
             </div>
         </div>
@@ -49,3 +53,5 @@
 <script type="module" src="./modules/login.js"></script>
 
 </html>
+
+<?php include './Template/ajax.php' ?>

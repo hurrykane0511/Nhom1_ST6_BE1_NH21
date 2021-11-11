@@ -1,5 +1,4 @@
 <div class="visual__slider">
-
     <div class="visual__slider-inner">
         <p class="-slide-title" id="slideTitle">CHANEL O5</p>
         <div class="-slide-item" id="slideItem" style="background-image: url(assets/images/image0.jpg);"></div>
@@ -22,5 +21,4 @@
             <span>4</span>
         </div>
     </div>
-
 </div>

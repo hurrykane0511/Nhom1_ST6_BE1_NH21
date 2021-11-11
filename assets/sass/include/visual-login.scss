@@ -1,0 +1,92 @@
+.visual-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 36px 56px;
+  display: flex;
+  flex-direction: column;
+  .msg-invalid{
+    font-size: 1.5rem;
+    color: red;
+    border: 1px solid red;
+    background: #fff6f6;
+    padding: 12px 32px;
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      background:red;
+      left: 10px;
+      top: 50%;
+      height: 5px;
+      width: 5px;
+      border-radius: 100%;
+      transform: translateY(-50%);
+    }
+    display: none;
+  }
+  .msg-invalid.show{
+    display: block;
+  }
+  .form-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 15px 0;
+    .form-title {
+      font-size: 3rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .login-form {
+      width: 100%;
+      max-width: 400px;
+    
+      .input-group {
+        margin-top: 20px;
+        label {
+          display: block;
+          margin: 0;
+        }
+        #email,
+        #pass,
+        #lastname,
+        #firstname {
+          background: transparent;
+          width: 100%;
+          border: none;
+          padding: 8px;
+          font-size: 1.6rem;
+          border-bottom: 1px solid $fontclr;
+        }
+        .login-btn {
+          width: 100%;
+          padding: 8px 0;
+          border: none;
+          background: $fontclrlight;
+          color: $gray;
+          font-size: 1.8rem;
+          cursor: pointer;
+        
+        }
+      }
+    }
+    .forgot{
+      text-align: end;
+      margin-top: 16px;
+    }
+    .create{
+      margin-top: 16px;
+    }
+    .handle-link {
+      display: block;
+      color: $fontclr;
+      align-self: flex-start;
+    }
+  }
+}
