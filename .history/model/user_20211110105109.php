@@ -17,9 +17,11 @@ class User extends Db
     {
         $sql = self::$connection->prepare("INSERT INTO `tbl_user` (`firstname`, `lastname`, `password`, `email`) 
         VALUES ('$firstname','$lastname','$password','$email')");
-        $sql->bind_param('i', 'j', $firstname, $password);
+        $sql->bind_param('i', $id);
         $sql->execute();
         $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
         return $row;
     }
 }
+$sql = "INSERT INTO `tbl_user` (`firstname`, `lastname`, `password`, `email`) 
+VALUES ('$firstname','$lastname','$password','$email')";

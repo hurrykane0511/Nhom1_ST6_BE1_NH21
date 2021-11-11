@@ -32,8 +32,7 @@
                                 <input type="password" name="password" id="pass" require>
                             </div>
                             <div class="input-group">
-                                <input type="submit" name="signup" class="login-btn" value="Sign Up">
-
+                                <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
                             </div>
                         </form>
 
@@ -50,9 +49,7 @@
 </html>
 
 <?php include './Template/ajax.php' ?>
-<?php
-include("user.php");
-if (isset($_GET['signup'])) {
+<?php if (isset($_GET['signup'])) {
     $firstname  = trim($_GET['firstname']);
     $lastname   = trim($_GET['lastname']);
     $email      = trim($_GET['email']);

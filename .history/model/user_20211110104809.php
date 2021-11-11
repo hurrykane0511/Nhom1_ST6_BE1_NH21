@@ -13,11 +13,10 @@ class User extends Db
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->email = $email;
     }
-    public function AccessAccount($firstname, $lastname, $email, $password)
+    function AccessAccount($id)
     {
-        $sql = self::$connection->prepare("INSERT INTO `tbl_user` (`firstname`, `lastname`, `password`, `email`) 
-        VALUES ('$firstname','$lastname','$password','$email')");
-        $sql->bind_param('i', 'j', $firstname, $password);
+        $sql = self::$connection->prepare("SELECT * FROM `tbl_perfume` where `pf_id` = ?");
+        $sql->bind_param('i', $id);
         $sql->execute();
         $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
         return $row;

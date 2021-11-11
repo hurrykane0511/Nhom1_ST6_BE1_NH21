@@ -32,11 +32,15 @@
                                 <input type="password" name="password" id="pass" require>
                             </div>
                             <div class="input-group">
-                                <input type="submit" name="signup" class="login-btn" value="Sign Up">
-
+                                <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
                             </div>
                         </form>
-
+                        <?php
+                        if (isset($_POST['submit'])) {
+                            //   $user = new User($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
+                            header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.html');
+                        }
+                        ?>
 
                 </div>
             </div>
@@ -50,18 +54,13 @@
 </html>
 
 <?php include './Template/ajax.php' ?>
-<?php
-include("user.php");
-if (isset($_GET['signup'])) {
+<?php if (isset($_GET['signup'])) {
     $firstname  = trim($_GET['firstname']);
     $lastname   = trim($_GET['lastname']);
     $email      = trim($_GET['email']);
     $password  = trim($_GET['password']);
     $user = new User($_GET['firstname'], $_GET['lastname'], $_GET['email'], $_GET['password']);
-    header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.php');
 
-    $conn = mysqli_connect('localhost', 'root', '', 'db_franganceshop') or die('Lỗi kết nối');
-    mysqli_set_charset($conn, "utf8");
     if (empty($firstname)) {
         array_push($errors, "Firstname is required");
     }
@@ -76,7 +75,6 @@ if (isset($_GET['signup'])) {
     }
 
     // Kiểm tra firstname hoặc email có bị trùng hay không
-
     $sql = "SELECT * FROM `tbl_user` WHERE firstname = '$firstname' OR email = '$email'";
 
     // Thực thi câu truy vấn
@@ -89,6 +87,7 @@ if (isset($_GET['signup'])) {
         // Dừng chương trình
         die();
     } else {
+
         $sql = "INSERT INTO `tbl_user` (`firstname`, `lastname`, `password`, `email`) 
         VALUES ('$firstname','$lastname','$password','$email')";
         echo '<script language="javascript">alert("Đăng ký thành công!"); window.location="signup.php";</script>';
