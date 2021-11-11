@@ -10,7 +10,7 @@
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
-                    <form action="signup.php" class="login-form" method="POST">
+                    <form action="./index.php" class="login-form" method="POST">
                         <div class="input-group">
                             <label for="firstname">First name</label>
                             <input type="text" name="firstname" id="firstname" require>
@@ -28,9 +28,10 @@
                             <input type="password" name="password" id="pass" require>
                         </div>
                         <div class="input-group">
-                            <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
+                            <input type="submit" name="signup" class="login-btn" value="Sign Up">
+                            <?php require 'xuly.php'; ?>
                         </div>
-                        <?php require 'xuly.php'; ?>
+
                     </form>
                     <?php
                     if (isset($_POST['submit'])) {

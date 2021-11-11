@@ -29,8 +29,9 @@
                         </div>
                         <div class="input-group">
                             <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
+                            <?php require 'xuly.php'; ?>
                         </div>
-                        <?php require 'xuly.php'; ?>
+
                     </form>
                     <?php
                     if (isset($_POST['submit'])) {
