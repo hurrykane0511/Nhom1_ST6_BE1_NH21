@@ -708,12 +708,12 @@ button {
   right: 0;
   height: 100vh;
   width: 500px;
-  background: #f1e4e4;
+  background: #fff;
   transform: translate(100%);
   display: flex;
   flex-direction: column;
 }
-#cart-container #cart-form {
+#cart-container .cart-form {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -818,6 +818,7 @@ button {
   padding: var(--padding-cart);
   display: block;
   height: 220px;
+  margin-top: auto;
 }
 #cart-container .cart-footer .cart-details {
   display: flex;
@@ -832,12 +833,12 @@ button {
 }
 #cart-container .cart-footer #checkout {
   width: 100%;
-  background: #fff;
+  background: gray;
   border: none;
   cursor: pointer;
   font-size: 20px;
   padding: 8px;
-  color: gray;
+  color: #fff;
 }
 
 @media only screen and (max-height: 550px) {
@@ -1122,27 +1123,30 @@ button {
   width: 100%;
 }
 .visual-page .filter-wraper .filter-inner .select-boxs {
+  --bg:#F9E0AE;
   flex-wrap: wrap;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: rgba(128, 128, 128, 0.1);
+  background: #ffad76;
   padding: 15px;
 }
 .visual-page .filter-wraper .filter-inner .select-boxs .select-box {
   width: calc(100% / var(--col));
 }
 .visual-page .filter-wraper .filter-inner .select-boxs .select-box select {
+  outline: 0;
+  background: var(--bg);
   text-align: center;
   width: 100%;
   font-size: 1.6rem;
   padding: 5px 10px;
-  border: rgba(128, 128, 128, 0.8) 1px solid;
+  border: rgba(128, 128, 128, 0.2) 1px solid;
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: "";
+  background: var(--bg);
 }
 .visual-page .filter-wraper .filter-inner .select-boxs .sort-by {
   margin-left: auto;
@@ -1151,6 +1155,7 @@ button {
   padding-top: 10px;
 }
 .visual-page .filter-wraper .filter-inner .select-boxs .sort-by select {
+  background: var(--bg);
   text-align: center;
   padding: 5px 10px;
   margin-left: 5px;
@@ -1158,6 +1163,7 @@ button {
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: "";
+  border: rgba(128, 128, 128, 0.2) 1px solid;
 }
 .visual-page .filter-wraper .filter-inner .select-boxs .price-box {
   display: flex;
@@ -1175,7 +1181,8 @@ button {
   margin: 0 5px;
   width: 100%;
   padding: 5px 10px;
-  border: rgba(128, 128, 128, 0.8) 1px solid;
+  border: rgba(128, 128, 128, 0.2) 1px solid;
+  background: var(--bg);
 }
 
 @media only screen and (max-width: 700px) {

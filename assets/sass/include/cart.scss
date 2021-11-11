@@ -12,11 +12,11 @@
   right: 0;
   height: 100vh;
   width: 500px;
-  background: rgb(241, 228, 228);
+  background: #fff;
   transform: translate(100%);
   display: flex;
   flex-direction: column;
-  #cart-form {
+  .cart-form {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -126,6 +126,7 @@
     padding: var(--padding-cart);
     display: block;
     height: 220px;
+    margin-top: auto;
     .cart-details {
       display: flex;
       justify-content: space-between;
@@ -139,12 +140,12 @@
     }
     #checkout {
       width: 100%;
-      background: #fff;
+      background: gray;
       border: none;
       cursor: pointer;
       font-size: 20px;
       padding: 8px;
-      color: gray;
+      color: #fff;
     }
   }
 }

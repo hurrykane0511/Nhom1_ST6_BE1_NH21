@@ -20,25 +20,30 @@
       width: 100%;
 
       .select-boxs {
+        --bg:#F9E0AE;
         flex-wrap: wrap;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        background: rgba(128, 128, 128, 0.1);
+        background: #ffad76;
+      
+        // background: #d4672d;
         padding: 15px;
         .select-box {
           width: calc(100% / var(--col));
           select {
+            outline: 0;
+            background: var(--bg);
             text-align: center;
             width: 100%;
             font-size: 1.6rem;
             padding: 5px 10px;
-            border: rgba(128, 128, 128, 0.8) 1px solid;
+            border: rgba(128, 128, 128, 0.2) 1px solid;
             -webkit-appearance: none;
             -moz-appearance: none;
-            text-indent: 1px;
-            text-overflow: "";
+            text-indent: 1px; 
+            background: var(--bg);
           }
         }
         .sort-by {
@@ -47,6 +52,7 @@
           align-items: center;
           padding-top: 10px;
           select {
+            background: var(--bg);
             text-align: center;
             padding: 5px 10px;
             margin-left: 5px;
@@ -54,6 +60,7 @@
             -moz-appearance: none;
             text-indent: 1px;
             text-overflow: "";
+              border: rgba(128, 128, 128, 0.2) 1px solid;
           }
         }
         .price-box {
@@ -69,7 +76,8 @@
               margin: 0 5px;
               width: 100%;
               padding: 5px 10px;
-              border: rgba(128, 128, 128, 0.8) 1px solid;
+              border: rgba(128, 128, 128, 0.2) 1px solid;
+              background: var(--bg);
             }
           }
           padding-top: 10px;
