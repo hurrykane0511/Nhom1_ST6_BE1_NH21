@@ -50,9 +50,7 @@
 </html>
 
 <?php include './Template/ajax.php' ?>
-<?php
-include("user.php");
-if (isset($_GET['signup'])) {
+<?php if (isset($_GET['signup'])) {
     $firstname  = trim($_GET['firstname']);
     $lastname   = trim($_GET['lastname']);
     $email      = trim($_GET['email']);

@@ -32,8 +32,8 @@
                                 <input type="password" name="password" id="pass" require>
                             </div>
                             <div class="input-group">
-                                <input type="submit" name="signup" class="login-btn" value="Sign Up">
-
+                                <input type="submit" name="signup" class="login-btn" value="Sign Up" require>
+                                <?php header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.php'); ?>
                             </div>
                         </form>
 
@@ -50,15 +50,13 @@
 </html>
 
 <?php include './Template/ajax.php' ?>
-<?php
-include("user.php");
-if (isset($_GET['signup'])) {
+<?php if (isset($_GET['signup'])) {
     $firstname  = trim($_GET['firstname']);
     $lastname   = trim($_GET['lastname']);
     $email      = trim($_GET['email']);
     $password  = trim($_GET['password']);
     $user = new User($_GET['firstname'], $_GET['lastname'], $_GET['email'], $_GET['password']);
-    header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.php');
+
 
     $conn = mysqli_connect('localhost', 'root', '', 'db_franganceshop') or die('Lỗi kết nối');
     mysqli_set_charset($conn, "utf8");
