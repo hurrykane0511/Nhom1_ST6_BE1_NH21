@@ -10,11 +10,11 @@
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
-                    <<<<<<< HEAD <form action="signup.php" class="login-form" method="GET">
-                        =======
+                    <form action="signup.php" class="login-form" method="GET">
+
                         <form action="./index.php" class="login-form">
                             <div class="msg-invalid">Incorrect email or password.</div>
-                            >>>>>>> ea91ed1af100a2e1ed6afd6814642582de17fb9c
+
                             <div class="input-group">
                                 <label for="firstname">First name</label>
                                 <input type="text" name="firstname" id="firstname" require>
@@ -36,8 +36,6 @@
 
                             </div>
                         </form>
-
-
                 </div>
             </div>
         </div>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+define("header_here", true)
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,8 +107,6 @@ $pf = new Perfume;
           ?>
         </div>
       </div>
-
-
       <!--end Brands List -->
 
       <!-- FOOTER -->

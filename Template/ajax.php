@@ -1,3 +1,4 @@
+
 <script>
   "use strict";
 
@@ -12,9 +13,6 @@
     cart.classList.add("active");
     xhttp.open("POST", "loadcart.php?id=" + item.getAttribute("id"), true);
     xhttp.send()
-    $('body').on('click', '.drawer__close-button', function(e) {
-      cart.classList.remove("active");
-    })
   }
 
   function del_cart(id) {
@@ -70,6 +68,9 @@
       xhttp.send()
       $('body').on('click', '.drawer__close-button', function(e) {
         cart.classList.remove("active");
+      })
+      $('body').on('click', '.close-box', function(e) {
+        document.querySelector('.search-inp').value = "";
       })
     })
   })();

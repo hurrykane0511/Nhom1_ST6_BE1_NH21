@@ -13,6 +13,18 @@ class Perfume extends Db{
             echo "Lỗi: ".$e;
         }
     }
+    function getAllPerfumes(){
+        try{
+            $sql = self::$connection->prepare("select * from `tbl_perfume` join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id`");
+            $sql->execute();
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $items;
+        }
+        catch(mysqli_sql_exception $e){
+            echo "Lỗi: ".$e;
+        }
+    }
     function getPerfumeByID($id){
         try{
             $sql = self::$connection->prepare("SELECT * FROM `tbl_perfume` where `pf_id` = ?");

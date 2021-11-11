@@ -1,3 +1,6 @@
+<?php if (!defined('header_here')) {
+     die('Direct access not permitted');
+} ?>
 <header class="header">
     <div class="header__inner">
         <div class="above-header">
@@ -30,7 +33,7 @@
                                 </button>
                             </form>
                             <div class="product-search__inner">
-                                <div class="display-search-items">  
+                                <div class="display-search-items">
                                 </div>
                             </div>
                         </div>

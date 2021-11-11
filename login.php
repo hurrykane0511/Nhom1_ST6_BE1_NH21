@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include('./Template/head.php') ?>
+<?php include('./Template/head.php');
+define("header_here",true);
+?>
 
 <body>
     <div class="wraper">

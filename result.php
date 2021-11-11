@@ -5,7 +5,8 @@ include './Template/head.php';
 include './model/config.php';
 include './model/dbconnect.php';
 include './model/perfume.php';
-$pf = new Perfume;
+include './model/pagitation.php';
+$paginator = new Paginator;
 ?>
 
 <body>
@@ -54,7 +55,7 @@ $pf = new Perfume;
                                 <span>£ <input type="number" max="200" min="0" id="max" value="200"></span>
                             </div>
                             <div class="sort-by">
-                                Sort by: 
+                                Sort by:
                                 <span>
                                     <select name="catogery" id="attr-sort">
                                         <option value="A-Z">A-Z</option>
@@ -70,8 +71,54 @@ $pf = new Perfume;
                 </div>
                 <div class="display-product">
                     <div class="display-product__inner">
-                        
+                        <?php foreach ($paginator->getData(1) as $key => $row) { ?>
+                            <div class="pf-cart">
+
+                                <a href="#" class="img_link">
+                                    <img src="./assets/images/products/<?= $row['image']; ?>" alt="#">
+                                </a>
+                                <div class="pf-content">
+                                    <a href="#" class="pf-brand">
+                                        <p> <?= $row['brand_name']; ?> </p>
+                                    </a>
+                                    <a href="#" class="pf-name">
+                                        <p> <?= $row['pf_name']; ?> </p>
+                                    </a>
+                                    <div class="review">
+                                        <button class="star"><span class="stararea checked">★</span></button>
+                                        <button class="star"><span class="stararea checked">★</span></button>
+                                        <button class="star"><span class="stararea checked">★</span></button>
+                                        <button class="star"><span class="stararea checked">★</span></button>
+                                        <button class="star"><span class="stararea">★</span></button>
+                                    </div>
+                                    <p class="price">
+                                        <?php
+                                        if ($row['sales_price'] != null) {
+                                        ?>
+                                            <del>£<?= $row['sales_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] ?></big>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <big>£<?= $row['regular_price'] ?></big>
+                                        <?php
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+
+                            </div>
+                        <?php } ?>
                     </div>
+                </div>
+                <div class="content_detail__pagination" actpage="1">
+                    <a href="pre"><span>Pre</span></a>
+                    <a href="pre" class="page-num"><span>1</span></a>
+                    <a href="pre" class="page-num"><span>2</span></a>
+                    <a href="pre" class="page-num"><span>3</span></a>
+                    <p class="three-dots">...</p>
+                    <a href="pre" class="page-num"><span>9</span></a>
+                    <a href="pre" class="page-num"><span>10</span></a>
+                    <a href="pre"><span>Next</span></a>
                 </div>
             </div>
         </div>
