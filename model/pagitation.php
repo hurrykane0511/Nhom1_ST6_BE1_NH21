@@ -4,6 +4,11 @@ class Paginator extends Db
     private $_total;
     private $_page;
     private $_limit;
+    
+    function getPage(){
+        return $this->_page;
+    }
+
     function __construct()
     {
         parent::__construct($limit = 12);
@@ -11,7 +16,7 @@ class Paginator extends Db
         $sql->execute();
         $this->_total = $sql->get_result()->num_rows;
         $this->_limit = $limit;
-        $this->_page = ($this->_total/$limit + 1);
+        $this->_page = ceil($this->_total/$limit);
     }
     function getData($page_num)
     {

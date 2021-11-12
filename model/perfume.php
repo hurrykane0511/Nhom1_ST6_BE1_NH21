@@ -52,4 +52,17 @@ class Perfume extends Db{
             echo "Lỗi: ".$e;
         }
     }
+    function getGender()
+    {
+        try{
+            $sql = self::$connection->prepare("select distinct gender from tbl_perfume");
+            $sql->execute();
+            $gender = array();
+            $gender = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $gender;
+        }
+        catch(mysqli_sql_exception $e){
+            echo "Lỗi: ".$e;
+        }
+    }
 }

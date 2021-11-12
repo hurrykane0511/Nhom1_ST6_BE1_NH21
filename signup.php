@@ -1,7 +1,44 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include('./Template/head.php') ?>
+<?php
+include './Template/head.php';
+include './model/config.php';
+include './model/dbconnect.php';
+include('./model/user.php');
+
+if (isset($_SESSION['account'])) {
+    header('location: login.php');
+}
+$user = new User;
+$rs = true;
+$err = "";
+if(isset($_POST['signup'])){
+    if (empty($_POST['firstname'])) {
+        $err = "Firstname is required";
+        $rs = false;
+    }
+    elseif(empty($_POST['lastname'])){
+        $err = "Lastname is required";
+        $rs = false;
+    }
+    elseif(empty($_POST['password'])){
+        $err = "Password is required";
+        $rs = false;
+    }
+    elseif (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $_POST['email'])) {
+        $err = "Invalid email";
+        $rs = false;
+    }
+    else{
+        $rs = $user->AccessAccount($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
+        if(!$rs)
+        {
+            $err = "Email was exist";
+        }
+    }    
+}
+?>
 
 <body>
     <div class="wraper">
@@ -10,10 +47,20 @@
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
-                    <form action="signup.php" class="login-form" method="GET">
+                    <form class="login-form" method="POST">
 
                         <form action="./index.php" class="login-form">
-                            <div class="msg-invalid">Incorrect email or password.</div>
+                            <?php
+                            if (!$rs) {
+                            ?>
+                                <div class="msg-invalid show"><?= $err ?></div>
+                            <?php
+                            } else {
+                            ?>
+                                <div class="msg-invalid">Incorrect email or password.</div>
+                            <?php
+                            }
+                            ?>
 
                             <div class="input-group">
                                 <label for="firstname">First name</label>
@@ -48,48 +95,3 @@
 </html>
 
 <?php include './Template/ajax.php' ?>
-<?php
-include("user.php");
-if (isset($_GET['signup'])) {
-    $firstname  = trim($_GET['firstname']);
-    $lastname   = trim($_GET['lastname']);
-    $email      = trim($_GET['email']);
-    $password  = trim($_GET['password']);
-    $user = new User($_GET['firstname'], $_GET['lastname'], $_GET['email'], $_GET['password']);
-    header('location:http://localhost:8080/Nhom1_ST6_BE1_NH21/login.php');
-
-    $conn = mysqli_connect('localhost', 'root', '', 'db_franganceshop') or die('Lỗi kết nối');
-    mysqli_set_charset($conn, "utf8");
-    if (empty($firstname)) {
-        array_push($errors, "Firstname is required");
-    }
-    if (empty($lastname)) {
-        array_push($errors, "lastname is required");
-    }
-    if (empty($email)) {
-        array_push($errors, "email is required");
-    }
-    if (empty($password)) {
-        array_push($errors, "Two password do not match");
-    }
-
-    // Kiểm tra firstname hoặc email có bị trùng hay không
-
-    $sql = "SELECT * FROM `tbl_user` WHERE firstname = '$firstname' OR email = '$email'";
-
-    // Thực thi câu truy vấn
-    $result = mysqli_query($conn, $sql);
-
-    // Nếu kết quả trả về lớn hơn 1 thì nghĩa là username hoặc email đã tồn tại trong CSDL
-    if (mysqli_num_rows($result) > 0) {
-        echo '<script language="javascript">alert("Bị trùng tên hoặc chưa nhập tên!"); window.location="signup.php";</script>';
-
-        // Dừng chương trình
-        die();
-    } else {
-        $sql = "INSERT INTO `tbl_user` (`firstname`, `lastname`, `password`, `email`) 
-        VALUES ('$firstname','$lastname','$password','$email')";
-        echo '<script language="javascript">alert("Đăng ký thành công!"); window.location="signup.php";</script>';
-    }
-}
-?>

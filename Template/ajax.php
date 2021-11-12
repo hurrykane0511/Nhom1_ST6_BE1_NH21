@@ -1,4 +1,3 @@
-
 <script>
   "use strict";
 
@@ -12,13 +11,15 @@
     }
     cart.classList.add("active");
     xhttp.open("POST", "loadcart.php?id=" + item.getAttribute("id"), true);
-    xhttp.send()
+    xhttp.send();
+    $('body').on('click', '.drawer__close-button', function(e) {
+      cart.classList.remove("active");
+    })
   }
-
+  
   function del_cart(id) {
     var xhttp;
     xhttp = new XMLHttpRequest();
-
     xhttp.onreadystatechange = function() {
       document.querySelector('#cart_inner').innerHTML = this.responseText;
     }

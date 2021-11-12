@@ -2,8 +2,10 @@
 <html lang="en">
 <?php include('./Template/head.php');
 define("header_here",true);
+if ($_SESSION['account']) {
+    header("account.php");
+}
 ?>
-
 <body>
     <div class="wraper">
         <div class="wrap">
@@ -14,7 +16,11 @@ define("header_here",true);
                 <div class="form-container">
                     <form action="./index.php" class="login-form">
                         <h2 class="form-title">Login</h2>
-                        <div class="msg-invalid">Incorrect email or password.</div>
+                       <?php 
+                       ?>
+                       
+                       <?php
+                       ?>
                         <div class="input-group">
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email">
