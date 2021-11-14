@@ -2,7 +2,7 @@
 <html lang="en">
 <?php include('./Template/head.php');
 define("header_here",true);
-if ($_SESSION['account']) {
+if (isset($_SESSION['account'])) {
     header("account.php");
 }
 ?>
