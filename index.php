@@ -56,7 +56,7 @@ $pf = new Perfume;
         <div class="showcase-inner">
           <?php foreach ($pf->getTopSell() as $row) {
           ?>
-            <div class="product-card">
+            <div class="product-card <?= $row['status'] == 1 ? "" : " sold-out" ?>">
               <a href="#" class="img-link">
                 <div class="product-img" style="background-image: url(./assets/images/products/<?php echo explode("#",$row['image'])[0] ?>);"></div>
               </a>
@@ -76,7 +76,7 @@ $pf = new Perfume;
                   }
                   ?>
                 </p>
-                <a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-<?php echo $row['pf_id'] ?>">add to cart</a>
+                <a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-<?php echo $row['pf_id'] ?>"><?= $row['status'] == 1 ? "add to cart" : " sold out" ?></a>
               </div>
             </div>
           <?php

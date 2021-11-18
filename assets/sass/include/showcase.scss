@@ -27,6 +27,29 @@
     &::-webkit-scrollbar {
       height: 8px;
     }
+    .product-card.sold-out{
+     
+      position: relative;
+      background: linear-gradient(
+        #ccc, 
+        #ccc
+      );
+      pointer-events: none;
+      z-index: 1;
+      .add-cart-link{
+        color: $gray;
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background:  rgba($color: #000000, $alpha: 0.2);
+        z-index: -2;
+      }
+    }
     .product-card {
       background: #fff;
       margin: 16px;
@@ -75,9 +98,8 @@
           display: block;
           color: $fontclrlight;
           background: $gray;
-          border-radius: 20px;
           padding: 10px 20px;
-          width: max-content;
+          width: 100%;
           margin: 16px auto;
         }
       }
