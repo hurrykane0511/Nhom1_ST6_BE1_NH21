@@ -19,7 +19,13 @@ $pf = new Perfume;
             <div class="visual-page">
                 <?php include './Template/header.php' ?>
                 <div class="search-title">
-                    <p>Search result for <span class="keyword"><?= $_GET['keyword'] ?></span></p>
+                    <?php if (isset($_GET['keyword'])) {
+
+                    ?>
+                        <p>Search result for <span class="keyword"><?= $_GET['keyword'] ?></span></p>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="filter-wraper">
                     <div class="filter-inner">
@@ -69,8 +75,8 @@ $pf = new Perfume;
                             </div>
                             <div class="price-box">
                                 Price:
-                                <span>£ <input type="number" min="0" max="200" id="min" value="0" > - </span>
-                                <span>£ <input type="number" max="200" min="0" id="max" value="200" ></span>
+                                <span>£ <input type="number" min="0" max="200" id="min" value="0"> - </span>
+                                <span>£ <input type="number" max="200" min="0" id="max" value="200"></span>
                             </div>
                             <div class="sort-by">
                                 Sort by:
