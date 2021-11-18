@@ -3,7 +3,7 @@
 class Perfume extends Db{
     function getTopSell(){
         try{
-            $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sold` limit 10");
+            $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sales_qty` limit 10");
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -40,7 +40,7 @@ class Perfume extends Db{
     function getPerfumeSearch($keyword)
     {
         try{
-            $sql = self::$connection->prepare("SELECT `pf_id`, `pf_name`, `gender`, `regular_price`, `description`, `created_at`, `image`, `active`, `sold`, `capacity`, `sales_price` , `tbl_brand`.`brand_name` FROM `tbl_perfume`join `tbl_brand` on `tbl_perfume`.`brand_id` = `tbl_brand`.`brand_id` WHERE `tbl_perfume`.`pf_name` LIKE ? LIMIT 10");
+            $sql = self::$connection->prepare("SELECT * FROM `tbl_perfume` pf join `tbl_brand` br on `pf`.`brand_id` = `br`.`brand_id` WHERE pf.pf_name LIKE ? LIMIT 10");
             $keyword = "%$keyword%";
             $sql->bind_param('s', $keyword);
             $sql->execute();

@@ -1,5 +1,5 @@
 <?php
-define( 'DB_NAME', 'db_franganceshop' );
+define( 'DB_NAME', 'db_fragranceshop' );
 /** MySQL database username */
 define( 'DB_USER', 'root' );
 /** MySQL database password */

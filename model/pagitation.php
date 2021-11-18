@@ -21,7 +21,7 @@ class Paginator extends Db
     function getData($page_num)
     {
         $offset = ($page_num - 1) * $this->_limit;
-        $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sold` limit ? offset ?");
+        $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sales_qty` limit ? offset ?");
         $sql->bind_param("ii", $this->_limit, $offset);
         $sql->execute();
         $items = array();

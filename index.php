@@ -58,7 +58,7 @@ $pf = new Perfume;
           ?>
             <div class="product-card">
               <a href="#" class="img-link">
-                <div class="product-img" style="background-image: url(./assets/images/products/<?php echo $row['image'] ?>);"></div>
+                <div class="product-img" style="background-image: url(./assets/images/products/<?php echo explode("#",$row['image'])[0] ?>);"></div>
               </a>
               <div class="card-content">
                 <a href="#" class="product-link"><?php echo $row['pf_name'] ?></a>

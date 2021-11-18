@@ -19,7 +19,7 @@ $pf = new Perfume;
             <div class="visual-page">
                 <?php include './Template/header.php' ?>
                 <div class="search-title">
-                    <p>Search result for <span class="keyword">Armani</span></p>
+                    <p>Search result for <span class="keyword"><?= $_GET['keyword'] ?></span></p>
                 </div>
                 <div class="filter-wraper">
                     <div class="filter-inner">
@@ -99,7 +99,7 @@ $pf = new Perfume;
                             <div class="pf-cart">
 
                                 <a href="#" class="img_link">
-                                    <img src="./assets/images/products/<?= $row['image']; ?>" alt="#">
+                                    <img src="./assets/images/products/<?= explode("#", $row['image'])[0]; ?>" alt="#">
                                 </a>
                                 <div class="pf-content">
                                     <a href="#" class="pf-brand">
