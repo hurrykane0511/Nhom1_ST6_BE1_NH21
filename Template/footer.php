@@ -1,3 +1,6 @@
+<?php if (!defined('header_here')) {
+    die('Direct access not permitted');
+} ?>
 <footer class="footer">
     <div class="footer-wrap">
         <h2 class="footer-title">Join us</h2>

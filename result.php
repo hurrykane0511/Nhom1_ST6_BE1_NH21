@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
+define("header_here", true);
+
 include './Template/head.php';
 include './model/config.php';
 include './model/dbconnect.php';

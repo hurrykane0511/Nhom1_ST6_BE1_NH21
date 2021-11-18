@@ -1,5 +1,5 @@
 <?php if (!defined('header_here')) {
-    //  die('Direct access not permitted');
+    die('Direct access not permitted');
 } ?>
 <header class="header">
     <div class="header__inner">
