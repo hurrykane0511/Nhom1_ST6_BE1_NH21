@@ -4,16 +4,6 @@ class User extends Db
 {
     public function Login($email, $password)
     {
-        try {
-            $sql = self::$connection->prepare("SELECT * FROM `tbl_user` WHERE ? = `email` and ? = `password`");
-            $sql->bind_param("ss", $password, $email);
-            $sql->execute();
-            $items = array();
-            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items[0];
-        } catch (Exception $e) {
-            return null;
-        }
     }
     public function AccessAccount($firstname, $lastname, $email, $password)
     {
@@ -32,10 +22,9 @@ class User extends Db
         try {
             $sql = self::$connection->prepare("SELECT * FROM `tbl_user` WHERE ? = `email`");
             $sql->bind_param("s", $email);
-            $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items == null;
+            return $email == null;
         } catch (Exception $e) {
             return false;
         }

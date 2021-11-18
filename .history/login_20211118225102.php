@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-$rs = true;
-$err = "";
-include('./Template/head.php');
+<?php include('./Template/head.php');
 define("header_here", true);
 if (isset($_SESSION['account'])) {
     header("account.php");
@@ -18,7 +15,7 @@ if (isset($_SESSION['account'])) {
                 <?php include './Template/header.php' ?>
 
                 <div class="form-container">
-                    <form action="./account.php" class="login-form">
+                    <form action="./index.php" class="login-form">
                         <h2 class="form-title">Login</h2>
                         <?php
                         if (!$rs) {

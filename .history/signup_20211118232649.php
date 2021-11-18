@@ -26,7 +26,7 @@ if (isset($_POST['signup'])) {
     } elseif (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $_POST['email'])) {
         $err = "Invalid email";
         $rs = false;
-    } elseif ($user->CheckEmail($_POST['email']) == false) {
+    } elseif ($user->CheckEmail($_POST['email'])) {
         $err = "Email was exist";
         $rs = false;
     }

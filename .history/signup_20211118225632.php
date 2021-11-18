@@ -26,16 +26,13 @@ if (isset($_POST['signup'])) {
     } elseif (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $_POST['email'])) {
         $err = "Invalid email";
         $rs = false;
-    } elseif ($user->CheckEmail($_POST['email']) == false) {
-        $err = "Email was exist";
-        $rs = false;
-    }
-    if ($rs == true) {
+    } else {
         $rs = $user->AccessAccount($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
-        header('location: login.php');
+        if (!$rs) {
+            $err = "Email was exist";
+        }
     }
 }
-
 ?>
 
 <body>
@@ -47,7 +44,7 @@ if (isset($_POST['signup'])) {
                     <h2 class="form-title">Create Account</h2>
                     <form class="login-form" method="POST">
 
-                        <form action="./index.php" class="login-form">
+                        <form action="./login.php" class="login-form">
                             <?php
                             if (!$rs) {
                             ?>
