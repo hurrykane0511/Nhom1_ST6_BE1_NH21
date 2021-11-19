@@ -1,10 +1,18 @@
 <?php
 if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' ) )
 {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
 include '../model/brand.php';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 $pf = new Perfume();
 $brands = new Brand();
 ?>
@@ -127,8 +135,15 @@ $brands = new Brand();
         </table>
     </div>
 </div>
+<<<<<<< Updated upstream
 <?php
 } else {
    die("Chặn truy cập");
+=======
+<?php 
+}
+ else {
+    die ("Chặn truy cập trực tiếp");
+>>>>>>> Stashed changes
 } 
 ?>
