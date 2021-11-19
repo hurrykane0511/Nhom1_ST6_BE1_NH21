@@ -1,4 +1,6 @@
 <?php
+if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' ) )
+{
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
@@ -125,3 +127,8 @@ $brands = new Brand();
         </table>
     </div>
 </div>
+<?php
+} else {
+   die("Chặn truy cập");
+} 
+?>
