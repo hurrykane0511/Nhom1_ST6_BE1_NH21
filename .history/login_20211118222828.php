@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-$rs = true;
-$err = "";
-include('./Template/head.php');
+<?php include('./Template/head.php');
 define("header_here", true);
 if (isset($_SESSION['account'])) {
     header("account.php");
@@ -18,18 +15,11 @@ if (isset($_SESSION['account'])) {
                 <?php include './Template/header.php' ?>
 
                 <div class="form-container">
-                    <form action="./account.php" class="login-form">
+                    <form action="./index.php" class="login-form">
                         <h2 class="form-title">Login</h2>
+
+
                         <?php
-                        if (!$rs) {
-                        ?>
-                            <div class="msg-invalid show"><?= $err ?></div>
-                        <?php
-                        } else {
-                        ?>
-                            <div class="msg-invalid">Incorrect email or password.</div>
-                        <?php
-                        }
                         ?>
                         <div class="input-group">
                             <label for="email">Email</label>
@@ -55,5 +45,15 @@ if (isset($_SESSION['account'])) {
 <script type="module" src="./modules/login.js"></script>
 
 </html>
-
+<?php
+if (isset($_GET['signin'])) {
+    $user = new User($_GET['email'], $_GET['password'], null, null);
+    if ($user->Login($_GET['email'], $_GET['password']) == true) {
+        echo "Logged in successfully";
+    } else {
+        echo "Login unsuccessful. Please login again!!";
+    }
+}
+?>
+<?php include 'user.php' ?>
 <?php include './Template/ajax.php' ?>

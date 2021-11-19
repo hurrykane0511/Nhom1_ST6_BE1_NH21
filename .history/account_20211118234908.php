@@ -28,8 +28,7 @@ if (!isset($_SESSION['account'])) {
         }
     }
 } else {
-    echo "Hello" . $_SESSION['account']['firstname'];
-    header("location: login.php?err=$err");
+    echo "Hello" . $_SESSION['account'];
 }
 if ($rs == false) {
     header("location: login.php?err=$err");
