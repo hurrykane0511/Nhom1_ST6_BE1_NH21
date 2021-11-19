@@ -1,6 +1,4 @@
-<?php session_start();
-define("header_here", true);
- ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php

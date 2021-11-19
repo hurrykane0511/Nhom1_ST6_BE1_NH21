@@ -1,0 +1,12 @@
+{
+  "name": "admin_panel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass ./assets/sass/admin.scss ./assets/sass/admin.css --watch"
+  },
+  "author": "\"Son\"\"",
+  "license": "ISC"
+}

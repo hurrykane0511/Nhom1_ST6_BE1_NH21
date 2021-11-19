@@ -1,6 +1,4 @@
-<?php session_start();
-define("header_here", true);
- ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -28,12 +26,13 @@ if (isset($_POST['signup'])) {
     } elseif (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $_POST['email'])) {
         $err = "Invalid email";
         $rs = false;
-    } elseif ($user->CheckEmail($_POST['email']) == false) {
+    } elseif ($user->CheckEmail($_POST['email'])) {
         $err = "Email was exist";
         $rs = false;
+    } else {
+        $rs = $user->AccessAccount($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
     }
     if ($rs == true) {
-        $rs = $user->AccessAccount($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
         header('location: login.php');
     }
 }

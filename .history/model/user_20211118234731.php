@@ -12,7 +12,7 @@ class User extends Db
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items[0];
         } catch (Exception $e) {
-            return null;
+            return false;
         }
     }
     public function AccessAccount($firstname, $lastname, $email, $password)
