@@ -2,7 +2,7 @@ let list = document.querySelectorAll(".navigation li");
 let toggle = document.querySelector(".toggle");
 let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
-const addProduct = document.querySelector('.add-product');
+
 
 
 function activeLink() {

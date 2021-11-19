@@ -1,4 +1,14 @@
 <!-- Card-Box -->
+
+<?php 
+include '../model/config.php';
+include '../model/dbconnect.php';
+include '../model/perfume.php';
+include '../model/brand.php';
+
+$pf = new Perfume();
+
+?>
 <div class="cardBox">
     <div class="card">
         <div>
@@ -32,7 +42,7 @@
 
     <div class="card">
         <div>
-            <div class="numbers">56</div>
+            <div class="numbers"><?= $pf->getSales()[0]['sum(sales_qty)']?></div>
             <div class="cardName">Sold</div>
         </div>
         <div class="iconBx">
