@@ -108,7 +108,16 @@ $brands = new Brand();
             <tbody>
                 <?php foreach ($ct->getAllType() as $key => $row) {
                 ?>
-
+                      <tr>
+                    <th><?= $row['type_id'] ?></th>
+                    <th><?= $row['type_name'] ?></th>
+                    <td class="c"><a href="#" class="del">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </a></td>
+                        <td class="c"><a href="#" class="edit">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </a></td>
+                </tr>
                 <?php
                 } ?>
             </tbody>
@@ -127,7 +136,7 @@ $brands = new Brand();
             </thead>
 
             <tbody>
-                <?php foreach ($ct->getAllRange() as $key => $row) {
+                <?php foreach ($ct->getAllRange() as $key => $row){
                 ?>
                     <tr>
                         <td><?= $row['range_id'] ?></td>
