@@ -5,7 +5,6 @@ include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
 include '../model/brand.php';
-include '../model/categories.php';
 $pf = new Perfume();
 $ct = new categories();
 $brands = new Brand();
