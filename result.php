@@ -10,10 +10,11 @@ include './model/dbconnect.php';
 include './model/perfume.php';
 include './model/pagitation.php';
 include './model/brand.php';
-
+include './model/categories.php';
 $paginator = new Paginator;
 $brands = new Brand;
 $pf = new Perfume;
+$ctg = new categories();
 ?>
 
 <body>
@@ -64,15 +65,25 @@ $pf = new Perfume;
                             <div class="select-box">
 
                                 <select id="selected_category">
-                                    <option value="all" selected disabled hidden>-- Categories --</option>
-
+                                    <option value="all" selected disabled hidden>-- Perfume ranges --</option>
+                                    <?php
+                                    foreach ($ctg->getAllRange() as $key => $value) {
+                                    ?>
+                                        <option value="<?= $value['range_id'] ?>"><?= $value['range_name'] ?></option>
+                                    <?php
+                                    }?>
                                 </select>
 
                             </div>
                             <div class="select-box">
-
                                 <select id="selected_type">
-                                    <option value="all" selected disabled hidden>-- Perfume type --</option>
+                                    <option value="all" selected disabled hidden>-- Perfume types --</option>
+                                    <?php
+                                    foreach ($ctg->getAllType() as $key => $value) {
+                                    ?>
+                                        <option value="<?= $value['type_id'] ?>"><?= $value['type_name'] ?></option>
+                                    <?php
+                                    }?>
                                 </select>
 
                             </div>

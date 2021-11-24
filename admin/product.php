@@ -1,15 +1,22 @@
 <?php
-//if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' ) )
-//{
+
+if(!isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) || ( $_SERVER['HTTP_X_REQUESTED_WITH'] != 'd5as45zxc475z48ad8' ) )
+{
+    die("This file can't be accessed directly");
+} 
+
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
 include '../model/brand.php';
+
 include '../model/categories.php';
+
 $pf = new Perfume();
 $ct = new categories();
 $brands = new Brand();
 ?>
+
 <div class="product-panel">
     <div class="product-table">
         <h2>Product table</h2>
@@ -138,13 +145,3 @@ $brands = new Brand();
         </table>
     </div>
 </div>
-//<<<<<<< Updated upstream //<?php
-//} else {
- //  die("Chặn truy cập");
-//=======
-//<?php 
-//}
- //else {
-  //  die ("Chặn truy cập trực tiếp");
-//>>>>>>> Stashed changes
-//} 

@@ -1,3 +1,5 @@
+<?php session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,13 +129,16 @@
   function goto(url) {
 
     var xmlhttp = new XMLHttpRequest();
+  
     xmlhttp.onreadystatechange = function() {
       document.querySelector(".wraper").innerHTML = this.responseText;
       loadchart();
     };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
 
+    xmlhttp.open("GET", url, true);
+    xmlhttp.setRequestHeader("X-Requested-With","d5as45zxc475z48ad8")
+    xmlhttp.send();
+   
     // setTimeout(loadchart,300)
   }
 

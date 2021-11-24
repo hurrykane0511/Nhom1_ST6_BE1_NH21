@@ -111,6 +111,9 @@ body {
   width: calc(100% - var(--nav-toggle-width));
   left: var(--nav-toggle-width);
 }
+.main.active .topbar {
+  width: calc(100% - var(--nav-toggle-width));
+}
 
 .main {
   --spacing: 20px;
@@ -127,7 +130,7 @@ body {
   background: #f368e0;
 }
 .main .topbar {
-  width: calc(100% - var(--nav-toggle-width));
+  width: calc(100% - var(--nav-width));
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -396,6 +399,7 @@ body {
 .categories-panel {
   position: relative;
   width: 100%;
+  height: 600px;
   padding: 20px;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -409,6 +413,7 @@ body {
 .categories-panel .brand-table,
 .categories-panel .range-table,
 .categories-panel .type-table {
+  overflow-y: auto;
   border-radius: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   padding: 20px;
