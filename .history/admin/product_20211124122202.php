@@ -1,12 +1,19 @@
 <?php
-//if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' ) )
-//{
+if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' ) )
+{
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
 include '../model/brand.php';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 $pf = new Perfume();
-$ct = new categories();
 $brands = new Brand();
 ?>
 <div class="product-panel">
@@ -98,18 +105,16 @@ $brands = new Brand();
             </thead>
 
             <tbody>
-                <?php foreach ($ct->getAllType() as $key => $row) {
+                <?php foreach ($brands->getAllBrand() as $key => $row) {
                 ?>
-                    <tr>
-                        <td><?= $row['type_id'] ?></td>
-                        <td><?= $row['type_name'] ?></td>
+                                            <td><?= $row['brand_id'] ?></td>
+                        <td><?= $row['brand_name'] ?></td>
                         <td class="c"><a href="#" class="del">
                                 <ion-icon name="trash-outline"></ion-icon>
                             </a></td>
                         <td class="c"><a href="#" class="edit">
                                 <ion-icon name="create-outline"></ion-icon>
                             </a></td>
-                    </tr>
                 <?php
                 } ?>
             </tbody>
@@ -130,20 +135,27 @@ $brands = new Brand();
             <tbody>
                 <?php foreach ($brands->getAllBrand() as $key => $row) {
                 ?>
-
+                                            <td><?= $row['brand_id'] ?></td>
+                        <td><?= $row['brand_name'] ?></td>
+                        <td class="c"><a href="#" class="del">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </a></td>
+                        <td class="c"><a href="#" class="edit">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </a></td>
                 <?php
                 } ?>
             </tbody>
         </table>
     </div>
 </div>
-//<<<<<<< Updated upstream //<?php
-//} else {
- //  die("Chặn truy cập");
-//=======
-//<?php 
-//}
- //else {
-  //  die ("Chặn truy cập trực tiếp");
-//>>>>>>> Stashed changes
-//} 
+<<<<<<< Updated upstream
+<?php
+} else {
+   die("Chặn truy cập");
+}
+ else {
+    die ("Chặn truy cập trực tiếp");
+<<<<<< Stashed changes
+} 
+?>

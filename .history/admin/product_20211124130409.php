@@ -6,7 +6,7 @@ include '../model/dbconnect.php';
 include '../model/perfume.php';
 include '../model/brand.php';
 $pf = new Perfume();
-$ct = new categories();
+$Types = new categories();
 $brands = new Brand();
 ?>
 <div class="product-panel">
@@ -98,7 +98,7 @@ $brands = new Brand();
             </thead>
 
             <tbody>
-                <?php foreach ($ct->getAllType() as $key => $row) {
+                <?php foreach ($Types->getAllType() as $key => $row) {
                 ?>
                     <tr>
                         <td><?= $row['type_id'] ?></td>

@@ -19,6 +19,7 @@ $err = "";
 
                 <div class="form-container">
                     <form action="./account.php" class="login-form">
+                        <h2 class="form-title">Login</h2>
                         <?php
                         if (!$rs) {
                         ?>
@@ -30,8 +31,6 @@ $err = "";
                         <?php
                         }
                         ?>
-                        <h2 class="form-title">Login</h2>
-
                         <div class="input-group">
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email">

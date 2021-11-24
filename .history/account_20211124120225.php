@@ -22,7 +22,7 @@ if (!isset($_SESSION['account'])) {
         } else {
 
             if ($user->Login($_POST['email'], $_POST['password']) == null) {
-                $err = "Email and password do not exist";
+                $err = "Invalid Email or PassWord";
                 $rs = false;
             } else {
                 $_SESSION['account'] = $user->Login($_POST['email'], $_POST['password']);
@@ -31,7 +31,7 @@ if (!isset($_SESSION['account'])) {
     }
 } else {
     echo "Hello" . $_SESSION['account']['firstname'];
-    header("location: index.php?err=$err");
+    header("location: login.php?err=$err");
 }
 if ($rs == false) {
     header("location: login.php?err=$err");

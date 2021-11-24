@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
 include('./Template/head.php');
 define("header_here", true);
 if (isset($_SESSION['account'])) {
     header("account.php");
 }
+$user;
 $rs = true;
 $err = "";
+if (isset($_POST['signin'])) {
+    if (empty($_POST['password'])) {
+        $err = "Password is required";
+        $rs = false;
+    } elseif (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $_POST['email'])) {
+        $err = "Invalid email";
+        $rs = false;
+    } elseif ($user->CheckEmail($_POST['email']) == false) {
+        $err = "Email was exist";
+        $rs = false;
+    }
+    if ($rs == true) {
+        $rs = $user->Login($_POST['email'], $_POST['password']);
+        header('location: account.php');
+    }
+}
 ?>
 
 <body>
@@ -19,6 +37,7 @@ $err = "";
 
                 <div class="form-container">
                     <form action="./account.php" class="login-form">
+                        <h2 class="form-title">Login</h2>
                         <?php
                         if (!$rs) {
                         ?>
@@ -30,8 +49,6 @@ $err = "";
                         <?php
                         }
                         ?>
-                        <h2 class="form-title">Login</h2>
-
                         <div class="input-group">
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email">

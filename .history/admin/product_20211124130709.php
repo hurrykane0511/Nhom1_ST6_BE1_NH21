@@ -98,7 +98,7 @@ $brands = new Brand();
             </thead>
 
             <tbody>
-                <?php foreach ($ct->getAllType() as $key => $row) {
+                <?php foreach ($getAllType as $row) {
                 ?>
                     <tr>
                         <td><?= $row['type_id'] ?></td>
