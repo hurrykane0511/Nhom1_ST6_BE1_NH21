@@ -79,3 +79,8 @@ if (!function_exists('array_group_by')) {
 		return $grouped;
 	}
 }
+
+function curr_page($str)
+{
+	return basename($_SERVER['PHP_SELF']) == $str;
+}
