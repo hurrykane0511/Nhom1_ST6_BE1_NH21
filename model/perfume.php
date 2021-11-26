@@ -3,9 +3,20 @@
 class Perfume extends Db
 {
 
-    public function get()
+    public function InsertPerfume( $itemName,
+    $gender,
+    $capacity,
+    $brand,
+    $type,
+    $regular_price,
+    $sales_price,
+    $status,
+    $create_at,
+    $qty,
+    $image_src,
+    $description)
     {
-        
+        $sql = self::$connection->prepare("");
     }
 
     function getSales()

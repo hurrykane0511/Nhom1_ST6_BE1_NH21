@@ -1,1 +1,147 @@
+.product-panel,
+.categories-panel {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  .product-table,
+  .brand-table,
+  .range-table,
+  .type-table {
+    // table style
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    width: 100%;
+    // overflow: auto;
+    .scrollable-table{
+      height: 500px;
+      overflow-y: auto;
+    }
+  }
+  h2 {
+    color: $nav_clr;
+  }
+  table {
+    table-layout: fixed;
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    overflow: hidden;
+    min-width: 100%;
+    position: relative;
+    td,
+    th {
+      padding-left: 8px;
+    }
+    thead,
+    tbody {
+      width: 100%;
+    }
+    thead tr {
+      height: 80px;
+      font-size: 16px;
+    }
 
+    tbody tr {
+      padding: 5px 0;
+      height: 60px;
+      border-bottom: 1px solid #e3f1d5;
+      &:last-child {
+        border: 0;
+      }
+    }
+    tbody {
+      tr:hover {
+        background: $nav_clr;
+        color: $white;
+        a {
+          color: $white;
+        }
+      }
+      td {
+        position: relative;
+        img {
+          position: absolute;
+          height: 98%;
+          width: 98%;
+          object-fit: cover;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    td,
+    th {
+      text-align: left;
+      &.l {
+        text-align: left;
+      }
+      &.c {
+        text-align: center;
+      }
+      &.r {
+        text-align: right;
+      }
+    }
+    td {
+      a {
+        text-align: center;
+        font-size: 2em;
+        &.del {
+          color: #f00;
+        }
+        &.edit {
+          color: #1795ce;
+        }
+      }
+    }
+  }
+  .add-btn {
+    background: #7dda12;
+    display: flex;
+    width: max-content;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-left: auto;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 30px;
+    ion-icon {
+      font-size: 1.4em;
+    }
+  }
+}
+.categories-panel {
+  grid-template-columns: 1fr 1fr !important;
+}
+.back-cover{
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  form{
+    padding: 15px;
+    max-width: 1222px;
+    width: 100%;
+    border-radius: 20px;
+    background: #fff;
+    .row-col-3{
+      display: flex;
+      label{
+        width: calc(100%/3);
+      }
+    }
+  }
+}

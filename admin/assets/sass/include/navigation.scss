@@ -1,0 +1,88 @@
+
+.navigation.active {
+    width: var(--nav-toggle-width);
+  }
+  
+  .navigation {
+    position: fixed;
+    width: var(--nav-width);
+    height: 100%;
+    background: $nav_clr;
+    border-left: 10px solid $nav_clr;
+    transition: 0.5s;
+    overflow: hidden;
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      li {
+        position: relative;
+        width: 100%;
+        list-style: none;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        &:nth-child(1) {
+          margin-bottom: 40px;
+          pointer-events: none;
+        }
+        &.hovered,
+        &:hover {
+          background: $white;
+          a {
+            color: $nav_clr;
+          }
+          a::before,
+          a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border-radius: 50%;
+            pointer-events: none;
+          }
+          a::before {
+            top: -50px;
+            box-shadow: 35px 35px 0 10px $white;
+          }
+          a::after {
+            bottom: -50px;
+            box-shadow: 35px -35px 0 10px $white;
+          }
+        }
+        a {
+          position: relative;
+          display: block;
+          width: 100%;
+          display: flex;
+          text-decoration: none;
+          color: $white;
+          .logo {
+            font-size: 1.5em;
+          }
+          .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 75px;
+            text-align: center;
+            ion-icon {
+              font-size: 1.75em;
+            }
+          }
+          .title {
+            position: relative;
+            display: block;
+            padding: 0 10px;
+            height: 60px;
+            line-height: 60px;
+            text-align: start;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
