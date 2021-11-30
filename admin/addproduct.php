@@ -1,43 +1,67 @@
 <?php
+include '../model/config.php';
+include '../model/dbconnect.php';
 include '../model/perfume.php';
-if (!isset(['addproduct'])) exit();
-
+$pf = new Perfume();
+if (!isset($_POST['addproduct'])) exit();
 $vars = array(
     'itemName',
     'gender',
     'capacity',
     'brand',
     'type',
-   
+    'range',
     'regular_price',
     'sales_price',
     'status',
-
     'create_at',
-    'qty',
+    'sales_qty',
     'image_src',
     'description'
 );
+
+
 $verified = TRUE;
 
 foreach ($vars as $v) {
     if (!isset($_POST[$v]) || empty($_POST[$v])) {
         $verified = FALSE;
     }
+    echo $_POST[$v].'<br>';
 }
-
 
 if (!$verified) {
-    error_log("Invalid input");
+    echo "Invalid input";
     exit();
 }
+$rs = $pf->InsertPerfume($_POST['itemName'], 
+$_POST['gender'],
+ $_POST['capacity'], 
+ $_POST['brand'], 
+ $_POST['type'],
+ $_POST['range'],
+ $_POST['regular_price'], 
+ $_POST['sales_price'],
+ $_POST['status'],
+ $_POST['create_at'], 
+ $_POST['sales_qty'],
+ $_POST['image_src'],
+ $_POST['description']);
 
+ if ($rs) {
+        echo "inser thanhcong";
+ }
+ else {
+    echo "inser thatbai";
+}
 $target_dir = "../assets/images/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
+
+
 
 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 if ($check !== false) {

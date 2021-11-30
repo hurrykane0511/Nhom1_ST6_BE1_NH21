@@ -221,7 +221,7 @@ include './template/header.php';
                 <input type="date" name="create_at">
             </label>
             <label>Quantity:
-                <input type="number" name="qty" step="1">
+                <input type="number" name="sales_qty" step="1">
             </label>
         </div>
         <div class="row">
