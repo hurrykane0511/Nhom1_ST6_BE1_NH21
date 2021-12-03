@@ -2,42 +2,29 @@
 
 class Perfume extends Db
 {
-
-    public function InsertPerfume(
-        $itemName,
-        $gender,
-        $capacity,
-        $brand,
-        $type,
-        $range,
-        $regular_price,
-        $sales_price,
-        $status,
-        $create_at,
-        $qty,
-        $image_src,
-        $description
-    ) {
+    
+    public function InsertPerfume( $itemName,
+    $gender,
+    $capacity,
+    $brand,
+    $type,
+    $range,
+    $regular_price,
+    $sales_price,
+    $status,
+    $create_at,
+    $qty,
+    $image_src,
+    $description)
+    {
         $sql = self::$connection->prepare("INSERT INTO tbl_perfume
         (`pf_name`,`gender`,`regular_price`,`description`,`created_at`,`image`,`brand_id`,`status`,`sales_qty`,`capacity`,`sales_price`,`type_id`,`range_id`) 
         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->bind_param(
-            "ssdsssiiiidii",
-            $itemName,
-            $gender,
-            $regular_price,
-            $description,
-            $create_at,
-            $image_src,
-            $brand,
-            $status,
-            $qty,
-            $capacity,
-            $sales_price,
-            $type,
-            $range
-        );
-
+        $sql->bind_param("ssdsssiiiidii", $itemName,$gender
+        ,$regular_price,$description,$create_at,
+        $image_src,$brand,$status,$qty,$capacity,
+        $sales_price,$type,$range);
+        
         return $sql->execute();
     }
 

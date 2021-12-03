@@ -26,10 +26,4 @@ class categories extends Db
 
         return $sql->execute();
     }
-    public function delType($id)
-    {
-        $sql = self::$connection->prepare("DELETE FROM `tbl_type` WHERE `id` = ?");
-        $sql->bind_param("i", $id);
-        return $sql->execute();
-    }
 }

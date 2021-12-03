@@ -91,7 +91,7 @@ include './template/header.php';
                         <tr>
                             <th>ID</th>
                             <th>Type name</th>
-                            <th class="c">Delete</th>
+                            <a class="c" href="del.php?id=<?php echo $value['id'] ?>">Delete</a>
                             <th class="c">Edit</th>
                         </tr>
                     </thead>

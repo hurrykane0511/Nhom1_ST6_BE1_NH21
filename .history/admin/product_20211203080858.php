@@ -246,7 +246,7 @@ include './template/header.php';
     </form>
 </div>
 <div class="back-cover">
-    <form class="product-infor__inner" action="addtype" enctype="multipart/form-data" method="POST">
+    <form class="product-infor__inner" action="addproduct" enctype="multipart/form-data" method="POST">
         <h2>Add Type</h2>
         <div class="row">
             <label>
@@ -255,7 +255,7 @@ include './template/header.php';
             </label>
         </div>
         <div class="row">
-            <button type="submit" name="addtype">Submit</button>
+            <button type="submit" name="addtype">addtype</button>
         </div>
     </form>
 </div>

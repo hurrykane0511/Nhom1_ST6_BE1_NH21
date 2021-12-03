@@ -108,3 +108,33 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+
+
+
+if (!isset($_POST['addtype'])) exit();
+$vars = array(
+    'type_name'
+);
+$verified = TRUE;
+
+foreach ($vars as $v) {
+    if (!isset($_POST[$v]) || empty($_POST[$v])) {
+        $verified = FALSE;
+    }
+    echo $_POST[$v] . '<br>';
+}
+
+if (!$verified) {
+    echo "Invalid input";
+    exit();
+}
+$rs = $cg->InsertType(
+    $_POST['type_name'],
+);
+
+if ($rs) {
+    echo "insert thanhcong";
+} else {
+    echo "insert thatbai";
+}

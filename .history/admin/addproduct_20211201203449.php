@@ -2,8 +2,6 @@
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
-include '../model/categories.php';
-$cg = new categories();
 $pf = new Perfume();
 if (!isset($_POST['addproduct'])) exit();
 $vars = array(
@@ -29,33 +27,32 @@ foreach ($vars as $v) {
     if (!isset($_POST[$v]) || empty($_POST[$v])) {
         $verified = FALSE;
     }
-    echo $_POST[$v] . '<br>';
+    echo $_POST[$v].'<br>';
 }
 
 if (!$verified) {
     echo "Invalid input";
     exit();
 }
-$rs = $pf->InsertPerfume(
-    $_POST['itemName'],
-    $_POST['gender'],
-    $_POST['capacity'],
-    $_POST['brand'],
-    $_POST['type'],
-    $_POST['range'],
-    $_POST['regular_price'],
-    $_POST['sales_price'],
-    $_POST['status'],
-    $_POST['create_at'],
-    $_POST['sales_qty'],
-    $_POST['image_src'],
-    $_POST['description']
-);
+$rs = $pf->InsertPerfume($_POST['itemName'], 
+$_POST['gender'],
+ $_POST['capacity'], 
+ $_POST['brand'], 
+ $_POST['type'],
+ $_POST['range'],
+ $_POST['regular_price'], 
+ $_POST['sales_price'],
+ $_POST['status'],
+ $_POST['create_at'], 
+ $_POST['sales_qty'],
+ $_POST['image_src'],
+ $_POST['description']);
 
-if ($rs) {
-    echo "insert thanhcong";
-} else {
-    echo "insert thatbai";
+ if ($rs) {
+        echo "inser thanhcong";
+ }
+ else {
+    echo "inser thatbai";
 }
 $target_dir = "../assets/images/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);

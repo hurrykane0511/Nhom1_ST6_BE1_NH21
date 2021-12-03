@@ -17,19 +17,13 @@ class categories extends Db
         $Ranges = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return  $Ranges;
     }
-    public function InsertType($type_name)
+    public function InsertType($typename)
     {
         $sql = self::$connection->prepare("INSERT INTO tbl_type
         (`type_name`) 
         VALUES(?)");
-        $sql->bind_param("s", $type_name);
+        $sql->bind_param("s", $typename);
 
-        return $sql->execute();
-    }
-    public function delType($id)
-    {
-        $sql = self::$connection->prepare("DELETE FROM `tbl_type` WHERE `id` = ?");
-        $sql->bind_param("i", $id);
         return $sql->execute();
     }
 }
