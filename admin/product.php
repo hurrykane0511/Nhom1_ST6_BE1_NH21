@@ -67,7 +67,7 @@ include './template/header.php';
                             <tr>
                                 <td><?= $row['brand_id'] ?></td>
                                 <td><?= $row['brand_name'] ?></td>
-                                <td class="c"><a href="#" class="del">
+                                <td class="c"><a href="delbrand.php?id=<?php echo $row['brand_id'] ?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
                                 <td class="c"><a href="#" class="edit">
@@ -256,6 +256,33 @@ include './template/header.php';
         </div>
         <div class="row">
             <button type="submit" name="addtype">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="back-cover">
+    <form class="product-infor__inner" action="addbrand" enctype="multipart/form-data" method="POST">
+        <h2>Add Brand</h2>
+        <div class="row">
+            <label>
+                Brand name:
+                <input type="text" class="item-name" name="brand_name">
+            </label>
+            
+        </div>
+        <div class="row">
+            <label>
+                Image:
+                <textarea name="brand_image" cols="30" rows="10"></textarea>
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                Item image:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+            </label>
+        </div>
+        <div class="row">
+            <button type="submit" name="addbrand">Submit</button>
         </div>
     </form>
 </div>
