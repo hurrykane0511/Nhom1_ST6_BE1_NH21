@@ -1,0 +1,295 @@
+.detail-wraper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  height: 100%;
+}
+.detail-container {
+  max-width: 1333px;
+  --ctn-width: 60%;
+  height: 100%;
+  display: flex;
+  text-align: justify;
+  .img-container {
+    height: 100%;
+    width: var(--ctn-width);
+    display: flex;
+    padding-right: 30px;
+    --imgs-w: 140px;
+    .imgs-container {
+      width: var(--imgs-w);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      a.active {
+        border: 1px solid $fontclr;
+      }
+      a {
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+      img {
+        width: calc(var(--imgs-w) - 20px);
+        border-radius: 5px;
+      }
+    }
+    .main-image {
+      width: calc(100% - var(--imgs-w));
+      display: flex;
+      overflow: hidden;
+      position: relative;
+     
+      .img-box {
+        min-width: 100%;
+        background: #fff;
+        transition: transform 0.5s ease;
+
+        img {
+          width: 100%;
+         
+        }
+      }
+    }
+  }
+
+  .content-container {
+    position: relative;
+    padding-left: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - var(--ctn-width));
+    --spacing: 16px;
+    .pf-name {
+      font-size: 1.8em;
+      font-weight: 600;
+    }
+    .values {
+      margin: var(--spacing) 0;
+      .capacity,
+      .price {
+        font-size: 1.6em;
+        font-weight: 500;
+        del {
+          color: gray;
+        }
+      }
+    }
+    .brand {
+      font-size: 1.4em;
+      margin: var(--spacing) 0;
+    }
+    .pf-rating {
+      margin: var(--spacing) 0;
+    }
+    .description {
+      font-family: "Montserrat", sans-serif;
+      margin: var(--spacing) 0;
+      font-size: 1.4rem;
+    }
+    .review-link {
+      color: gray;
+      font-size: 1.4rem;
+    }
+    .addCart,
+    .buyNow {
+      font-family: "Montserrat", sans-serif;
+      margin: var(--spacing) 0;
+      display: block;
+      max-width: 400px;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+    .addCart {
+      color: gray;
+
+      border: 1px solid gray;
+    }
+    .buyNow {
+      background: gray;
+
+      color: #fff;
+    }
+  }
+}
+
+.form-rating-wrap {
+  display: flex;
+  justify-content: center;
+  --height: 100px;
+  --spacing: 16px;
+  .rating-form.active {
+    --height: 800px;
+  }
+  .rating-form {
+    height: var(--height);
+    position: relative;
+    overflow: hidden;
+    padding: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    max-width: 1222px;
+    width: 100%;
+    transition: height 0.5s ease;
+    border-radius: 5px;
+    .head-form {
+      height: 90px;
+    }
+    .form-title {
+      font-weight: 700;
+      font-size: 2.6rem;
+    }
+    .review-parameter {
+      margin: var(--spacing) 0;
+
+      display: flex;
+      .write-review {
+        margin-left: auto;
+        display: block;
+      }
+    }
+    .rating {
+      margin-bottom: var(--spacing);
+    }
+    label,
+    legend {
+      font-weight: 600;
+      display: block;
+      padding-bottom: 5px;
+    }
+    .write-review {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: gray;
+    }
+    .input-wrap {
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+        padding: 5 10px;
+        margin: 0;
+        line-height: 22px;
+        border: none;
+        outline: none;
+        border: 1px solid #ccc;
+        outline: 0;
+        border-radius: 5px;
+        background: #fff;
+        color: #000;
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing);
+        -webkit-appearance: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      input {
+        height: 44px;
+        min-height: 44px;
+      }
+    }
+    .submit {
+      background: gray;
+      color: #fff;
+      padding: 10px;
+      font-weight: 500;
+      font-size: 1.8rem;
+      margin-left: auto;
+      display: block;
+      width: max-content;
+    }
+  }
+  .rating {
+    float: left;
+  }
+
+  /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+  .rating:not(:checked) > input {
+    position: absolute;
+
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .rating:not(:checked) > label {
+    float: right;
+    width: 1em;
+    padding: 0 0.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 200%;
+    line-height: 1.2;
+    color: #ddd;
+    text-shadow: 1px 1px #bbb, 2px 2px #666,
+      0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+  }
+
+  .rating:not(:checked) > label:before {
+    content: "★ ";
+  }
+
+  .rating > input:checked ~ label {
+    color: #f70;
+    text-shadow: 1px 1px #c60, 2px 2px #940,
+      0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+  }
+
+  .rating:not(:checked) > label:hover,
+  .rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod, 2px 2px #b57340,
+      0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+  }
+
+  .rating > input:checked + label:hover,
+  .rating > input:checked + label:hover ~ label,
+  .rating > input:checked ~ label:hover,
+  .rating > input:checked ~ label:hover ~ label,
+  .rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow: 1px 1px goldenrod, 2px 2px #b57340,
+      0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  }
+
+  .rating > label:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+  }
+
+  /* end of Lea's code */
+
+  /*
+ * Clearfix from html5 boilerplate
+ */
+
+  .clearfix:before,
+  .clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+
+  /*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+  .clearfix {
+    *zoom: 1;
+  }
+
+  /* my stuff */
+  #status,
+  button {
+    margin: 20px 0;
+  }
+}

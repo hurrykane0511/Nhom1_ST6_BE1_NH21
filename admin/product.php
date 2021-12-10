@@ -152,98 +152,63 @@ include './template/header.php';
     </div>
 </div>
 
-<div class="back-cover">
-    <form class="product-infor__inner" action="addproduct" enctype="multipart/form-data" method="POST">
-        <h2>Add product</h2>
-        <div class="row">
+<div class="back-cover ">
+    <div class="title">
+        <h2>Product Order Form</h2>
+    </div>
+    <div class="d-flex">
+        <form action="" method="">
             <label>
-                Item name:
-                <input type="text" class="item-name" name="itemName">
+                <span class="fname">First Name <span class="required">*</span></span>
+                <input type="text" name="fname" />
             </label>
             <label>
-                Item gender:
-                <select name="gender">
-                    <option value="woment">woment</option>
-                    <option value="man">man</option>
-                    <option value="unisex">unisex</option>
+                <span class="lname">Last Name <span class="required">*</span></span>
+                <input type="text" name="lname" />
+            </label>
+            <label>
+                <span>Company Name (Optional)</span>
+                <input type="text" name="cn" />
+            </label>
+            <label>
+                <span>Country <span class="required">*</span></span>
+                <select name="selection">
+                    <option value="select">Select a country...</option>
+                    <option value="AFG">Afghanistan</option>
+                    <option value="ZMB">Zambia</option>
+                    <option value="ZWE">Zimbabwe</option>
                 </select>
             </label>
             <label>
-                Capacity:
-                <input type="number" name="capacity" min="0" step="1">
-            </label>
-        </div>
-        <div class="row">
-            <label>Brand:
-                <select name="brand">
-                    <?php foreach ($brands->getAllBrand() as $key => $value) {
-                    ?>
-                        <option value="<?= $value['brand_id'] ?>"><?= $value['brand_name'] ?></option>
-                    <?php
-                    } ?>
-                </select>
-            </label>
-            <label>Type:
-                <select name="type">
-                    <?php foreach ($ct->getAllType() as $key => $value) {
-                    ?>
-                        <option value="<?= $value['type_id'] ?>"><?= $value['type_name'] ?></option>
-                    <?php
-                    } ?>
-                </select>
-            </label>
-            <label>Range:
-                <select name="range">
-                    <?php foreach ($ct->getAllRange() as $key => $value) {
-                    ?>
-                        <option value="<?= $value['range_id'] ?>"><?= $value['range_name'] ?></option>
-                    <?php
-                    } ?>
-                </select>
-            </label>
-        </div>
-        <div class="row">
-            <label>
-                Regular price:
-                <input type="number" name="regular_price" min="0" step="0.5">
+                <span>Street Address <span class="required">*</span></span>
+                <input type="text" name="houseadd" placeholder="House number and street name" required />
             </label>
             <label>
-                Regular price:
-                <input type="number" name="sales_price" min="0" step="0.5">
-            </label>
-        </div>
-
-        <div class="row">
-            <label>Status:
-                <input type="number" name="status" max="1" min="0">
-            </label>
-            <label>Create at:
-                <input type="date" name="create_at">
-            </label>
-            <label>Quantity:
-                <input type="number" name="sales_qty" step="1">
-            </label>
-        </div>
-        <div class="row">
-            <label>
-                Image:
-                <textarea name="image_src" cols="30" rows="10"></textarea>
-            </label>
-        </div>
-        <div class="row">
-            <label>
-                Description:
-                <textarea name="description" cols="30" rows="10"></textarea>
+                <span>&nbsp;</span>
+                <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" />
             </label>
             <label>
-                Item image:
-                <input type="file" name="fileToUpload" id="fileToUpload">
+                <span>Town / City <span class="required">*</span></span>
+                <input type="text" name="city" />
             </label>
-        </div>
-        <div class="row">
-            <button type="submit" name="addproduct">Submit</button>
-        </div>
-    </form>
+            <label>
+                <span>State / County <span class="required">*</span></span>
+                <input type="text" name="city" />
+            </label>
+            <label>
+                <span>Postcode / ZIP <span class="required">*</span></span>
+                <input type="text" name="city" />
+            </label>
+            <label>
+                <span>Phone <span class="required">*</span></span>
+                <input type="tel" name="city" />
+            </label>
+            <label>
+                <span>Email Address <span class="required">*</span></span>
+                <input type="email" name="city" />
+            </label>
+        </form>
+    </div>
 </div>
 <div class="back-cover">
     <form class="product-infor__inner" action="addtype" enctype="multipart/form-data" method="POST">
@@ -267,7 +232,7 @@ include './template/header.php';
                 Brand name:
                 <input type="text" class="item-name" name="brand_name">
             </label>
-            
+
         </div>
         <div class="row">
             <label>

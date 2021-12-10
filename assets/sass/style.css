@@ -1069,7 +1069,6 @@ button {
 .visual-page .form-container {
   margin: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100%;
@@ -1084,6 +1083,10 @@ button {
 .visual-page .form-container .login-form {
   width: 100%;
   max-width: 400px;
+  min-height: 47vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .visual-page .form-container .login-form .input-group {
   margin-top: 20px;
@@ -1114,7 +1117,7 @@ button {
 }
 .visual-page .form-container .forgot {
   text-align: end;
-  margin-top: 16px;
+  margin-left: auto;
 }
 .visual-page .form-container .create {
   margin-top: 16px;
@@ -1319,6 +1322,278 @@ button {
     margin: auto;
   }
 }
+.detail-wraper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  height: 100%;
+}
+
+.detail-container {
+  max-width: 1333px;
+  --ctn-width: 60%;
+  height: 100%;
+  display: flex;
+  text-align: justify;
+}
+.detail-container .img-container {
+  height: 100%;
+  width: var(--ctn-width);
+  display: flex;
+  padding-right: 30px;
+  --imgs-w: 140px;
+}
+.detail-container .img-container .imgs-container {
+  width: var(--imgs-w);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.detail-container .img-container .imgs-container a.active {
+  border: 1px solid #362222;
+}
+.detail-container .img-container .imgs-container a {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.detail-container .img-container .imgs-container img {
+  width: calc(var(--imgs-w) - 20px);
+  border-radius: 5px;
+}
+.detail-container .img-container .main-image {
+  width: calc(100% - var(--imgs-w));
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+.detail-container .img-container .main-image .img-box {
+  min-width: 100%;
+  background: #fff;
+  transition: transform 0.5s ease;
+}
+.detail-container .img-container .main-image .img-box img {
+  width: 100%;
+}
+.detail-container .content-container {
+  position: relative;
+  padding-left: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - var(--ctn-width));
+  --spacing: 16px;
+}
+.detail-container .content-container .pf-name {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+.detail-container .content-container .values {
+  margin: var(--spacing) 0;
+}
+.detail-container .content-container .values .capacity,
+.detail-container .content-container .values .price {
+  font-size: 1.6em;
+  font-weight: 500;
+}
+.detail-container .content-container .values .capacity del,
+.detail-container .content-container .values .price del {
+  color: gray;
+}
+.detail-container .content-container .brand {
+  font-size: 1.4em;
+  margin: var(--spacing) 0;
+}
+.detail-container .content-container .pf-rating {
+  margin: var(--spacing) 0;
+}
+.detail-container .content-container .description {
+  font-family: "Montserrat", sans-serif;
+  margin: var(--spacing) 0;
+  font-size: 1.4rem;
+}
+.detail-container .content-container .review-link {
+  color: gray;
+  font-size: 1.4rem;
+}
+.detail-container .content-container .addCart,
+.detail-container .content-container .buyNow {
+  font-family: "Montserrat", sans-serif;
+  margin: var(--spacing) 0;
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+.detail-container .content-container .addCart {
+  color: gray;
+  border: 1px solid gray;
+}
+.detail-container .content-container .buyNow {
+  background: gray;
+  color: #fff;
+}
+
+.form-rating-wrap {
+  display: flex;
+  justify-content: center;
+  --height: 100px;
+  --spacing: 16px;
+  /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+  /* end of Lea's code */
+  /*
+  * Clearfix from html5 boilerplate
+  */
+  /*
+  * For IE 6/7 only
+  * Include this rule to trigger hasLayout and contain floats.
+  */
+  /* my stuff */
+}
+.form-rating-wrap .rating-form.active {
+  --height: 800px;
+}
+.form-rating-wrap .rating-form {
+  height: var(--height);
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  max-width: 1222px;
+  width: 100%;
+  transition: height 0.5s ease;
+  border-radius: 5px;
+}
+.form-rating-wrap .rating-form .head-form {
+  height: 90px;
+}
+.form-rating-wrap .rating-form .form-title {
+  font-weight: 700;
+  font-size: 2.6rem;
+}
+.form-rating-wrap .rating-form .review-parameter {
+  margin: var(--spacing) 0;
+  display: flex;
+}
+.form-rating-wrap .rating-form .review-parameter .write-review {
+  margin-left: auto;
+  display: block;
+}
+.form-rating-wrap .rating-form .rating {
+  margin-bottom: var(--spacing);
+}
+.form-rating-wrap .rating-form label,
+.form-rating-wrap .rating-form legend {
+  font-weight: 600;
+  display: block;
+  padding-bottom: 5px;
+}
+.form-rating-wrap .rating-form .write-review {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: gray;
+}
+.form-rating-wrap .rating-form .input-wrap input,
+.form-rating-wrap .rating-form .input-wrap textarea {
+  display: block;
+  width: 100%;
+  padding: 5 10px;
+  margin: 0;
+  line-height: 22px;
+  border: none;
+  outline: none;
+  border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 5px;
+  background: #fff;
+  color: #000;
+  font-size: 1.6rem;
+  margin-bottom: var(--spacing);
+  -webkit-appearance: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.form-rating-wrap .rating-form .input-wrap input {
+  height: 44px;
+  min-height: 44px;
+}
+.form-rating-wrap .rating-form .submit {
+  background: gray;
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-left: auto;
+  display: block;
+  width: max-content;
+}
+.form-rating-wrap .rating {
+  float: left;
+}
+.form-rating-wrap .rating:not(:checked) > input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+.form-rating-wrap .rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  line-height: 1.2;
+  color: #ddd;
+  text-shadow: 1px 1px #bbb, 2px 2px #666, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+.form-rating-wrap .rating:not(:checked) > label:before {
+  content: "★ ";
+}
+.form-rating-wrap .rating > input:checked ~ label {
+  color: #f70;
+  text-shadow: 1px 1px #c60, 2px 2px #940, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+.form-rating-wrap .rating:not(:checked) > label:hover,
+.form-rating-wrap .rating:not(:checked) > label:hover ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+.form-rating-wrap .rating > input:checked + label:hover,
+.form-rating-wrap .rating > input:checked + label:hover ~ label,
+.form-rating-wrap .rating > input:checked ~ label:hover,
+.form-rating-wrap .rating > input:checked ~ label:hover ~ label,
+.form-rating-wrap .rating > label:hover ~ input:checked ~ label {
+  color: #ea0;
+  text-shadow: 1px 1px goldenrod, 2px 2px #b57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+}
+.form-rating-wrap .rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+.form-rating-wrap .clearfix:before,
+.form-rating-wrap .clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.form-rating-wrap .clearfix:after {
+  clear: both;
+}
+.form-rating-wrap .clearfix {
+  *zoom: 1;
+}
+.form-rating-wrap #status,
+.form-rating-wrap button {
+  margin: 20px 0;
+}
+
 html {
   font-size: 62.5%;
 }

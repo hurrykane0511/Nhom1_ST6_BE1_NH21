@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700";
 body {
   min-height: 100vh;
   --nav-width: 300px;
@@ -177,29 +178,157 @@ body {
 }
 
 .back-cover {
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-.back-cover form {
-  padding: 15px;
-  max-width: 1222px;
   width: 100%;
-  border-radius: 20px;
-  background: #fff;
-}
-.back-cover form .row-col-3 {
-  display: flex;
-}
-.back-cover form .row-col-3 label {
-  width: 33.3333333333%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+
+form {
+  flex: 4;
+}
+
+.Yorder {
+  flex: 2;
+  margin-top: 15px;
+  height: 600px;
+  padding: 20px;
+  border: 1px solid #dadada;
+}
+.Yorder > div {
+  padding: 15px 0;
+}
+
+.title {
+  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+  border-radius: 5px 5px 0 0;
+  padding: 20px;
+  color: #f6f6f6;
+}
+
+h2 {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.required {
+  color: red;
+}
+
+label {
+  display: block;
+  margin: 15px;
+}
+label > span {
+  float: left;
+  width: 25%;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+
+table {
+  display: block;
+  margin: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+input[type=text] {
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+
+input[type=tel] {
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+
+input[type=email] {
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+
+select {
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+  width: 72%;
+  height: 45px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+th {
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+
+tr > td:nth-child(1) {
+  text-align: left;
+  color: #2d2d2a;
+}
+tr > td:nth-child(2) {
+  text-align: right;
+  color: #52ad9c;
+}
+
+td {
+  border-bottom: 1px solid #dadada;
+  padding: 25px 25px 25px 0;
+}
+
+p {
+  display: block;
+  color: #888;
+  margin: 0;
+  padding-left: 25px;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: #52ad9c;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+button:hover {
+  cursor: pointer;
+  background: #428a7d;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
 .navigation.active {
   width: var(--nav-toggle-width);
 }
