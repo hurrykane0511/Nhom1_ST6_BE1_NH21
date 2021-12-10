@@ -8,7 +8,9 @@ include './Template/head.php';
 include './model/config.php';
 include './model/dbconnect.php';
 include './model/perfume.php';
+include './model/brand.php';
 $pf = new Perfume;
+$brand = new Brand;
 ?>
 
 <body>
@@ -89,11 +91,11 @@ $pf = new Perfume;
       <div class="brands-list">
         <div class="brands-list__inner">
           <?php
-          for ($i = 1; $i <= 10; $i++) {
+          foreach ($brand->getAllBrandLiMit() as $row) {
           ?>
             <div class="brand-box">
-              <a href="#">
-                <img src="./assets/images/brands/<?php echo $i ?>.jpeg" alt="brand">
+              <a href="result.php?id=<?php echo $row['brand_id']?>">
+                <img src="./assets/images/brands/<?php echo $row['brand_image']?>" alt="brand" >
               </a>
             </div>
           <?php

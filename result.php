@@ -39,10 +39,20 @@ $ctg = new categories();
                                 <select id="selected_brand">
                                     <option selected disabled hidden value="all">-- Brand --</option>
                                     <?php
-                                    foreach ($brands->getAllBrand() as $key => $value) {
+                                    if (isset($_GET['id'])) {
+                                        foreach ($brands->getAllBrand() as $key => $value) {
+                                            foreach ($brands->getBrandById($_GET['id']) as $row) {
                                     ?>
-                                        <option value="<?= $value['brand_id'] ?>"><?= $value['brand_name'] ?></option>
+                                        <option value="<?= $value['brand_id'] ?>" selected><?= $value['brand_name'] ?></option>
+                                        <?php
+                                            }
+                                        }
+                                    } else {
+                                        foreach ($brands->getAllBrand() as $key => $value) {
+                                        ?>
+                                            <option value="<?= $value['brand_id'] ?>"><?= $value['brand_name'] ?></option>
                                     <?php
+                                        }
                                     }
                                     ?>
                                 </select>
@@ -71,7 +81,7 @@ $ctg = new categories();
                                     ?>
                                         <option value="<?= $value['range_id'] ?>"><?= $value['range_name'] ?></option>
                                     <?php
-                                    }?>
+                                    } ?>
                                 </select>
 
                             </div>
@@ -83,7 +93,7 @@ $ctg = new categories();
                                     ?>
                                         <option value="<?= $value['type_id'] ?>"><?= $value['type_name'] ?></option>
                                     <?php
-                                    }?>
+                                    } ?>
                                 </select>
 
                             </div>

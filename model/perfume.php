@@ -112,4 +112,15 @@ class Perfume extends Db
             echo "Lỗi: " . $e;
         }
     }
+    public function delproduct($id)
+    {
+        try {
+            $sql = self::$connection->prepare("DELETE FROM `products` WHERE `id`=? ");
+            $sql->bind_param("i",$id);
+          
+            return $sql->execute(); //return an array
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
 }
