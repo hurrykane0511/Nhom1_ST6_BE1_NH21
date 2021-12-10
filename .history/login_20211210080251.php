@@ -18,7 +18,7 @@ $err = "";
                 <?php include './Template/header.php' ?>
 
                 <div class="form-container">
-                    <form action="./account.php" method="POST" class="login-form">
+                    <form action="./account.php" method="GET" class="login-form">
                         <?php
                         if (!$rs) {
                         ?>
@@ -42,7 +42,7 @@ $err = "";
                         </div>
                         <a href="signup.php" class="handle-link forgot">Forgot password?</a>
                         <div class="input-group">
-                            <input type="submit" name="signin" class="login-btn" value="Sign In">
+                            <input type="submit" name="signin" class="login-btn" value="SignIn">
                         </div>
                         <a href="signup.php" class="handle-link create">Create account</a>
                     </form>

@@ -3,24 +3,30 @@ define("header_here", true)
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
+
+
 <?php
 include './Template/head.php';
-include './model/config.php';
+//include './model/config.php';
 include './model/dbconnect.php';
 include './model/perfume.php';
 $pf = new Perfume;
 ?>
 
 <body>
+
   <div class="wraper">
     <div class="wrap">
       <div class="visual">
+
         <?= include './Template/header.php' ?>
-        2
+
         <div class="-scroll">
           <span class="-border"></span>
           <span class="-text">SCROLL</span>
         </div>
+
         <a href="#" class="-move">
           <span>Click Move</span>
           <div class="-circle">

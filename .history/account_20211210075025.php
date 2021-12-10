@@ -11,7 +11,17 @@ include('./model/user.php');
 $user = new User;
 $rs = true;
 $err = "";
-
+if (isset($_POST['signin'])) {
+    $email = $_POST['email'];
+    $password = $_POST['pass'];
+    if ($user->checkLogin($email, $password)) {
+        $_SESSION['email'] = $email;
+        header('location: index.php?err=$err');
+    } else {
+        header('location: login.php?err=$err');
+    }
+}
+/*
 if (!isset($_SESSION['account'])) {
     if (isset($_POST['signin'])) {
         if (empty($_POST['email'])) {
@@ -26,7 +36,7 @@ if (!isset($_SESSION['account'])) {
                 $err = "Email and password do not exist";
                 $rs = false;
             } else {
-                $_SESSION['account'] = $user->Login($_POST['email'], $_POST['password']);
+                $_SESSION['account'] = $user->checkLogin($_POST['email'], $_POST['password']);
             }
         }
     }
@@ -34,11 +44,10 @@ if (!isset($_SESSION['account'])) {
     echo "Hello" . $_SESSION['account']['firstname'];
     header("location: index.php?err=$err");
 }
-
-// if ($rs == false) {
-//     header("location: login.php?err=$err");
-// }
-
+if ($rs == false) {
+    header("location: login.php?err=$err");
+}
+*/
 $pf = new Perfume;
 ?>
 

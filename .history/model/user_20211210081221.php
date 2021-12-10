@@ -40,4 +40,19 @@ class User extends Db
             return false;
         }
     }
+    public function checkLogin($email, $password)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tbl_user` WHERE ? = `email` and ? = `password`");
+        $password = md5($password);
+        $sql->bind_param("ss", $password, $email);
+        $sql->execute();
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        if ($items == 1) {
+            # code...
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -26,15 +26,15 @@ if (!isset($_SESSION['account'])) {
                 $err = "Email and password do not exist";
                 $rs = false;
             } else {
-                $_SESSION['account'] = $user->Login($_POST['email'], $_POST['password']);
+                $_SESSION['account'] = $user->checkLogin($_POST['email'], $_POST['password']);
             }
         }
     }
 } else {
-    echo "Hello" . $_SESSION['account']['firstname'];
+    echo "Hello" . $_SESSION['account'] . ['firstname'];
     header("location: index.php?err=$err");
 }
-
+echo $rs;
 // if ($rs == false) {
 //     header("location: login.php?err=$err");
 // }

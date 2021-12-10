@@ -26,7 +26,7 @@ if (!isset($_SESSION['account'])) {
                 $err = "Email and password do not exist";
                 $rs = false;
             } else {
-                $_SESSION['account'] = $user->Login($_POST['email'], $_POST['password']);
+                $_SESSION['account'] = $user->checkLogin($_POST['email'], $_POST['password']);
             }
         }
     }

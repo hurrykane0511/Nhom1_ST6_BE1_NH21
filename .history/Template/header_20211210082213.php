@@ -1,7 +1,6 @@
 <?php if (!defined('header_here')) {
     die('Direct access not permitted');
 } ?>
-3
 <header class="header">
     <div class="header__inner">
         <div class="above-header">
@@ -86,3 +85,4 @@
         </div>
     </div>
 </header>
+2

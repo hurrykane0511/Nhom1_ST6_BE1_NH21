@@ -47,6 +47,7 @@ if (isset($_POST['signup'])) {
                 <?php include './Template/header.php' ?>
                 <div class="form-container">
                     <h2 class="form-title">Create Account</h2>
+
                     <form action="./index.php" class="login-form">
                         <?php
                         if (!$rs) {

@@ -18,7 +18,7 @@ $err = "";
                 <?php include './Template/header.php' ?>
 
                 <div class="form-container">
-                    <form action="./account.php" method="POST" class="login-form">
+                    <form action="./account.php" method="GET" class="login-form">
                         <?php
                         if (!$rs) {
                         ?>

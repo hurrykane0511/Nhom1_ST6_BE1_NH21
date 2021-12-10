@@ -16,7 +16,6 @@ $pf = new Perfume;
     <div class="wrap">
       <div class="visual">
         <?= include './Template/header.php' ?>
-        2
         <div class="-scroll">
           <span class="-border"></span>
           <span class="-text">SCROLL</span>
