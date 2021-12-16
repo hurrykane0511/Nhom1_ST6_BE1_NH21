@@ -61,13 +61,12 @@ if (isset($_GET['page'])) {
 
     if (isset($_GET['keyword'])) {
         if ($where != '') {
-            $where .= ' AND (' . 'pf_name like' . '%' . ' ? ' . '%' . ')';
-        }
-        else{
-            $where .= ' (' . 'pf_name like' . '%' . ' ? ' . '%' . ')';
+            $where .= ' AND (' . 'pf_name like '  . '?' . ')';
+        } else {
+            $where .= ' (' . 'pf_name like '  . '?' . ')';
         }
         $bind .= 's';
-        $finalArr[] =  $_GET['keyword'];
+        $finalArr[] =  '%'.$_GET['keyword'].'%';
     }
 
     if (isset($_GET['min'])) {
@@ -79,6 +78,8 @@ if (isset($_GET['page'])) {
         $bind .= 'i';
         $finalArr[] =  intval($_GET['min']);
     }
+
+
 
     if (isset($_GET['max'])) {
         if ($where != '') {
@@ -95,7 +96,10 @@ if (isset($_GET['page'])) {
         $where = ' where ' . $where;
     }
 
-   
+    if (isset($_GET['sort'])) {
+        $where .= ' order by ' . $_GET['sort'] . ' ';
+    }
+
     $panigation = new Paginator();
     $data = [];
 
@@ -105,6 +109,7 @@ if (isset($_GET['page'])) {
         $image_array = explode("#", $row["image"]);
 
         $data[] = array(
+            'pf_id'        =>    $row['pf_id'],
             'pf_name'        =>    $row['pf_name'],
             'sales_price'        =>    $row['sales_price'],
             'brand_name'        =>    $row['brand_name'],
@@ -112,12 +117,11 @@ if (isset($_GET['page'])) {
             'image' => $image_array[0]
         );
     }
-   
-    $data[] = array
-    (
+
+    $data[] = array(
         'currPage' => intval($_GET['page']),
         'totalPage' => $panigation->getTotalPage()
     );
- 
+
     echo json_encode($data);
 }

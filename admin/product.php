@@ -152,64 +152,6 @@ include './template/header.php';
     </div>
 </div>
 
-<div class="back-cover ">
-    <div class="title">
-        <h2>Product Order Form</h2>
-    </div>
-    <div class="d-flex">
-        <form action="" method="">
-            <label>
-                <span class="fname">First Name <span class="required">*</span></span>
-                <input type="text" name="fname" />
-            </label>
-            <label>
-                <span class="lname">Last Name <span class="required">*</span></span>
-                <input type="text" name="lname" />
-            </label>
-            <label>
-                <span>Company Name (Optional)</span>
-                <input type="text" name="cn" />
-            </label>
-            <label>
-                <span>Country <span class="required">*</span></span>
-                <select name="selection">
-                    <option value="select">Select a country...</option>
-                    <option value="AFG">Afghanistan</option>
-                    <option value="ZMB">Zambia</option>
-                    <option value="ZWE">Zimbabwe</option>
-                </select>
-            </label>
-            <label>
-                <span>Street Address <span class="required">*</span></span>
-                <input type="text" name="houseadd" placeholder="House number and street name" required />
-            </label>
-            <label>
-                <span>&nbsp;</span>
-                <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" />
-            </label>
-            <label>
-                <span>Town / City <span class="required">*</span></span>
-                <input type="text" name="city" />
-            </label>
-            <label>
-                <span>State / County <span class="required">*</span></span>
-                <input type="text" name="city" />
-            </label>
-            <label>
-                <span>Postcode / ZIP <span class="required">*</span></span>
-                <input type="text" name="city" />
-            </label>
-            <label>
-                <span>Phone <span class="required">*</span></span>
-                <input type="tel" name="city" />
-            </label>
-            <label>
-                <span>Email Address <span class="required">*</span></span>
-                <input type="email" name="city" />
-            </label>
-        </form>
-    </div>
-</div>
 <div class="back-cover">
     <form class="product-infor__inner" action="addtype" enctype="multipart/form-data" method="POST">
         <h2>Add Type</h2>

@@ -12,11 +12,14 @@
     cart.classList.add("active");
     xhttp.open("POST", "loadcart.php?id=" + item.getAttribute("id"), true);
     xhttp.send();
-    $('body').on('click', '.drawer__close-button', function(e) {
-      cart.classList.remove("active");
-    })
+
+    document.querySelector('body').addEventListener('click', function(event) {
+      if (event.target.id.toLowerCase() === 'drawer__close-button') {
+        cart.classList.remove("active");
+      }
+    });
   }
-  
+
   function del_cart(id) {
     var xhttp;
     xhttp = new XMLHttpRequest();
@@ -66,13 +69,12 @@
       }
       cart.classList.add("active");
       xhttp.open("POST", `loadcart.php`, true);
-      xhttp.send()
-      $('body').on('click', '.drawer__close-button', function(e) {
-        cart.classList.remove("active");
-      })
-      $('body').on('click', '.close-box', function(e) {
-        document.querySelector('.search-inp').value = "";
-      })
+      xhttp.send();
+      document.querySelector('body').addEventListener('click', function(event) {
+        if (event.target.id.toLowerCase() === 'drawer__close-button') {
+          cart.classList.remove("active");
+        }
+      });
     })
   })();
 </script>

@@ -62,7 +62,7 @@
                             <div class="drawer__header">
                                 <div class="drawer__close text-right">
                                     <button type="button" class="drawer__close-button js-drawer-close">
-                                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                                        <svg aria-hidden="true" focusable="false" role="presentation" id="drawer__close-button" class="icon icon-close" viewBox="0 0 64 64">
                                             <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
                                         </svg>
                                     </button>
@@ -77,10 +77,10 @@
         </div>
         <div class="nav">
             <ul class="menu">
-                <li><a href="#" class="menu-link">MEN'S COLOGNE</a></li>
-                <li><a href="#" class="menu-link">WOMEN'S PERFUME</a></li>
-                <li><a href="#" class="menu-link">UNISEX</a></li>
-                <li><a href="#" class="menu-link">BRANDS</a></li>
+                <li><a href="result.php?gender=men" class="menu-link">MEN'S COLOGNE</a></li>
+                <li><a href="result.php?gender=women" class="menu-link">WOMEN'S PERFUME</a></li>
+                <li><a href="result.php?gender=unisex" class="menu-link">UNISEX</a></li>
+                <li><a href="result.php?gender=men" class="menu-link">BRANDS</a></li>
             </ul>
         </div>
     </div>

@@ -15,6 +15,8 @@ $paginator = new Paginator;
 $brands = new Brand;
 $pf = new Perfume;
 $ctg = new categories();
+
+
 ?>
 
 <body>
@@ -38,21 +40,21 @@ $ctg = new categories();
                             <ul class="dropdown-menu">
                                 <li>
                                     <label>
-                                        <input type="radio" name="sort" value="pf_name ASC">
+                                        <input type="radio" name="sort" onchange="loadProduct();" checked value="pf_name ASC">
                                         <i></i>
                                         <span class="label">A-Z</span>
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="sort" value="regular_price desc">
+                                        <input type="radio" name="sort" onchange="loadProduct();" value="regular_price desc">
                                         <i></i>
                                         <span class="label">Price from high to low</span>
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="sort" value="regular_price ASC">
+                                        <input type="radio" name="sort" onchange="loadProduct();" value="regular_price ASC">
                                         <i></i>
                                         <span class="label">Price from high to low</span>
                                     </label>
@@ -82,7 +84,7 @@ $ctg = new categories();
                                 ?>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="gender[]" onchange="loadProduct()" value="<?= $row['gender'] ?>">
+                                            <input type="checkbox" name="gender[]" <?= isset($_GET['gender']) && $_GET['gender'] == $row['gender'] ? "checked" : "" ?> onchange="loadProduct()" value="<?= $row['gender'] ?>">
                                             <i></i>
                                             <span class="label"><?= $row['gender'] ?></span>
                                         </label>
@@ -146,7 +148,11 @@ $ctg = new categories();
                             </ul>
                         </div>
                     </div>
+                    <div class="clearArea">
+                        <a href="javascript:clearFilter()" class="clearFilter">Clear Filter</a>
+                    </div>
                 </div>
+
                 <div class="display-product">
                     <div class="display-product__inner">
 
@@ -171,7 +177,7 @@ $ctg = new categories();
 
     function loadProduct(page = 1) {
         let query = makeFilter();
-        console.log(query);
+        console.log('loadproducts.php?page=' + page + query);
         var req = new XMLHttpRequest();
         req.responseType = 'json';
         req.open('GET', 'loadproducts.php?page=' + page + query, true);
@@ -181,14 +187,14 @@ $ctg = new categories();
             if (jsonResponse) {
                 for (var i = 0; i < jsonResponse.length - 1; i++) {
                     html += '<div class="pf-cart">';
-                    html += '<a href="#" class="img_link">'
+                    html += '<a href="detail.php?productId=' + jsonResponse[i].pf_id + '" class="img_link">'
                     html += '<img src="./assets/images/products/' + jsonResponse[i].image + '" alt="#">'
                     html += '</a>';
                     html += '<div class="pf-content">';
                     html += '<a href="#" class="pf-brand">';
                     html += '<p>' + jsonResponse[i].brand_name + '</p>';
                     html += '</a>';
-                    html += '<a href="#" class="pf-name">'
+                    html += '<a href="detail.php?productId=' + jsonResponse[i].pf_id + '" class="pf-name">'
                     html += '<p>' + jsonResponse[i].pf_name + '</p>';
                     html += '</a>'
                     html += '<div class="review">'
@@ -209,6 +215,7 @@ $ctg = new categories();
                     }
 
                     html += '</p>';
+                    html += '<a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-' + jsonResponse[i].pf_id + '">add to cart</a>';
                     html += '</div>';
                     html += '</div>';
                 }
@@ -217,7 +224,9 @@ $ctg = new categories();
                 const productArea = document.querySelector('.display-product__inner');
 
                 productArea.innerHTML = html;
-                document.querySelector('.filter-wraper').scrollIntoView({behavior: 'smooth' });
+                document.querySelector('.filter-wraper').scrollIntoView({
+                    behavior: 'smooth'
+                });
                 let pageObj = jsonResponse[jsonResponse.length - 1];
                 let page_html = '';
                 if (pageObj.totalPage > 1) {
@@ -233,7 +242,7 @@ $ctg = new categories();
                     document.querySelector('.content_detail__pagination').innerHTML = '';
                 }
                 document.querySelector('content_detail__pagination');
-                
+
             } else {
                 document.querySelector('.display-product__inner').innerHTML = "Not found";
             }
@@ -253,6 +262,20 @@ $ctg = new categories();
         return arr;
     }
 
+    function unchecked(selectorAll) {
+        let checkboxes = document.getElementsByName(`${selectorAll}[]`);
+
+        for (let i = 0, n = checkboxes.length; i < n; i++) {
+            if (checkboxes[i].checked) {
+                checkboxes[i].checked = false;
+            }
+        }
+    }
+
+    function clearFilter() {
+        window.location = window.location.href.split("?")[0];
+    }
+
     function makeFilter() {
 
         let brands = $('brand'),
@@ -260,7 +283,9 @@ $ctg = new categories();
             range = $('range'),
             gender = $('gender'),
             min = document.getElementsByName('min_price')[0].value,
-            max = document.getElementsByName('max_price')[0].value;
+            max = document.getElementsByName('max_price')[0].value,
+            sort = document.querySelector('input[name="sort"]:checked').value,
+            kw = document.querySelector('.keyword');
 
         let query = '';
         if (brands !== '') {
@@ -275,6 +300,13 @@ $ctg = new categories();
         if (gender !== '') {
             query += '&gender=' + gender + '';
         }
+        if (sort !== '') {
+            query += '&sort=' + sort + '';
+        }
+        if (kw) {
+            query += '&keyword=' + kw.textContent + '';
+        }
+
         query += '&min=' + min + '';
         query += '&max=' + max + '';
 

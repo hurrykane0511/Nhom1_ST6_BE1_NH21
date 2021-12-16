@@ -4,20 +4,21 @@ require './model/dbconnect.php';
 require './model/perfume.php';
 require './model/review.php';
 $review = new Review();
-if(isset($_POST['review_submit'])){
-    $perfume_id = $_POST['id_product'];
-    $name = $_POST['name'];
-    $email =$_POST['email'];
-    $content =$_POST['body'];
-    $star =$_POST['rating'];
-    $title =$_POST['title'];
-   if($review->addReview($perfume_id,$name, $email,$content,$star,$title)){
-       echo "thanh cong";
-       header('location:detail.php');
-   } else
-   {
-       echo "khong thanh cong";
-   }
-   echo "dahsj";
+
+if (isset($_GET['review_submit'])) {
+
+    $perfume_id = intval($_GET['id_product']);
+    $name = $_GET['name'];
+    $email = $_GET['email'];
+
+    $content = $_GET['body'];
+    $star = intval($_GET['rating']);
+    $title = $_GET['title'];
+
+    if ($review->addReview($perfume_id, $name, $email, $content, $star, $title)) {
+        echo true;
+    }
+    else {
+        echo false;
+    }
 }
-?>

@@ -36,7 +36,7 @@
         overflow: hidden;
         .pf-content {
           margin-top: auto;
-          padding: 16px 0;
+          padding: 16px;
           .review {
             padding-top: 10px;
             .stararea {
@@ -61,6 +61,14 @@
           .price {
             margin-top: 10px;
           }
+          .add-cart-link{
+            margin-top: 15px;
+            font-family: "Montserrat", sans-serif;
+            background: gray;
+            display: block;
+            padding: 7px 20px;
+            color: #fff;
+          }
         }
         .img_link {
           img {
@@ -76,7 +84,7 @@
   .filter-wraper {
     padding-bottom: 56px;
     display: flex;
-
+    flex-direction: column;
     .filter-wraper__inner {
       --back: #f2ddc1;
       --col: 6;
@@ -349,6 +357,20 @@
         }
       }
     }
+    .clearArea{
+      width: 100%;
+      max-width: 1333px;
+      margin: 0 auto;
+      .clearFilter{
+        margin-right: auto;
+        display: block;
+        width: max-content;
+        background: $gray;
+        color: #fff;
+        padding: 7px 15px;
+      }
+    }
+   
   }
   .content_detail__pagination {
     display: flex;
