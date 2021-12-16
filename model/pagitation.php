@@ -3,29 +3,41 @@ class Paginator extends Db
 {
     private $_total;
     private $_page;
-    private $_limit;
-    
-    function getPage(){
+    private $_limit = 12;
+    private $_query = 'select * from `tbl_perfume` as pf join tbl_brand br on pf.brand_id = br.brand_id join tbl_type typ on pf.type_id = typ.type_id join tbl_range ra on ra.range_id = pf.range_id ';
+
+
+    function getPage()
+    {
+        return $this->_page;
+    }
+    function getTotalPage()
+    {
         return $this->_page;
     }
 
-    function __construct()
+    function Congfig($page_num, $where, $bind, $filters)
     {
-        parent::__construct($limit = 12);
-        $sql = self::$connection->prepare("select * from `tbl_perfume`");
+        $this->SetTotalPage($where, $bind, $filters);
+        $offset = ($page_num - 1) * $this->_limit;
+        $filters[] = $this->_limit;
+        $filters[] = $offset;
+        $sql = self::$connection->prepare($this->_query . $where . 'Limit ? Offset ?');
+        $_bind = $bind . 'ii';
+
+        $sql->bind_param($_bind, ...$filters);
+        $sql->execute();
+        $data = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return  $data;
+    }
+    function SetTotalPage($where, $bind, $filters)
+    {
+        $sql = self::$connection->prepare($this->_query . $where);
+        if (!empty($bind)) {
+            $sql->bind_param($bind, ...$filters);
+        }
         $sql->execute();
         $this->_total = $sql->get_result()->num_rows;
-        $this->_limit = $limit;
-        $this->_page = ceil($this->_total/$limit);
-    }
-    function getData($page_num)
-    {
-        $offset = ($page_num - 1) * $this->_limit;
-        $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sales_qty` limit ? offset ?");
-        $sql->bind_param("ii", $this->_limit, $offset);
-        $sql->execute();
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items;
+        $this->_page = ceil($this->_total / $this->_limit);
     }
 }
