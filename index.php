@@ -61,9 +61,9 @@ $brand = new Brand;
                 <a href="#" class="producer"><?php echo $row['brand_name'] ?></a>
                 <p class="price">
                   <?php
-                  if ($row['sales_price'] != null) {
+                  if ($row['sales_price'] != 0) {
                   ?>
-                    <del>£<?= $row['sales_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] ?></big>
+                    <del>£<?=$row['regular_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] - (($row['regular_price'] / 100) * $row['sales_price']) ?></big>
                   <?php
                   } else {
                   ?>
@@ -94,7 +94,7 @@ $brand = new Brand;
           foreach ($brand->getAllBrandLiMit() as $row) {
           ?>
             <div class="brand-box">
-              <a href="result.php?id=<?php echo $row['brand_id']?>">
+              <a href="result.php?brand_id=<?php echo $row['brand_id']?>">
                 <img src="./assets/images/brands/<?php echo $row['brand_image']?>" alt="brand" >
               </a>
             </div>

@@ -32,177 +32,254 @@ $ctg = new categories();
                     ?>
                 </div>
                 <div class="filter-wraper">
-                    <div class="filter-inner">
-                        <div class="select-boxs">
-                            <div class="select-box">
+                    <div class="filter-wraper__inner">
+                        <div class="list" role="listbox">
+                            <h2>Sort by</h2>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="pf_name ASC">
+                                        <i></i>
+                                        <span class="label">A-Z</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="regular_price desc">
+                                        <i></i>
+                                        <span class="label">Price from high to low</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="regular_price ASC">
+                                        <i></i>
+                                        <span class="label">Price from high to low</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list" role="listbox">
+                            <h2>Brand</h2>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($brands->getAllBrand() as $key => $row) {
+                                ?>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="brand[]" onchange="loadProduct()" value="<?= $row['brand_name'] ?>">
+                                            <i></i>
+                                            <span class="label"><?= $row['brand_name'] ?></span>
+                                        </label>
+                                    </li>
+                                <?php
+                                } ?>
+                            </ul>
+                        </div>
+                        <div class="list" role="listbox">
+                            <h2>Gender</h2>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($pf->getGender() as $key => $row) {
+                                ?>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="gender[]" onchange="loadProduct()" value="<?= $row['gender'] ?>">
+                                            <i></i>
+                                            <span class="label"><?= $row['gender'] ?></span>
+                                        </label>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <div class="list" role="listbox">
+                            <h2>Type</h2>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($ctg->getAllType() as $key => $row) {
+                                ?>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="type[]" onchange="loadProduct()" value="<?= $row['type_name'] ?>">
+                                            <i></i>
+                                            <span class="label"><?= $row['type_name'] ?></span>
+                                        </label>
+                                    </li>
+                                <?php
+                                }
+                                ?>
 
-                                <select id="selected_brand">
-                                    <option selected disabled hidden value="all">-- Brand --</option>
-                                    <?php
-                                    if (isset($_GET['id'])) {
-                                        foreach ($brands->getAllBrand() as $key => $value) {
-                                            foreach ($brands->getBrandById($_GET['id']) as $row) {
-                                    ?>
-                                        <option value="<?= $value['brand_id'] ?>" selected><?= $value['brand_name'] ?></option>
-                                        <?php
-                                            }
-                                        }
-                                    } else {
-                                        foreach ($brands->getAllBrand() as $key => $value) {
-                                        ?>
-                                            <option value="<?= $value['brand_id'] ?>"><?= $value['brand_name'] ?></option>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </select>
+                            </ul>
 
-                            </div>
-                            <div class="select-box">
-
-                                <select id="selected_gender">
-                                    <option value="all" selected disabled hidden>-- Gender --</option>
-                                    <?php
-                                    foreach ($pf->getGender() as $key => $value) {
-                                    ?>
-                                        <option value="<?= $value['gender'] ?>"><?= $value['gender'] ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-
-                            </div>
-                            <div class="select-box">
-
-                                <select id="selected_category">
-                                    <option value="all" selected disabled hidden>-- Perfume ranges --</option>
-                                    <?php
-                                    foreach ($ctg->getAllRange() as $key => $value) {
-                                    ?>
-                                        <option value="<?= $value['range_id'] ?>"><?= $value['range_name'] ?></option>
-                                    <?php
-                                    } ?>
-                                </select>
-
-                            </div>
-                            <div class="select-box">
-                                <select id="selected_type">
-                                    <option value="all" selected disabled hidden>-- Perfume types --</option>
-                                    <?php
-                                    foreach ($ctg->getAllType() as $key => $value) {
-                                    ?>
-                                        <option value="<?= $value['type_id'] ?>"><?= $value['type_name'] ?></option>
-                                    <?php
-                                    } ?>
-                                </select>
-
-                            </div>
-                            <div class="price-box">
-                                Price:
-                                <span>£ <input type="number" min="0" max="200" id="min" value="0"> - </span>
-                                <span>£ <input type="number" max="200" min="0" id="max" value="200"></span>
-                            </div>
-                            <div class="sort-by">
-                                Sort by:
-                                <span>
-                                    <select name="catogery" id="attr-sort">
-                                        <option value="A-Z">A-Z</option>
-                                        <option value="Review count">Review count</option>
-                                        <option value="Review rating">Review rating</option>
-                                        <option value="Price: Low to High">Price: Low to High</option>
-                                        <option value="Price: Hign to Low">Price: Hign to Low</option>
-                                    </select>
-                                </span>
-                            </div>
+                        </div>
+                        <div class="list" role="listbox">
+                            <h2>Range</h2>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($ctg->getAllRange() as $key => $row) {
+                                ?>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="range[]" onchange="loadProduct()" value="<?= $row['range_name'] ?>">
+                                            <i></i>
+                                            <span class="label"><?= $row['range_name'] ?></span>
+                                        </label>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <div class="list" role="listbox">
+                            <h2>Price</h2>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="range-slider">
+                                        <span>
+                                            <input type="number" name="min_price" value="0" min="0" max="200">£-
+                                            <input type="number" name="max_price" value="200" min="0" max="200">£
+                                        </span>
+                                        <span>
+                                            <input value="0" min="0" max="200" onchange="loadProduct()" step="1" type="range">
+                                            <input value="200" min="0" max="200" onchange="loadProduct()" step="1" type="range">
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="display-product">
                     <div class="display-product__inner">
-                        <?php
-                        $cur_page = 1;
-                        if (isset($_GET['page'])) {
-                            $cur_page = $_GET['page'];
-                        }
-                        foreach ($paginator->getData($cur_page) as $key => $row) {
-                        ?>
-                            <div class="pf-cart">
 
-                                <a href="#" class="img_link">
-                                    <img src="./assets/images/products/<?= explode("#", $row['image'])[0]; ?>" alt="#">
-                                </a>
-                                <div class="pf-content">
-                                    <a href="#" class="pf-brand">
-                                        <p> <?= $row['brand_name']; ?> </p>
-                                    </a>
-                                    <a href="#" class="pf-name">
-                                        <p> <?= $row['pf_name']; ?> </p>
-                                    </a>
-                                    <div class="review">
-                                        <button class="star"><span class="stararea checked">★</span></button>
-                                        <button class="star"><span class="stararea checked">★</span></button>
-                                        <button class="star"><span class="stararea checked">★</span></button>
-                                        <button class="star"><span class="stararea checked">★</span></button>
-                                        <button class="star"><span class="stararea">★</span></button>
-                                    </div>
-                                    <p class="price">
-                                        <?php
-                                        if ($row['sales_price'] != null) {
-                                        ?>
-                                            <del>£<?= $row['sales_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] ?></big>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <big>£<?= $row['regular_price'] ?></big>
-                                        <?php
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
-
-                            </div>
-                        <?php
-
-                        }
-                        ?>
                     </div>
                 </div>
                 <div class="content_detail__pagination">
 
-                    <?php
-                    if ($cur_page != 1) {
-                    ?>
-                        <a href="?page=<?= ($cur_page - 1) ?>"><span>Pre</span></a>
-                        <?php
-                    }
-                    for ($i = 1; $i <= $paginator->getPage(); $i++) {
-                        if ($cur_page != $i) {
-                        ?>
-                            <a href="?page=<?= $i ?>" class="page-num"><span><?= $i ?></span></a>
-                        <?php
-                        } else {
-
-
-                        ?>
-                            <a href="?page=<?= $i ?>" class="page-num active"><span><?= $i ?></span></a>
-                        <?php
-                        }
-                    }
-                    if ($cur_page != $paginator->getPage()) {
-                        ?>
-                        <a href="?page=<?= ($cur_page + 1) ?>"><span>Next</span></a>
-                    <?php
-                    }
-                    ?>
-
                 </div>
             </div>
+
+
+        </div>
+        <div class="test">
+
         </div>
     </div>
+
     <?php include("./Template/footer.php") ?>
 </body>
 <script>
+    loadProduct(1);
 
+    function loadProduct(page = 1) {
+        let query = makeFilter();
+        console.log(query);
+        var req = new XMLHttpRequest();
+        req.responseType = 'json';
+        req.open('GET', 'loadproducts.php?page=' + page + query, true);
+        req.onload = function() {
+            var jsonResponse = req.response;
+            let html = '';
+            if (jsonResponse) {
+                for (var i = 0; i < jsonResponse.length - 1; i++) {
+                    html += '<div class="pf-cart">';
+                    html += '<a href="#" class="img_link">'
+                    html += '<img src="./assets/images/products/' + jsonResponse[i].image + '" alt="#">'
+                    html += '</a>';
+                    html += '<div class="pf-content">';
+                    html += '<a href="#" class="pf-brand">';
+                    html += '<p>' + jsonResponse[i].brand_name + '</p>';
+                    html += '</a>';
+                    html += '<a href="#" class="pf-name">'
+                    html += '<p>' + jsonResponse[i].pf_name + '</p>';
+                    html += '</a>'
+                    html += '<div class="review">'
+                    html += '<button class="star"><span class="stararea checked">★</span></button>'
+                    html += '<button class="star"><span class="stararea checked">★</span></button>'
+                    html += '<button class="star"><span class="stararea checked">★</span></button>'
+                    html += '<button class="star"><span class="stararea checked">★</span></button>'
+                    html += '<button class="star"><span class="stararea checked">★</span></button>'
+                    html += '</div>';
+                    html += '<p class="price">';
+
+                    if (jsonResponse[i].sales_price) {
+                        let reg = jsonResponse[i].regular_price;
+                        let sales = jsonResponse[i].sales_price;
+                        html += '<del>£' + jsonResponse[i].regular_price + '</del> <big>£ ' + ((reg - ((reg / 100) * sales))) + '</big >';
+                    } else {
+                        html += '<big>£' + jsonResponse[i].regular_price + '</big>';
+                    }
+
+                    html += '</p>';
+                    html += '</div>';
+                    html += '</div>';
+                }
+                console.log(jsonResponse);
+
+                const productArea = document.querySelector('.display-product__inner');
+
+                productArea.innerHTML = html;
+                document.querySelector('.filter-wraper').scrollIntoView({behavior: 'smooth' });
+                let pageObj = jsonResponse[jsonResponse.length - 1];
+                let page_html = '';
+                if (pageObj.totalPage > 1) {
+                    for (let i = 1; i <= pageObj.totalPage; i++) {
+                        if (i != pageObj.currPage) {
+                            page_html += '<a href="javascript:loadProduct(' + i + ')" class="page-num"><span>' + i + '</span></a>';
+                        } else {
+                            page_html += '<a href="?page=' + i + '" class="page-num active "><span>' + i + '</span></a>'
+                        }
+                    }
+                    document.querySelector('.content_detail__pagination').innerHTML = page_html;
+                } else {
+                    document.querySelector('.content_detail__pagination').innerHTML = '';
+                }
+                document.querySelector('content_detail__pagination');
+                
+            } else {
+                document.querySelector('.display-product__inner').innerHTML = "Not found";
+            }
+
+        };
+        req.send(null);
+    }
+
+    function $(selectorAll) {
+        let checkboxes = document.getElementsByName(`${selectorAll}[]`);
+        let arr = '';
+        for (let i = 0, n = checkboxes.length; i < n; i++) {
+            if (checkboxes[i].checked) {
+                arr += checkboxes[i].value + ',';
+            }
+        }
+        return arr;
+    }
+
+    function makeFilter() {
+
+        let brands = $('brand'),
+            type = $('type'),
+            range = $('range'),
+            gender = $('gender'),
+            min = document.getElementsByName('min_price')[0].value,
+            max = document.getElementsByName('max_price')[0].value;
+
+        let query = '';
+        if (brands !== '') {
+            query += '&brand=' + brands.replace('&', '%26') + '';
+        }
+        if (type !== '') {
+            query += '&type=' + type + '';
+        }
+        if (range !== '') {
+            query += '&range=' + range + '';
+        }
+        if (gender !== '') {
+            query += '&gender=' + gender + '';
+        }
+        query += '&min=' + min + '';
+        query += '&max=' + max + '';
+
+        return query;
+    }
 </script>
 <script type="module" src="./modules/result.js"></script>
 

@@ -1,0 +1,26 @@
+
+                    <?php
+                    if ($cur_page != 1) {
+                    ?>
+                        <a href="?page=<?= ($cur_page - 1) ?>"><span>Pre</span></a>
+                        <?php
+                    }
+                    for ($i = 1; $i <= $paginator->getPage(); $i++) {
+                        if ($cur_page != $i) {
+                        ?>
+                            <a href="?page=<?= $i ?>" class="page-num"><span><?= $i ?></span></a>
+                        <?php
+                        } else {
+
+
+                        ?>
+                            <a href="?page=<?= $i ?>" class="page-num active"><span><?= $i ?></span></a>
+                        <?php
+                        }
+                    }
+                    if ($cur_page != $paginator->getPage()) {
+                        ?>
+                        <a href="?page=<?= ($cur_page + 1) ?>"><span>Next</span></a>
+                    <?php
+                    }
+                    ?>
