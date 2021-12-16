@@ -77,7 +77,7 @@ class Perfume extends Db
     function getPerfumeByID($id)
     {
         try {
-            $sql = self::$connection->prepare("SELECT * FROM `tbl_perfume` where `pf_id` = ?");
+            $sql = self::$connection->prepare("SELECT *  FROM `tbl_perfume` join tbl_brand on tbl_perfume.brand_id = tbl_brand.brand_id where `pf_id` = ?");
             $sql->bind_param('i', $id);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];

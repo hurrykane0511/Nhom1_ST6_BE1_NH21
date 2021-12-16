@@ -7,6 +7,8 @@ include './model/config.php';
 include './model/dbconnect.php';
 include './model/perfume.php';
 $pf = new Perfume;
+if(isset($_GET['productId'])){
+    $getPerfumeByID = $pf->getPerfumeByID($_GET['productId'])
 ?>
 
 <body>
@@ -19,27 +21,32 @@ $pf = new Perfume;
                     <div class="detail-container">
                         <div class="img-container">
                             <div class="imgs-container">
-                                <a href="#" class="img-link1 active"><img src="./assets/images/products/Lancome-Idle-LIntense-Eau-de-Parfum-75ml.jfif" alt=""></a>
-                                <a href="#" class="img-link1"><img src="./assets/images/products/Lancome-La-Nuit-Tresor-Eau-de-Parfum-100ml.jfif" alt=""></a>
-                                <a href="#" class="img-link1"><img src="./assets/images/products/Lancome-La-Nuit-Tresor-Eau-de-Parfum2.png" alt=""></a>
+                                <?php 
+                                    $image = $getPerfumeByID['image'];
+                                    $arrimage = explode("#",$image);
+                                ?>
+                                <a href="#" class="img-link1 active"><img src="./assets/images/products/<?php echo $arrimage[0] ?>" alt=""></a>
+                                <a href="#" class="img-link1"><img src="./assets/images/products/<?php echo $arrimage[1] ?>" alt=""></a>
+                                <a href="#" class="img-link1"><img src="./assets/images/products/<?php echo $arrimage[2] ?>" alt=""></a>
                             </div>
                             <div class="main-image">
                                 <div class="img-box" style="--i:0">
-                                    <img src="./assets/images/products/Lancome-Idle-LIntense-Eau-de-Parfum-75ml.jfif" data-zoom="./assets/images/products/Lancome-Idle-LIntense-Eau-de-Parfum-75ml.jfif" alt="error" class="img" id="img1">
+                                    <img src="./assets/images/products/<?php echo $arrimage[0] ?>" data-zoom="./assets/images/products/<?php echo $arrimage[0] ?>" alt="error" class="img" id="img1">
                                 </div>
                                 <div class="img-box" style="--i:1">
-                                    <img src="./assets/images/products/Lancome-La-Nuit-Tresor-Eau-de-Parfum-100ml.jfif" data-zoom="./assets/images/products/Lancome-La-Nuit-Tresor-Eau-de-Parfum-100ml.jfif" alt="error" class="img" id="img2">
+                                    <img src="./assets/images/products/<?php echo $arrimage[1] ?>" data-zoom="./assets/images/products/<?php echo $arrimage[1] ?>" alt="error" class="img" id="img2">
                                 </div>
                                 <div class="img-box" style="--i:2">
-                                    <img src="./assets/images/products/Lancome-La-Nuit-Tresor-Eau-de-Parfum2.png" data-zoom="./assets/images/products/Lancome-La-Nuit-Tresor-Eau-de-Parfum2.png" alt="error" class="img" id="img3">
+                                    <img src="./assets/images/products/<?php echo $arrimage[2] ?>" data-zoom="./assets/images/products/<?php echo $arrimage[2] ?>" alt="error" class="img" id="img3">
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="content-container" id="imgDetails">
                             Remain
-                            <h2 class="pf-name">Lancome-Idle-LIntense-Eau-de-Parfum-75ml</h2>
-                            <p class="brand">Lancome</p>
+                           
+                            <h2 class="pf-name"><?php echo $getPerfumeByID['pf_name']?></h2>
+                            <p class="brand"><?php echo $getPerfumeByID['brand_name']?></p>
                             <div class="pf-rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -49,10 +56,11 @@ $pf = new Perfume;
                                 <span>&nbsp;4.7 (28)</span>
                                 <span><a href="#" class="review-link">Read 28 reviews</a></span>
                             </div>
-                            <p class="values"><span class="capacity">100ml -</span> <span class="price"><del>£500</del> £400</span></p>
-                            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero a modi velit assumenda pariatur dolores perferendis impedit. Pariatur sapiente, facere, expedita repellat labore repellendus voluptatibus voluptates eius, quibusdam rerum ullam!</p>
+                            <p class="values"><span class="capacity"><?php echo $getPerfumeByID['capacity']?> - </span> <span class="price">£<?php echo $getPerfumeByID['regular_price']?><del></del> <?php echo $getPerfumeByID['sales_price']?></span></p>
+                            <p class="description"><?php echo $getPerfumeByID['description']?></p>
                             <a href="#" class="addCart">Add to card</a>
                             <a href="#" class="buyNow">Buy it now</a>
+                            
                         </div>
 
                     </div>
@@ -97,7 +105,7 @@ $pf = new Perfume;
 
                 <div class="form-rating-wrap">
 
-                    <form method="POST" action="rating.php" id="ratingForm" class="rating-form">
+                    <form action="rating.php" method="POST" id="ratingForm" class="rating-form" enctype="multipart/form-data">
                         <div class="head-form">
                             <h2 class="form-title">Customer reviews</h2>
                             <div class="review-parameter">
@@ -105,7 +113,7 @@ $pf = new Perfume;
                                 <a href="javascript:void(0)" class="write-review">Write review</a>
                             </div>
                         </div>
-                        <hr>
+                        <input type="hidden" name="id_product" value="<?php echo $_GET['productId']?>">
                         <div class="input-wrap">
                             <label for="name">name</label>
                             <input type="text" name="name" id="name" placeholder="Enter your name" autocomplete="off">
@@ -136,10 +144,9 @@ $pf = new Perfume;
                         <div class="input-wrap">
                             <label for="body">review body</label>
                             <textarea name="body" id="body" cols="30" placeholder="Write your comments here" rows="10"></textarea>
-                        </div>
-
-
-                        <button class="submit clearfix" type="submit">Submit review</button>
+                        </div>  
+                        <button type="submit" class="submit clearfix" name="review_submit">Submit review</button>
+                        
                     </form>
 
                 </div>
@@ -147,7 +154,7 @@ $pf = new Perfume;
 
         </div>
     </div>
-    <?php include("./Template/footer.php") ?>
+    <?php } include("./Template/footer.php") ?>
 </body>
 <script>
     $(document).ready(function() {

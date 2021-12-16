@@ -53,11 +53,11 @@ $brand = new Brand;
           <?php foreach ($pf->getTopSell() as $row) {
           ?>
             <div class="product-card <?= $row['status'] == 1 ? "" : " sold-out" ?>">
-              <a href="#" class="img-link">
+              <a href="detail.php?productId=<?php echo $row['pf_id']?>" class="img-link">
                 <div class="product-img" style="background-image: url(./assets/images/products/<?php echo explode("#", $row['image'])[0] ?>);"></div>
               </a>
               <div class="card-content">
-                <a href="#" class="product-link"><?php echo $row['pf_name'] ?></a>
+                <a href="detail.php?productId=<?php echo $row['pf_id']?>" class="product-link"><?php echo $row['pf_name'] ?></a>
                 <a href="#" class="producer"><?php echo $row['brand_name'] ?></a>
                 <p class="price">
                   <?php
