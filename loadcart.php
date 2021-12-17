@@ -69,7 +69,7 @@ if (!empty($_SESSION['cart'])) {
         $total += $price  * $item['quantity'];
       ?>
         <div class="cart-item">
-          <a href="#" class="img-item" style="background-image: url('./assets/images/products/<?php echo explode("#",$item['image'])[0] ?>')">
+          <a href="detail.php?productId=<?= $key ?>" class="img-item" style="background-image: url('./assets/images/products/<?php echo explode("#",$item['image'])[0] ?>')">
 
           </a>
           <div class="item-contents">

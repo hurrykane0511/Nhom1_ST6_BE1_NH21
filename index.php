@@ -53,17 +53,17 @@ $brand = new Brand;
           <?php foreach ($pf->getTopSell() as $row) {
           ?>
             <div class="product-card <?= $row['status'] == 1 ? "" : " sold-out" ?>">
-              <a href="detail.php?productId=<?php echo $row['pf_id']?>" class="img-link">
+              <a href="detail.php?productId=<?php echo $row['pf_id'] ?>" class="img-link">
                 <div class="product-img" style="background-image: url(./assets/images/products/<?php echo explode("#", $row['image'])[0] ?>);"></div>
               </a>
               <div class="card-content">
-                <a href="detail.php?productId=<?php echo $row['pf_id']?>" class="product-link"><?php echo $row['pf_name'] ?></a>
-                <a href="#" class="producer"><?php echo $row['brand_name'] ?></a>
+                <a href="detail.php?productId=<?php echo $row['pf_id'] ?>" class="product-link"><?php echo $row['pf_name'] ?></a>
+                <a href="result.php?brand_name=<?php echo str_replace("&", "%26", $row['brand_name']) ?>" class="producer"><?php echo $row['brand_name'] ?></a>
                 <p class="price">
                   <?php
                   if ($row['sales_price'] != 0) {
                   ?>
-                    <del>£<?=$row['regular_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] - (($row['regular_price'] / 100) * $row['sales_price']) ?></big>
+                    <del>£<?= $row['regular_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] - (($row['regular_price'] / 100) * $row['sales_price']) ?></big>
                   <?php
                   } else {
                   ?>
@@ -87,6 +87,44 @@ $brand = new Brand;
       </div>
       <!-- End Video -->
 
+      <!-- Showcase new-->
+      <div class="showcase">
+        <div class="showcase-title-box">
+          <h2 class="showcase-title">New Fragrance</h2>
+          <p>Some of our favourite picks this week.</p>
+        </div>
+        <div class="showcase-inner">
+          <?php foreach ($pf->getNewProduct() as $row) {
+          ?>
+            <div class="product-card <?= $row['status'] == 1 ? "" : " sold-out" ?>">
+              <a href="detail.php?productId=<?php echo $row['pf_id'] ?>" class="img-link">
+                <div class="product-img" style="background-image: url(./assets/images/products/<?php echo explode("#", $row['image'])[0] ?>);"></div>
+              </a>
+              <div class="card-content">
+                <a href="detail.php?productId=<?php echo $row['pf_id'] ?>" class="product-link"><?php echo $row['pf_name'] ?></a>
+                <a href="result.php?brand_name=<?php echo str_replace("&", "%26", $row['brand_name']) ?>" class="producer"><?php echo $row['brand_name'] ?></a>
+                <p class="price">
+                  <?php
+                  if ($row['sales_price'] != 0) {
+                  ?>
+                    <del>£<?= $row['regular_price'] ?></del>&emsp;<big>£<?= $row['regular_price'] - (($row['regular_price'] / 100) * $row['sales_price']) ?></big>
+                  <?php
+                  } else {
+                  ?>
+                    <big>£<?= $row['regular_price'] ?></big>
+                  <?php
+                  }
+                  ?>
+                </p>
+                <a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-<?php echo $row['pf_id'] ?>"><?= $row['status'] == 1 ? "add to cart" : " sold out" ?></a>
+              </div>
+            </div>
+          <?php
+          } ?>
+        </div>
+      </div>
+      <!-- End showcase new-->
+
       <!-- Brands List -->
       <div class="brands-list">
         <div class="brands-list__inner">
@@ -94,8 +132,8 @@ $brand = new Brand;
           foreach ($brand->getAllBrandLiMit() as $row) {
           ?>
             <div class="brand-box">
-              <a href="result.php?brand_id=<?php echo $row['brand_id']?>">
-                <img src="./assets/images/brands/<?php echo $row['brand_image']?>" alt="brand" >
+              <a href="result.php?brand_name=<?php echo $row['brand_name'] ?>">
+                <img src="./assets/images/brands/<?php echo $row['brand_image'] ?>" alt="brand">
               </a>
             </div>
           <?php
