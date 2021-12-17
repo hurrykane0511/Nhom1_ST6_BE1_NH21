@@ -1,5 +1,8 @@
 <?php
 include './template/header.php';
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php');
+}
 ?>
 
 <div class="wraper">
@@ -152,48 +155,4 @@ include './template/header.php';
     </div>
 </div>
 
-<div class="back-cover">
-    <form class="product-infor__inner" action="addtype" enctype="multipart/form-data" method="POST">
-        <h2>Add Type</h2>
-        <div class="row">
-            <label>
-                Type name
-                <input type="text" class="item-name" name="type_name">
-            </label>
-        </div>
-        <div class="row">
-            <button type="submit" name="addtype">Submit</button>
-        </div>
-    </form>
-</div>
-<div class="back-cover">
-    <form class="product-infor__inner" action="addbrand" enctype="multipart/form-data" method="POST">
-        <h2>Add Brand</h2>
-        <div class="row">
-            <label>
-                Brand name:
-                <input type="text" class="item-name" name="brand_name">
-            </label>
-
-        </div>
-        <div class="row">
-            <label>
-                Image:
-                <textarea name="brand_image" cols="30" rows="10"></textarea>
-            </label>
-        </div>
-        <div class="row">
-            <label>
-                Item image:
-                <input type="file" name="fileToUpload" id="fileToUpload">
-            </label>
-        </div>
-        <div class="row">
-            <button type="submit" name="addbrand">Submit</button>
-        </div>
-    </form>
-</div>
-<script>
-
-</script>
 <?php include './template/footer.php';

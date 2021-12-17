@@ -40,4 +40,24 @@ class User extends Db
             return false;
         }
     }
+
+    public function adminLogin($user, $pass){
+
+
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM `admin` WHERE ? = `idadmin` and `password` = ?");
+
+            $username = mysqli_real_escape_string(self::$connection, $user);
+            $password = md5($pass);
+
+            $sql->bind_param("ss", $username, $password);
+            $sql->execute();
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $items[0];
+
+        } catch (Exception $e) {
+            
+        }
+    }
 }

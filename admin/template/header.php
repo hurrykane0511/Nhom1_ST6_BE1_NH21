@@ -34,7 +34,7 @@ $brands = new Brand();
             <span class="icon">
               <ion-icon name="cloudy-outline"></ion-icon>
             </span>
-            <span class="title logo">The Fragance Shop</span>
+            <span class="title logo">Shop</span>
           </a>
         </li>
         <li class="<?=  curr_page("index.php") ? "hovered" : "" ?>">
@@ -86,7 +86,7 @@ $brands = new Brand();
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="logout.php">
             <span class="icon">
               <ion-icon name="log-out-outline"></ion-icon>
             </span>

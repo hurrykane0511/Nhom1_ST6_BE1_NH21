@@ -31,6 +31,7 @@
           background: $white;
           a {
             color: $nav_clr;
+           
           }
           a::before,
           a::after {
@@ -59,6 +60,7 @@
           display: flex;
           text-decoration: none;
           color: $white;
+          font-size: 18px;
           .logo {
             font-size: 1.5em;
           }

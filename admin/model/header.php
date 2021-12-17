@@ -20,7 +20,7 @@
             <span class="icon">
               <ion-icon name="cloudy-outline"></ion-icon>
             </span>
-            <span class="title logo">The Fragance Shop</span>
+            <span class="title logo">Shop</span>
           </a>
         </li>
         <li class="hovered">

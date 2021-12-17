@@ -155,7 +155,7 @@ $ctg = new categories();
 
                 <div class="display-product">
                     <div class="display-product__inner">
-
+                        
                     </div>
                 </div>
                 <div class="content_detail__pagination">

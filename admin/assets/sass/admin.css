@@ -55,7 +55,7 @@ body {
 }
 .product-panel h2,
 .categories-panel h2 {
-  color: #f368e0;
+  color: #4889c2;
 }
 .product-panel table,
 .categories-panel table {
@@ -96,7 +96,7 @@ body {
 }
 .product-panel table tbody tr:hover,
 .categories-panel table tbody tr:hover {
-  background: #f368e0;
+  background: #4889c2;
   color: #fff;
 }
 .product-panel table tbody tr:hover a,
@@ -177,158 +177,6 @@ body {
   grid-template-columns: 1fr 1fr !important;
 }
 
-.back-cover {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.d-flex {
-  display: flex;
-  flex-direction: row;
-  background: #f6f6f6;
-  border-radius: 0 0 5px 5px;
-  padding: 25px;
-}
-
-form {
-  flex: 4;
-}
-
-.Yorder {
-  flex: 2;
-  margin-top: 15px;
-  height: 600px;
-  padding: 20px;
-  border: 1px solid #dadada;
-}
-.Yorder > div {
-  padding: 15px 0;
-}
-
-.title {
-  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
-  border-radius: 5px 5px 0 0;
-  padding: 20px;
-  color: #f6f6f6;
-}
-
-h2 {
-  margin: 0;
-  padding-left: 15px;
-}
-
-.required {
-  color: red;
-}
-
-label {
-  display: block;
-  margin: 15px;
-}
-label > span {
-  float: left;
-  width: 25%;
-  margin-top: 12px;
-  padding-right: 10px;
-}
-
-table {
-  display: block;
-  margin: 15px;
-  margin: 0;
-  padding: 0;
-}
-
-input[type=text] {
-  width: 70%;
-  height: 30px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border: 1px solid #dadada;
-  color: #888;
-}
-
-input[type=tel] {
-  width: 70%;
-  height: 30px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border: 1px solid #dadada;
-  color: #888;
-}
-
-input[type=email] {
-  width: 70%;
-  height: 30px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border: 1px solid #dadada;
-  color: #888;
-}
-
-select {
-  width: 70%;
-  height: 30px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  border: 1px solid #dadada;
-  color: #888;
-  width: 72%;
-  height: 45px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-}
-
-th {
-  border-bottom: 1px solid #dadada;
-  padding: 10px 0;
-}
-
-tr > td:nth-child(1) {
-  text-align: left;
-  color: #2d2d2a;
-}
-tr > td:nth-child(2) {
-  text-align: right;
-  color: #52ad9c;
-}
-
-td {
-  border-bottom: 1px solid #dadada;
-  padding: 25px 25px 25px 0;
-}
-
-p {
-  display: block;
-  color: #888;
-  margin: 0;
-  padding-left: 25px;
-}
-
-button {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 30px;
-  background: #52ad9c;
-  color: #fff;
-  font-size: 15px;
-  font-weight: bold;
-}
-button:hover {
-  cursor: pointer;
-  background: #428a7d;
-}
-
-@media (max-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
 .navigation.active {
   width: var(--nav-toggle-width);
 }
@@ -337,8 +185,8 @@ button:hover {
   position: fixed;
   width: var(--nav-width);
   height: 100%;
-  background: #f368e0;
-  border-left: 10px solid #f368e0;
+  background: #4889c2;
+  border-left: 10px solid #4889c2;
   transition: 0.5s;
   overflow: hidden;
 }
@@ -363,7 +211,7 @@ button:hover {
   background: #fff;
 }
 .navigation ul li.hovered a, .navigation ul li:hover a {
-  color: #f368e0;
+  color: #4889c2;
 }
 .navigation ul li.hovered a::before,
 .navigation ul li.hovered a::after, .navigation ul li:hover a::before,
@@ -392,6 +240,7 @@ button:hover {
   display: flex;
   text-decoration: none;
   color: #fff;
+  font-size: 18px;
 }
 .navigation ul li a .logo {
   font-size: 1.5em;
@@ -417,6 +266,75 @@ button:hover {
   white-space: nowrap;
 }
 
+#admin-login-form form {
+  width: 280px;
+  height: 260px;
+  margin: 200px auto;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding-top: 30px;
+}
+#admin-login-form form.register {
+  /* Register form height */
+  height: 420px;
+}
+#admin-login-form form h2 {
+  color: #5ba7e9;
+}
+#admin-login-form form .text-field {
+  /* Input fields; Username, Password etc. */
+  border: 1px solid #a6a6a6;
+  width: 230px;
+  height: 40px;
+  border-radius: 3px;
+  margin-top: 10px;
+  padding-left: 10px;
+  color: #6c6c6c;
+  background: #fcfcfc;
+  outline: none;
+}
+#admin-login-form form .text-field:focus {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+  color: #a6a6a6;
+  background: white;
+}
+#admin-login-form form .button {
+  /* Submit button */
+  border-radius: 3px;
+  border: 1px solid #336895;
+  box-shadow: inset 0 1px 0 #8dc2f0;
+  width: 242px;
+  height: 40px;
+  margin-top: 20px;
+  background: linear-gradient(bottom, #4889c2 0%, #5ba7e9 100%);
+  background: -o-linear-gradient(bottom, #4889c2 0%, #5ba7e9 100%);
+  background: -moz-linear-gradient(bottom, #4889c2 0%, #5ba7e9 100%);
+  background: -webkit-linear-gradient(bottom, #4889c2 0%, #5ba7e9 100%);
+  background: -ms-linear-gradient(bottom, #4889c2 0%, #5ba7e9 100%);
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 #336895;
+  font-size: 13px;
+}
+#admin-login-form form .button:hover {
+  background: linear-gradient(bottom, #5c96c9 0%, #6bafea 100%);
+  background: -o-linear-gradient(bottom, #5c96c9 0%, #6bafea 100%);
+  background: -moz-linear-gradient(bottom, #5c96c9 0%, #6bafea 100%);
+  background: -webkit-linear-gradient(bottom, #5c96c9 0%, #6bafea 100%);
+  background: -ms-linear-gradient(bottom, #5c96c9 0%, #6bafea 100%);
+}
+#admin-login-form form .button:active {
+  background: linear-gradient(bottom, #5ba7e9 0%, #4889c2 100%);
+  background: -o-linear-gradient(bottom, #5ba7e9 0%, #4889c2 100%);
+  background: -moz-linear-gradient(bottom, #5ba7e9 0%, #4889c2 100%);
+  background: -webkit-linear-gradient(bottom, #5ba7e9 0%, #4889c2 100%);
+  background: -ms-linear-gradient(bottom, #5ba7e9 0%, #4889c2 100%);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3), 0 1px 0 white;
+}
+
 .main.active {
   width: calc(100% - var(--nav-toggle-width));
   left: var(--nav-toggle-width);
@@ -437,7 +355,7 @@ button:hover {
   margin-top: 60px;
 }
 .main .topbar.scrolling {
-  background: #f368e0;
+  background: #4889c2;
 }
 .main .topbar {
   width: calc(100% - var(--nav-width));
@@ -552,7 +470,7 @@ button:hover {
   position: relative;
   font-weight: 500;
   font-size: 2.5em;
-  color: #f368e0;
+  color: #4889c2;
 }
 .main .cardBox .card .cardName {
   font-size: 1.1em;
@@ -564,7 +482,7 @@ button:hover {
   color: #999;
 }
 .main .cardBox .card:hover {
-  background: #f368e0;
+  background: #4889c2;
 }
 .main .cardBox .card:hover .numbers,
 .main .cardBox .card:hover .cardName,
@@ -596,12 +514,12 @@ button:hover {
 }
 .main .details .recentOrders .cardHeader h2 {
   font-weight: 600;
-  color: #f368e0;
+  color: #4889c2;
 }
 .main .details .recentOrders .cardHeader .btn {
   position: relative;
   padding: 5px 10px;
-  background: #f368e0;
+  background: #4889c2;
   text-decoration: none;
   color: #fff;
   border-radius: 6px;
@@ -615,7 +533,7 @@ button:hover {
   font-weight: 600;
 }
 .main .details .recentOrders .ordersTable tbody tr:hover {
-  background: #f368e0;
+  background: #4889c2;
   color: #fff;
 }
 .main .details .recentOrders .ordersTable tbody tr {
@@ -693,7 +611,7 @@ button:hover {
   object-fit: cover;
 }
 .main .details .recentCustomers tr:hover {
-  background: #f368e0;
+  background: #4889c2;
   color: #fff;
 }
 .main .details .recentCustomers td {
