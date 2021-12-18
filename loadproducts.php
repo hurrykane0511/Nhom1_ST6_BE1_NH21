@@ -71,9 +71,9 @@ if (isset($_GET['page'])) {
 
     if (isset($_GET['min'])) {
         if ($where != '') {
-            $where .= ' AND (' . '(regular_price - (regular_price/100)*sales_price)>' . ' ? ' . ')';
+            $where .= ' AND (' . '(regular_price - (regular_price/100)*sales_price)>=' . ' ? ' . ')';
         } else {
-            $where .= ' (' . '(regular_price - (regular_price/100)*sales_price)>' . ' ? ' . ')';
+            $where .= ' (' . '(regular_price - (regular_price/100)*sales_price)>=' . ' ? ' . ')';
         }
         $bind .= 'i';
         $finalArr[] =  intval($_GET['min']);
@@ -83,9 +83,9 @@ if (isset($_GET['page'])) {
 
     if (isset($_GET['max'])) {
         if ($where != '') {
-            $where .= ' AND (' . '(regular_price - (regular_price/100)*sales_price)<' . ' ? ' . ')';
+            $where .= ' AND (' . '(regular_price - (regular_price/100)*sales_price)<=' . ' ? ' . ')';
         } else {
-            $where .= '(' . '(regular_price - (regular_price/100)*sales_price)<' . ' ? ' . ')';
+            $where .= '(' . '(regular_price - (regular_price/100)*sales_price)<=' . ' ? ' . ')';
         }
 
         $bind .= 'i';

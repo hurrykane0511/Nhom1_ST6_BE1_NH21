@@ -1,87 +1,102 @@
 <?php
-include '../model/config.php';
-include '../model/dbconnect.php';
-include '../model/perfume.php';
-include '../model/categories.php';
-include '../model/brand.php';
-$cg = new categories();
-$pf = new Perfume();
-$brands = new Brand();
-if (!isset($_POST['addbrand'])) exit();
-$vars = array(
-    'brand_name',
-    'brand_image'
-);
-$verified = TRUE;
+session_start();
+include './template/header.php';
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php?rs=3');
+}
+?>
 
-foreach ($vars as $v) {
-    if (!isset($_POST[$v]) || empty($_POST[$v])) {
-        $verified = FALSE;
+<div id="form-addproduct">
+    <form action="process.php" method="POST" enctype="multipart/form-data" class="form-add-product">
+        <h2>Add Brand Form</h2>
+        <div class="form-body">
+
+            <div class="drop-zone">
+                <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                <input type="file" name="image" class="drop-zone__input" accept="image/png, image/gif, image/jpeg" multiple>
+            </div>
+            <div class="content">
+                <label>
+                    Brand's name:
+                    <input type="text" name="brand_name">
+                </label>
+            </div>
+        </div>
+        <button type="submit" name="addbrand" class="addproduct">Add brand</button>
+    </form>
+</div>
+
+<script>
+    document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+        const dropZoneElement = inputElement.closest(".drop-zone");
+
+        dropZoneElement.addEventListener("click", (e) => {
+            inputElement.click();
+        });
+
+        inputElement.addEventListener("change", (e) => {
+            if (inputElement.files.length) {
+                updateThumbnail(dropZoneElement, inputElement.files[0]);
+            }
+        });
+
+        dropZoneElement.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropZoneElement.classList.add("drop-zone--over");
+        });
+
+        ["dragleave", "dragend"].forEach((type) => {
+            dropZoneElement.addEventListener(type, (e) => {
+                dropZoneElement.classList.remove("drop-zone--over");
+            });
+        });
+
+        dropZoneElement.addEventListener("drop", (e) => {
+            e.preventDefault();
+
+            if (e.dataTransfer.files.length) {
+                inputElement.files = e.dataTransfer.files;
+                updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+            }
+
+            dropZoneElement.classList.remove("drop-zone--over");
+        });
+    });
+
+    /**
+     * Updates the thumbnail on a drop zone element.
+     *
+     * @param {HTMLElement} dropZoneElement
+     * @param {File} file
+     */
+    function updateThumbnail(dropZoneElement, file) {
+        let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+
+        // First time - remove the prompt
+        if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+            dropZoneElement.querySelector(".drop-zone__prompt").remove();
+        }
+
+        // First time - there is no thumbnail element, so lets create it
+        if (!thumbnailElement) {
+            thumbnailElement = document.createElement("div");
+            thumbnailElement.classList.add("drop-zone__thumb");
+            dropZoneElement.appendChild(thumbnailElement);
+        }
+
+        thumbnailElement.dataset.label = file.name;
+
+        // Show thumbnail for image files
+        if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+            };
+        } else {
+            thumbnailElement.style.backgroundImage = null;
+        }
     }
-    echo $_POST[$v] . '<br>';
-}
-
-if (!$verified) {
-    echo "Invalid input";
-    exit();
-}
-$rs = $brands->InsertBrand(
-    $_POST['brand_name'],
-    $_POST['brand_image']
-);
-
-if ($rs) {
-    echo "insert thanhcong";
-} else {
-    echo "insert thatbai";
-}
-
-$target_dir = "../assets/images/brands";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-// Check if image file is a actual image or fake image
-
-$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-if ($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-} else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-}
-
-
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-
-// Allow certain file formats
-if (
-    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif"
-) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
+</script>
+<?php include './template/footer.php' ?>

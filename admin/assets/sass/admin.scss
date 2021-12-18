@@ -4,8 +4,8 @@
 @import "./include/product.scss";
 @import "./include/navigation.scss";
 @import "./include/login.scss";
-
-
+@import "./include/addproduct.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
 .main.active {
   width: calc(100% - var(--nav-toggle-width));
   left: var(--nav-toggle-width);
