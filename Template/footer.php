@@ -5,7 +5,7 @@
     <div class="footer-wrap">
         <h2 class="footer-title">Join us</h2>
         <p>We will let you know when we have new arrivals, events and promo's don't worry we send them infrequently, just a friendly hi now and again!</p>
-        <form class="subscribe-frm" action="">
+        <form action="subscribe.php" method="POST" class="subscribe-frm">
             <input type="text" name="email" id="email" placeholder="Enter your email">
             <button type="submit" name="subscribe" class="btn-sb">
                 <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-email" viewBox="0 0 64 64">
