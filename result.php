@@ -56,7 +56,7 @@ $ctg = new categories();
                                     <label>
                                         <input type="radio" name="sort" onchange="loadProduct();" value="regular_price ASC">
                                         <i></i>
-                                        <span class="label">Price from high to low</span>
+                                        <span class="label">Price from low to high</span>
                                     </label>
                                 </li>
                             </ul>
@@ -68,7 +68,7 @@ $ctg = new categories();
                                 ?>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="brand[]" onchange="loadProduct()" value="<?= $row['brand_name'] ?>">
+                                            <input type="checkbox" name="brand[]" <?= isset($_GET['brand_name']) && $_GET['brand_name'] == $row['brand_name'] ? "checked" : "" ?> onchange="loadProduct()" value="<?= $row['brand_name'] ?>">
                                             <i></i>
                                             <span class="label"><?= $row['brand_name'] ?></span>
                                         </label>
