@@ -17,12 +17,14 @@ $brand = new Brand;
   <div class="wraper">
     <div class="wrap">
       <div class="visual">
+        
         <?= include './Template/header.php' ?>
 
         <div class="-scroll">
           <span class="-border"></span>
           <span class="-text">SCROLL</span>
         </div>
+
         <a href="#" class="-move">
           <span>Click Move</span>
           <div class="-circle">

@@ -26,6 +26,15 @@ class categories extends Db
 
         return $sql->execute();
     }
+    public function InsertRange($type_name)
+    {
+        $sql = self::$connection->prepare("INSERT INTO tbl_range
+        (`range_name`) 
+        VALUES(?)");
+        $sql->bind_param("s", $type_name);
+
+        return $sql->execute();
+    }
     public function delType($id)
     {
         $sql = self::$connection->prepare("DELETE FROM `tbl_type` WHERE `id` = ?");

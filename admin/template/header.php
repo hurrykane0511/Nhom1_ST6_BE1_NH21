@@ -1,4 +1,5 @@
 <?php
+
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
@@ -20,6 +21,7 @@ $brands = new Brand();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin panel</title>
   <link rel="stylesheet" href="./assets/sass/admin.css" />
+  <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -108,13 +110,7 @@ $brands = new Brand();
           <ion-icon name="menu-outline"></ion-icon>
         </div>
 
-        <!-- search-box -->
-        <div class="search">
-          <label>
-            <input type="text" placeholder="Search here" />
-            <ion-icon name="search-outline"></ion-icon>
-          </label>
-        </div>
+
 
         <!-- user-box -->
         <div class="user">

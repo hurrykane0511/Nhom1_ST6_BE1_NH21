@@ -1,10 +1,28 @@
 <?php
+session_start();
+if (isset($_GET['addrs'])) {
+
+    if ($_GET['addrs'] == 1) {
+        echo "<script>alert('Add data successfully !!');</script>'";
+    } else {
+        echo "<script>alert('Add data failed !!');</script>";
+    }
+}
+
+if (isset($_GET['delrs'])) {
+    if ($_GET['delrs'] == 1) {
+        echo "<script>alert('Delete data successfully !!');</script>";
+    } else {
+        echo "<script>alert('Delete data failed !!');</script>";
+    }
+}
+
 include './template/header.php';
 if (!isset($_SESSION['admin'])) {
     header('location: login.php');
 }
-?>
 
+?>
 <div class="wraper">
     <div class="product-panel">
         <div class="product-table">
@@ -36,7 +54,7 @@ if (!isset($_SESSION['admin'])) {
                                 <td class="r"><?= $row['sales_price'] == null ? "none" : "£ " . $row['sales_price'] ?></td>
                                 <td class="r"><?= $row['capacity'] ?></td>
                                 <td class="status r"><?= $row['status'] == 1 ? "available" : "sold out" ?></td>
-                                <td class="c"><a href="#" class="del">
+                                <td class="c"><a href="del.php?delpf=<?= $row['pf_id'] ?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
                                 <td class="c"><a href="#" class="edit">
@@ -48,7 +66,7 @@ if (!isset($_SESSION['admin'])) {
                     </tbody>
                 </table>
             </div>
-            <a href="#" class="add-btn">Add product <ion-icon name="add-circle-outline"></ion-icon></a>
+            <a href="addproduct.php" class="add-btn">Add product <ion-icon name="add-circle-outline"></ion-icon></a>
         </div>
 
         <div class="brand-table">
@@ -70,7 +88,7 @@ if (!isset($_SESSION['admin'])) {
                             <tr>
                                 <td><?= $row['brand_id'] ?></td>
                                 <td><?= $row['brand_name'] ?></td>
-                                <td class="c"><a href="delbrand.php?id=<?php echo $row['brand_id'] ?>" class="del">
+                                <td class="c"><a href="del.php?delbr=<?php echo $row['brand_id'] ?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
                                 <td class="c"><a href="#" class="edit">
@@ -82,7 +100,7 @@ if (!isset($_SESSION['admin'])) {
                     </tbody>
                 </table>
             </div>
-            <a href="#" class="add-btn">Add Brand <ion-icon name="add-circle-outline"></ion-icon></a>
+            <a href="addbrand.php" class="add-btn">Add Brand <ion-icon name="add-circle-outline"></ion-icon></a>
         </div>
     </div>
     <div class="categories-panel">
@@ -117,7 +135,7 @@ if (!isset($_SESSION['admin'])) {
                     </tbody>
                 </table>
             </div>
-            <a href="#" class="add-btn">Add Type <ion-icon name="add-circle-outline"></ion-icon></a>
+            <a href="addtype.php" class="add-btn">Add Type <ion-icon name="add-circle-outline"></ion-icon></a>
         </div>
         <div class="range-table">
             <h2>Range table</h2>
@@ -150,9 +168,12 @@ if (!isset($_SESSION['admin'])) {
                     </tbody>
                 </table>
             </div>
-            <a href="#" class="add-btn">Add Range <ion-icon name="add-circle-outline"></ion-icon></a>
+            <a href="addrange.php" class="add-btn">Add Range <ion-icon name="add-circle-outline"></ion-icon></a>
         </div>
     </div>
 </div>
 
 <?php include './template/footer.php';
+
+
+?>

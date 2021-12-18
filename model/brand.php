@@ -25,7 +25,7 @@ class Brand extends Db{
     }
     function getAllBrandLiMit()
     {
-        $sql = self::$connection->prepare("SELECT * FROM tbl_brand LIMIT 10");
+        $sql = self::$connection->prepare("SELECT * FROM tbl_brand LIMIT 15");
         $sql->execute();
         $brands = array();
         $brands = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

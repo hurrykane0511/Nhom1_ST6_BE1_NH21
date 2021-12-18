@@ -1,34 +1,33 @@
 <?php
 session_start();
-include '../model/config.php';
-include '../model/dbconnect.php';
+include './template/header.php';
 include '../model/user.php';
 
 if (!isset($_SESSION['admin'])) {
-
-  header('location: login.php');
-  $user = new User();
-  if(!isset($_POST['submit'])){
-    header("location: login.php?rs=failed");
-  }
-  if (isset($_POST['username']) && isset($_POST['password'])) {
-    $profile = $user->adminLogin($_POST['username'], $_POST['passowrd']);
-    if ($profile != null) {
-      $_SESSION['admin'] = 
-      [
-        'username' => $profile['idadmin'],
-        'password' => $profile['password'],
-        'email' => $profile['email'],
-        'name' => $profile['name']
-      ];
+  if (isset($_POST["admin-login"])) {
+    if (empty($_POST["username"]) || empty($_POST["password"])) {
+      header("location: login.php?rs=2");
+    } 
+    else 
+    {
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+      $user = new User();
+      echo $username.$password;
+      $admin = $user->adminLogin($username, $password);
+      if($admin){
+        $_SESSION['admin'] = $admin;
+      }
+      else{
+        header("location: login.php?rs=1");
+      }
     }
-    else{
-      header("location: login.php?rs=failed");
-    }
+  } else {
+    header('location: login.php?rs=3');
   }
 }
 
-include './template/header.php'; ?>
+?>
 
 <div class="wraper">
   <div class="cardBox">

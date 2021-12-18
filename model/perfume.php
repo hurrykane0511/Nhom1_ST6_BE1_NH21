@@ -13,26 +13,20 @@ class Perfume extends Db
         $range,
         $regular_price,
         $sales_price,
-        $status,
-        $create_at,
-        $qty,
-        $image_src,
+        $image,
         $description
     ) {
         $sql = self::$connection->prepare("INSERT INTO tbl_perfume
-        (`pf_name`,`gender`,`regular_price`,`description`,`created_at`,`image`,`brand_id`,`status`,`sales_qty`,`capacity`,`sales_price`,`type_id`,`range_id`) 
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        (`pf_name`,`gender`,`regular_price`,`description`,`image`,`brand_id`,`capacity`,`sales_price`,`type_id`,`range_id`) 
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $sql->bind_param(
-            "ssdsssiiiidii",
+            "ssdssiidii",
             $itemName,
             $gender,
             $regular_price,
-            $description,
-            $create_at,
-            $image_src,
+            $description,  
+            $image,
             $brand,
-            $status,
-            $qty,
             $capacity,
             $sales_price,
             $type,
@@ -54,7 +48,7 @@ class Perfume extends Db
     function getTopSell()
     {
         try {
-            $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sales_qty` DESC limit 10");
+            $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by `sales_qty` desc limit 10");
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -116,35 +110,10 @@ class Perfume extends Db
     public function delproduct($id)
     {
         try {
-            $sql = self::$connection->prepare("DELETE FROM `products` WHERE `id`=? ");
-            $sql->bind_param("i",$id);
+            $sql = self::$connection->prepare("DELETE FROM `tbl_perfume` WHERE `pf_id`= ? ");
+            $sql->bind_param("i",intval($id));
           
             return $sql->execute(); //return an array
-        } catch (mysqli_sql_exception $e) {
-            echo "Lỗi: " . $e;
-        }
-    }
-    function getNewProduct()
-    {
-        try {
-            $sql = self::$connection->prepare("select * from `tbl_perfume` left join `tbl_brand` on tbl_perfume.`brand_id`=`tbl_brand`.`brand_id` order by  `created_at` DESC limit 10");
-            $sql->execute();
-            $items = array();
-            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items;
-        } catch (mysqli_sql_exception $e) {
-            echo "Lỗi: " . $e;
-        }
-    }
-    function getPerfumeRalated($id_brand)
-    {
-        try {
-            $sql = self::$connection->prepare("SELECT *  FROM `tbl_perfume` join tbl_brand on tbl_perfume.brand_id = tbl_brand.brand_id where tbl_perfume.`brand_id` = ?");
-            $sql->bind_param('i', $id_brand);
-            $sql->execute();
-            $items = array();
-            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items;
         } catch (mysqli_sql_exception $e) {
             echo "Lỗi: " . $e;
         }

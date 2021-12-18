@@ -48,15 +48,16 @@ class User extends Db
             $sql = self::$connection->prepare("SELECT * FROM `admin` WHERE ? = `idadmin` and `password` = ?");
 
             $username = mysqli_real_escape_string(self::$connection, $user);
-            $password = md5($pass);
-
-            $sql->bind_param("ss", $username, $password);
+            $password = mysqli_real_escape_string(self::$connection, $pass);
+            $password1 = md5($password);
+            
+            $sql->bind_param("ss", $username, $password1);
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items[0];
+            return $items;
 
-        } catch (Exception $e) {
+        } catch(Exception $e) {
             
         }
     }
