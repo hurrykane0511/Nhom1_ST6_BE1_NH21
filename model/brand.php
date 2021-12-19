@@ -2,7 +2,7 @@
 class Brand extends Db{
     function getAllBrand()
     {
-        $sql = self::$connection->prepare("SELECT * FROM tbl_brand ");
+        $sql = self::$connection->prepare("SELECT * FROM tbl_brand order by brand_id desc");
         $sql->execute();
         $brands = array();
         $brands = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -14,6 +14,15 @@ class Brand extends Db{
         ( `brand_name`, `brand_image`) 
         VALUES(?,?)");
         $sql->bind_param("ss", $brand_name,$brand_image);
+
+        return $sql->execute();
+    }
+
+    public function Update($brand_name,$brand_image, $brand_id)
+    {
+        $sql = self::$connection->prepare("UPDATE `tbl_brand` set 
+        `brand_name` = ?, `brand_image` = ? where brand_id = ?");
+        $sql->bind_param("ssi", $brand_name,$brand_image, $brand_id);
 
         return $sql->execute();
     }

@@ -11,6 +11,11 @@ define( 'PORT', 3306);
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
+define('EMAILID', 'shopfragrance0@gmail.com');
+
+define('PASSWORD', '12345shop');
+
+
 if (!function_exists('array_group_by')) {
 	/**
 	 * Groups an array by a given key.

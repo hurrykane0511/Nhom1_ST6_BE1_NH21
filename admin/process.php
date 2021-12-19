@@ -129,9 +129,9 @@ if (isset($_POST['addbrand'])) {
     $verified = TRUE;
 
     if (!isset($_POST['brand_name']) || empty($_POST['brand_name'])) {
+        echo "<script>alert('Empty field's name.');history.go(-1);</script>";
+        exit();
     }
-
-
 
     $target_dir = "../assets/images/brands/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);

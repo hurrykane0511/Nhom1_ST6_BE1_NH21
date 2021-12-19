@@ -62,7 +62,7 @@ if (!isset($_SESSION['admin'])) {
                     </select>
                 </label>
                 <label>
-                    Brand:
+                    Range:
                     <select name="range">
                         <?php
                         foreach ($ct->getAllRange() as $row) {

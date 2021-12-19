@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin'])) {
             <div class="content">
                 <label>
                     Type's name:
-                    <input type="text" name="range_name">
+                    <input type="text" name="type_name">
                 </label>
             </div>
         </div>

@@ -1,27 +1,7 @@
 <?php
 session_start();
-if (isset($_GET['addrs'])) {
-
-    if ($_GET['addrs'] == 1) {
-        echo "<script>alert('Add data successfully !!');</script>'";
-    } else {
-        echo "<script>alert('Add data failed !!');</script>";
-    }
-}
-
-if (isset($_GET['delrs'])) {
-    if ($_GET['delrs'] == 1) {
-        echo "<script>alert('Delete data successfully !!');</script>";
-    } else {
-        echo "<script>alert('Delete data failed !!');</script>";
-    }
-}
 
 include './template/header.php';
-if (!isset($_SESSION['admin'])) {
-    header('location: login.php');
-}
-
 ?>
 <div class="wraper">
     <div class="product-panel">
@@ -57,7 +37,7 @@ if (!isset($_SESSION['admin'])) {
                                 <td class="c"><a href="del.php?delpf=<?= $row['pf_id'] ?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
-                                <td class="c"><a href="#" class="edit">
+                                <td class="c"><a href="updatepd.php?pf_id=<?= $row['pf_id']  ?>" class="edit">
                                         <ion-icon name="create-outline"></ion-icon>
                                     </a></td>
                             </tr>
@@ -91,7 +71,7 @@ if (!isset($_SESSION['admin'])) {
                                 <td class="c"><a href="del.php?delbr=<?php echo $row['brand_id'] ?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
-                                <td class="c"><a href="#" class="edit">
+                                <td class="c"><a href="updatebrand.php?brand_id=<?= $row['brand_id'] ?>" class="edit">
                                         <ion-icon name="create-outline"></ion-icon>
                                     </a></td>
                             </tr>
@@ -123,10 +103,10 @@ if (!isset($_SESSION['admin'])) {
                             <tr>
                                 <th><?= $row['type_id'] ?></th>
                                 <th><?= $row['type_name'] ?></th>
-                                <td class="c"><a href="#" class="del">
+                                <td class="c"><a href="del.php?deltype=<?= $row['type_id'] ?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
-                                <td class="c"><a href="#" class="edit">
+                                <td class="c"><a href="updatetype.php?type_id=<?= $row['type_id'] ?>" class="edit">
                                         <ion-icon name="create-outline"></ion-icon>
                                     </a></td>
                             </tr>
@@ -156,10 +136,10 @@ if (!isset($_SESSION['admin'])) {
                             <tr>
                                 <td><?= $row['range_id'] ?></td>
                                 <td><?= $row['range_name'] ?></td>
-                                <td class="c"><a href="#" class="del">
+                                <td class="c"><a href="del.php?delrange=<?=$row['range_id']?>" class="del">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </a></td>
-                                <td class="c"><a href="#" class="edit">
+                                <td class="c"><a href="updaterange.php?range_id=<?= $row['range_id'] ?>" class="edit">
                                         <ion-icon name="create-outline"></ion-icon>
                                     </a></td>
                             </tr>
@@ -174,6 +154,32 @@ if (!isset($_SESSION['admin'])) {
 </div>
 
 <?php include './template/footer.php';
+if (isset($_GET['addrs'])) {
 
+    if ($_GET['addrs'] == 1) {
+        echo "<script>alert('Add data successfully !!');</script>";
+    } else {
+        echo "<script>alert('Add data failed !!');</script>";
+    }
+}
+
+if (isset($_GET['delrs'])) {
+    if ($_GET['delrs'] == 1) {
+        echo "<script>alert('Delete data successfully !!');</script>";
+    } else {
+        echo "<script>alert('Delete data failed !!');</script>";
+    }
+}
+if (isset($_GET['uprs'])) {
+    if ($_GET['uprs'] == 1) {
+        echo "<script>alert('Update data successfully !!');</script>";
+    } else {
+        echo "<script>alert('Update data failed !!');</script>";
+    }
+}
+
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php');
+}
 
 ?>

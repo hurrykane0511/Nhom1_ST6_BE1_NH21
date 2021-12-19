@@ -1,15 +1,59 @@
 <?php
-if(isset($_GET['subscribe'])){
-$to       = $_GET['email'];
-$subject  = 'test mail';
-$message  = 'Hi, Thank you for subscribing. You will receive a notification from the Fragrange Shop';
-$headers  = 'From: shopfragrance0@gmail.com' . "\r\n" .
-            'MIME-Version: 1.0' . "\r\n" .
-            'Content-type: text/html; charset=utf-8';
-if(mail($to, $subject, $message, $headers))
-    echo "Email sent";
-else
-    echo "Email sending failed";
+include './model/config.php';
+require './phpmailer/PHPMailerAutoload.php';
+include './model/dbconnect.php';
+include './model/subscribe.php';
+
+$sb = new Subscriber;
+
+if (isset($_POST['subscribe'])) {
+    try {
+        $sb->InsertSB($_POST['email']);
+    } catch (Exception $th) {
+    }
 }
 
-?>
+
+if (isset($_POST['subscribe'])) {
+
+    $to       = $_POST['email'];
+    $subject  = 'test mail';
+    $message  = 'Hi, Thank you for subscribing. You will receive a notification from the Fragrange Shop';
+    $mail = new PHPMailer;
+
+    // Enable verbose debug output
+
+    try {
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;                            // Enable SMTP authentication
+        $mail->Username = EMAILID;                 // SMTP username
+        $mail->Password = PASSWORD;                           // SMTP password
+        $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
+        $mail->setFrom(EMAILID, "Thai Son");
+        $mail->addAddress($to);     // Add a recipient
+        $mail->IsSMTP(true);
+        $mail->addReplyTo(EMAILID);
+        $mail->SMTPDebug = 3;
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+        // $mail->AltBody = $headers;  
+
+        if (!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            $smarty->assign("variables", $_POST);
+            $smarty->display("register_error.php");
+            exit;
+        }
+    } catch (Exception $th) {
+    }
+}

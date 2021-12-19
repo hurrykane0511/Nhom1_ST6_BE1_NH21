@@ -13,7 +13,6 @@ if (!isset($_SESSION['admin'])) {
       $username = $_POST["username"];
       $password = $_POST["password"];
       $user = new User();
-      echo $username.$password;
       $admin = $user->adminLogin($username, $password);
       if($admin){
         $_SESSION['admin'] = $admin;

@@ -18,6 +18,14 @@ if (isset($_GET['delbr']) && !empty($_GET['delbr'])) {
     $rs = $brands->delBrand($_GET['delbr']);
 }
 
+if (isset($_GET['deltype']) && !empty($_GET['deltype'])) {
+    $rs = $cg->delType($_GET['deltype']);
+}
+
+if (isset($_GET['delrange']) && !empty($_GET['delrange'])) {
+    $rs = $cg->delRange($_GET['delrange']);
+}
+
 if ($rs) {
     header('location: product.php?delrs=1');
 } else {
