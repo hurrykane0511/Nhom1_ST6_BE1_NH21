@@ -65,7 +65,7 @@ if (!empty($_SESSION['cart'])) {
   <div class="cart__scrollable">
     <div class="cart-items">
       <?php foreach ($sp_cart as $key => $item) {
-        $item['sales_price'] != null ? $price =  $item['sales_price'] : $price = $item['regular_price'];
+        $item['sales_price'] != 0 ? $price =  $item['regular_price'] - (($item['regular_price']/100)*10) : $item['regular_price'];
         $total += $price  * $item['quantity'];
       ?>
         <div class="cart-item">
@@ -78,9 +78,9 @@ if (!empty($_SESSION['cart'])) {
               <span class="capacity"><?php echo $item['capacity'] ?></span>/
               <span class="price">
                 <?php
-                if ($item['sales_price'] != null) {
+                if ($item['sales_price'] != 0) {
                 ?>
-                  <del>£<?= $item['sales_price'] ?></del>&emsp;<big>£<?= $item['regular_price'] ?></big>
+                  <del>£<?= $item['regular_price'] ?></del>&emsp;<big>£<?= $item['regular_price'] - (($item['regular_price']/100)*10) ?></big>
                 <?php
                 } else {
                 ?>
