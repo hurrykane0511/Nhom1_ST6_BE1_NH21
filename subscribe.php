@@ -47,11 +47,9 @@ if (isset($_POST['subscribe'])) {
         // $mail->AltBody = $headers;  
 
         if (!$mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            
         } else {
-            $smarty->assign("variables", $_POST);
-            $smarty->display("register_error.php");
+            
             exit;
         }
     } catch (Exception $th) {

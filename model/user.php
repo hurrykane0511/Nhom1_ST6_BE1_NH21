@@ -2,24 +2,36 @@
 
 class User extends Db
 {
-    public function Login($email, $password)
+    public function Login($email, $pass)
     {
         try {
+
             $sql = self::$connection->prepare("SELECT * FROM `tbl_user` WHERE ? = `email` and ? = `password`");
-            $sql->bind_param("ss", $email, $password);
+            $pass1 = mysqli_real_escape_string(self::$connection, $pass);
+            $email1 = mysqli_real_escape_string(self::$connection, $email);
+            $password = md5($pass1);
+
+            $sql->bind_param("ss", $email1, $password);
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items[0];
+            return $items;
+
         } catch (Exception $e) {
-            return null;
+            return false;
         }
     }
-    public function AccessAccount($firstname, $lastname, $email, $password)
+    public function AccessAccount($first, $last, $email1, $pass)
     {
         try {
             $sql = self::$connection->prepare("INSERT INTO `tbl_user` (`firstname`, `lastname`, `password`, `email`) 
         VALUES ( ?, ?, ?, ?);");
+            $firstname = mysqli_real_escape_string(self::$connection, $first);
+            $lastname = mysqli_real_escape_string(self::$connection, $last);
+            $email = mysqli_real_escape_string(self::$connection, $email1);
+            $pass1 = mysqli_real_escape_string(self::$connection, $pass);
+
+            $password = md5($pass1);
             $sql->bind_param("ssss", $firstname, $lastname,  $password, $email);
             return $sql->execute();
         } catch (Exception $e) {

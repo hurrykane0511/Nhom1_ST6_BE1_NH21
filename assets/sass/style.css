@@ -705,7 +705,7 @@ button {
 
 #cart-container {
   font-family: "Montserrat", sans-serif;
-  transition: transform 0.5s ease-in;
+  transition: transform 0.2s ease-in;
   z-index: 999;
   --padding-cart: 40px;
   position: fixed;
@@ -1034,6 +1034,148 @@ button {
   line-height: 30px;
 }
 
+.checkout-container {
+  min-height: 100vh;
+  font-family: "Roboto Condensed", sans-serif;
+  width: 100%;
+  background: #fff;
+}
+@media (max-width: 1200px) {
+  .checkout-container .container {
+    max-width: 1140px;
+  }
+}
+.checkout-container form {
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+  max-width: 1222px;
+  margin: auto;
+  height: 100vh;
+}
+.checkout-container .form {
+  flex: 4;
+}
+.checkout-container .Yorder {
+  flex: 2;
+}
+.checkout-container .title {
+  padding: 20px;
+  color: #fff;
+  font-size: 2.7rem;
+  max-width: 1222px;
+  display: block;
+  margin: auto;
+  background: #131313;
+}
+.checkout-container h2 {
+  margin: 0;
+  padding-left: 15px;
+}
+.checkout-container .required {
+  color: red;
+}
+.checkout-container label,
+.checkout-container table {
+  display: block;
+  margin: 15px;
+}
+.checkout-container label > span {
+  float: left;
+  width: 25%;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+.checkout-container input[type=text],
+.checkout-container input[type=tel],
+.checkout-container input[type=email],
+.checkout-container select {
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+.checkout-container select {
+  height: 45px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.checkout-container .Yorder {
+  margin-top: 15px;
+  height: 600px;
+  padding: 20px;
+  border: 1px solid #dadada;
+}
+.checkout-container table {
+  margin: 0;
+  padding: 0;
+}
+.checkout-container th {
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+.checkout-container tr > td:nth-child(1) {
+  text-align: left;
+  color: #2d2d2a;
+}
+.checkout-container tr > td:nth-child(2) {
+  text-align: right;
+  padding-left: 15px;
+  color: #52ad9c;
+}
+.checkout-container tr > td:nth-child(3) {
+  text-align: right;
+  padding-left: 15px;
+}
+.checkout-container td {
+  border-bottom: 1px solid #dadada;
+  height: 60px;
+  vertical-align: middle;
+}
+.checkout-container p {
+  display: block;
+  color: #888;
+  margin: 0;
+  padding-left: 25px;
+}
+.checkout-container .Yorder > div {
+  padding: 15px 0;
+}
+.checkout-container button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: #52ad9c;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  max-width: 300px;
+  display: block;
+  margin: auto;
+}
+.checkout-container button:hover {
+  cursor: pointer;
+  background: #428a7d;
+}
+.checkout-container .img-bx {
+  position: relative;
+  height: 72px;
+}
+.checkout-container .img-bx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .visual-page {
   min-height: 100vh;
   width: 100%;
@@ -1066,6 +1208,31 @@ button {
 .visual-page .msg-invalid.show {
   display: block;
 }
+.visual-page .msg-valid {
+  font-size: 1.5rem;
+  color: green;
+  border: 1px solid green;
+  background: #fff6f6;
+  padding: 12px 32px;
+  margin-top: 15px;
+  width: 100%;
+  position: relative;
+  display: none;
+}
+.visual-page .msg-valid::before {
+  content: "";
+  position: absolute;
+  background: green;
+  left: 10px;
+  top: 50%;
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  transform: translateY(-50%);
+}
+.visual-page .msg-valid.show {
+  display: block;
+}
 .visual-page .form-container {
   margin: auto;
   display: flex;
@@ -1095,7 +1262,7 @@ button {
   display: block;
   margin: 0;
 }
-.visual-page .form-container .login-form .input-group #email,
+.visual-page .form-container .login-form .input-group #email1,
 .visual-page .form-container .login-form .input-group #pass,
 .visual-page .form-container .login-form .input-group #lastname,
 .visual-page .form-container .login-form .input-group #firstname {
@@ -1789,6 +1956,92 @@ button {
 .form-rating-wrap #status,
 .form-rating-wrap button {
   margin: 20px 0;
+}
+
+.account-container .title-area {
+  margin-top: 36px;
+}
+.account-container .title-area .title {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 600;
+}
+.account-container .title-area a {
+  color: #362222;
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: normal;
+  font-family: "Montserrat", sans-serif;
+}
+.account-container .order-history {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+.account-container .order-history .my_account_orders {
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 900px;
+  width: 100%;
+  font-size: 1.8rem;
+  font-family: "Montserrat", sans-serif;
+}
+.account-container .order-history a {
+  color: #28acd7;
+  text-decoration: none;
+}
+.account-container .order-history .my_account_orders th {
+  text-align: left;
+}
+.account-container .order-history tr {
+  border-bottom: 1px solid #ccc;
+}
+.account-container .order-history th,
+.account-container .order-history td {
+  padding: 6px;
+}
+@media only screen and (max-width: 600px) {
+  .account-container .order-history {
+    /* Force table to not be like tables anymore */
+    /* Hide table headers (but not display: none;, for accessibility) */
+  }
+  .account-container .order-history table,
+.account-container .order-history thead,
+.account-container .order-history tbody,
+.account-container .order-history th,
+.account-container .order-history td,
+.account-container .order-history tr {
+    display: block;
+  }
+  .account-container .order-history thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .account-container .order-history td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 35%;
+  }
+  .account-container .order-history td:last-child {
+    border-width: 0;
+  }
+  .account-container .order-history td:before {
+    content: attr(data-title);
+    color: #ccc;
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
 }
 
 html {

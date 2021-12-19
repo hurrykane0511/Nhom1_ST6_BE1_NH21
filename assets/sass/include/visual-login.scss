@@ -29,6 +29,31 @@
   .msg-invalid.show{
     display: block;
   }
+  .msg-valid{
+    font-size: 1.5rem;
+    color: green;
+    border: 1px solid green;
+    background: #fff6f6;
+    padding: 12px 32px;
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      background:green;
+      left: 10px;
+      top: 50%;
+      height: 5px;
+      width: 5px;
+      border-radius: 100%;
+      transform: translateY(-50%);
+    }
+    display: none;
+  }
+  .msg-valid.show{
+    display: block;
+  }
   .form-container {
     margin: auto;
     display: flex;
@@ -56,7 +81,7 @@
           display: block;
           margin: 0;
         }
-        #email,
+        #email1,
         #pass,
         #lastname,
         #firstname {

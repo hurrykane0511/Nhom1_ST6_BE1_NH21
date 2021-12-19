@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 include('./Template/head.php');
 define("header_here", true);
 if (isset($_SESSION['account'])) {
-    header("account.php");
+    header("location: account.php");
 }
-$rs = true;
-$err = "";
+
 ?>
 
 <body>
@@ -18,23 +18,15 @@ $err = "";
                 <?php include './Template/header.php' ?>
 
                 <div class="form-container">
-                    <form action="./account.php" method="POST" class="login-form">
-                        <?php
-                        if (!$rs) {
-                        ?>
-                            <div class="msg-invalid show"><?= $err ?></div>
-                        <?php
-                        } else {
-                        ?>
-                            <div class="msg-invalid">Incorrect email or password.</div>
-                        <?php
-                        }
-                        ?>
+                    <form action="./account.php" method="POST" onsubmit="validateMyForm(event)" class="login-form">
                         <h2 class="form-title">Login</h2>
-
+                        <div class="msg-valid     <?= isset($_POST['success']) ? 'show' : '' ?> ">
+                            Sign up successfully
+                        </div>
+                        <div class="msg-invalid <?= isset($_GET['surs']) ? 'show' : '' ?>"><?= $_GET['surs'] ?></div>
                         <div class="input-group">
                             <label for="email">Email</label>
-                            <input type="text" name="email" id="email">
+                            <input type="text" name="email" id="email1">
                         </div>
                         <div class="input-group">
                             <label for="pass">Password</label>
@@ -54,6 +46,31 @@ $err = "";
     <?php include("./Template/footer.php") ?>
 </body>
 <script type="module" src="./modules/login.js"></script>
+<script>
+    function validateMyForm(e) {
+        var reemail = /\S+@\S+\.\S+/;
+
+        var repass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        document.querySelector('.msg-valid').classList.remove('show');
+        const email = document.querySelector('#email1');
+        const invalid = document.querySelector('.msg-invalid');
+        const password = document.querySelector('#pass');
+        
+        if (!reemail.test(email.value)) {
+            e.preventDefault();
+            invalid.classList.add('show');
+            invalid.textContent = "Invalid email format !!!";
+            return;
+        }
+
+        if (!repass.test(password.value)) {
+            e.preventDefault();
+            invalid.classList.add('show');
+            invalid.textContent = "Password: minimum eight characters, at least one letter and one number";
+            return;
+        }
+    }
+</script>
 
 </html>
 
