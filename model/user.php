@@ -73,4 +73,42 @@ class User extends Db
             
         }
     }
+
+    public function deleteUser($id_User){
+        $sql = self::$connection->prepare("DELETE FROM `tbl_user` WHERE `user_id` = ?");
+        $sql->bind_param("i", $id_User);
+        return $sql->execute();
+
+    }
+
+    public function UpdateUser($first, $last, $email, $pass,$id_User)
+    {
+        $sql = self::$connection->prepare("UPDATE `tbl_user` SET `firstname`= ?,`lastname`= ? ,`password`= ? ,`email`= ?  WHERE  `user_id`= ?");
+        $sql->bind_param("ssssi", $first, $last, $email, $pass,$id_User);
+
+        return $sql->execute();
+    }
+
+    public function getAllUser(){
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM `tbl_user` order by `user_id` desc");
+            $sql->execute();
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $items == null;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function CountUser(){
+        try {
+            $sql = self::$connection->prepare("SELECT COUNT(user_id) FROM `tbl_user`");
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0][0];
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
 }
