@@ -46,7 +46,7 @@ class Order extends Db
     public function getOrderByIdUser($id_User)
     {
         try {
-            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id  where tbl_order.user_id = ?");
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id  where tbl_order.user_id = ? order by tbl_order.order_id desc");
             $sql->bind_param('i', $id_User);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
