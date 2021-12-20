@@ -5,7 +5,7 @@
 @import "./include/navigation.scss";
 @import "./include/login.scss";
 @import "./include/addproduct.scss";
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700");
 .main.active {
   width: calc(100% - var(--nav-toggle-width));
   left: var(--nav-toggle-width);
@@ -165,138 +165,148 @@
     position: relative;
     width: 100%;
     padding: 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 30px;
-
-    // margin-top: 10px;
-    .recentOrders {
-      position: relative;
-      display: grid;
-      width: 100%;
-      min-height: 500px;
-      background: $white;
-      padding: 20px;
-      box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    label{
+      font-weight: 500;
+      display: block;
+      text-align: center;
       border-radius: 20px;
-      .cardHeader {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        h2 {
-          font-weight: 600;
-          color: $nav_clr;
-        }
-        .btn {
-          position: relative;
-          padding: 5px 10px;
-          background: $nav_clr;
-          text-decoration: none;
-          color: $white;
-          border-radius: 6px;
+      input{
+        border-radius: 15px;
+        padding: 5px 15px;
+        outline: none;
+        border: 1px solid gray;
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid;
+      text-align: left;
+      overflow: hidden;
+      margin-top: 15px;
+   
+      td,
+      th {
+        border-top: 1px solid #ecf0f1;
+        padding: 10px;
+      }
+
+      td {
+        border-left: 1px solid #ecf0f1;
+        border-right: 1px solid #ecf0f1;
+      }
+      td {
+        select {
+          padding: 5px;
+          width: 100%;
+          font-size: 1.1rem;
+          border: none;
+          border-bottom: 2px solid #141414;
+          outline: none;
+          color: #171717;
+          &.Pending{
+            background: #2dccff;
+          }
+          &.Confirm{
+            background: #fce83a;
+          }
+          &.Delivery{
+            background: #ffb302;
+          }
+          &.Delivered{
+            background: #56f000;
+          }
+          &.Cancelled{
+            background: #ff3838;
+          }
         }
       }
-      .ordersTable {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        thead td {
-          font-weight: 600;
-        }
-        tbody tr:hover {
-          background: $nav_clr;
-          color: $white;
-        }
-        tbody tr {
-          columns: $black1;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-          &:last-child {
-            border-bottom: none;
-          }
-        }
-        tr td {
-          padding: 10px;
-        }
-        tr {
-          td:last-child,
-          .price,
-          .payment {
-            text-align: end;
-          }
+      th {
+        background-color: #4ecdc4;
+      }
+
+      tr:nth-of-type(even) td {
+        background-color: lighten(#4ecdc4, 35%);
+      }
+
+      .total {
+        th {
+          background-color: white;
         }
 
-        .status.delivered {
-          padding: 2px 4px;
-          background: #8de02c;
-          color: $white;
-          border-radius: 4px;
-          font-size: 14px;
-          font-weight: 500;
-        }
-        .status.canceled {
-          padding: 2px 4px;
-          background: #f00;
-          color: $white;
-          border-radius: 4px;
-          font-size: 14px;
-          font-weight: 500;
-        }
-        .status.pending {
-          padding: 2px 4px;
-          background: #f9ca3f;
-          color: $white;
-          border-radius: 4px;
-          font-size: 14px;
-          font-weight: 500;
-        }
-        .status.delivering {
-          padding: 2px 4px;
-          background: #1795ce;
-          color: $white;
-          border-radius: 4px;
-          font-size: 14px;
-          font-weight: 500;
+        td {
+          text-align: right;
+          font-weight: 700;
         }
       }
     }
-    .recentCustomers {
-      position: relative;
-      display: grid;
-      min-height: 500px;
-      padding: 20px;
-      box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-      border-radius: 20px;
-      background: $white;
+
+    .mobile-header {
+      display: none;
+    }
+
+    @media only screen and (max-width: 760px) {
+      p {
+        display: block;
+        font-weight: bold;
+      }
+
       table {
-        border-collapse: collapse;
-      }
+        tr {
+          td:not(:first-child),
+          th:not(:first-child),
+          td:not(.total-val) {
+            display: none;
+          }
 
-      .imgBx {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        overflow: hidden;
-        border-radius: 50%;
-        img {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
+          &:nth-of-type(even) td:first-child {
+            background-color: lighten($nav_clr, 35%);
+          }
+          &:nth-of-type(odd) td:first-child {
+            background-color: white;
+          }
 
-      tr:hover {
-        background: $nav_clr;
-        color: $white;
-      }
-      td {
-        padding: 12px 10px;
-        h4 {
-          font-size: 16px;
-          font-weight: 500;
-          line-height: 1.2em;
+          &:nth-of-type(even) td:not(:first-child) {
+            background-color: white;
+          }
+
+          th:first-child {
+            width: 100%;
+            display: block;
+          }
+
+          th:not(:first-child) {
+            width: 40%;
+            transition: transform 0.4s ease-out;
+            transform: translateY(-9999px);
+            position: relative;
+            z-index: -1;
+          }
+
+          td:not(:first-child) {
+            transition: transform 0.4s ease-out;
+            transform: translateY(-9999px);
+            width: 60%;
+            position: relative;
+            z-index: -1;
+          }
+          td:first-child {
+            display: block;
+            cursor: pointer;
+          }
+
+          &.total th {
+            width: 25%;
+            display: inline-block;
+          }
+
+          td.total-val {
+            display: inline-block;
+            transform: translateY(0);
+            width: 75%;
+          }
         }
       }
     }

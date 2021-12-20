@@ -103,9 +103,9 @@ class User extends Db
 
     public function CountUser(){
         try {
-            $sql = self::$connection->prepare("SELECT COUNT(user_id) FROM `tbl_user`");
+            $sql = self::$connection->prepare("SELECT COUNT(user_id) as 'num' FROM `tbl_user`");
             $sql->execute();
-            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0][0];
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
             return $row;
         } catch (mysqli_sql_exception $e) {
             echo "Lỗi: " . $e;

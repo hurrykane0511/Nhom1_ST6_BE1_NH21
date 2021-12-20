@@ -46,7 +46,7 @@ class Order extends Db
     public function getOrderByIdUser($id_User)
     {
         try {
-            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id join tbl_orderitem on tbl_orderitem.order_id = tbl_order.order_id join tbl_perfume on tbl_perfume.pf_id = tbl_orderitem.pf_id where tbl_order.user_id = ?");
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id  where tbl_order.user_id = ?");
             $sql->bind_param('i', $id_User);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -60,7 +60,7 @@ class Order extends Db
     public function getAllItemByIdOrder($id_Order)
     {
         try {
-            $sql = self::$connection->prepare("SELECT * FROM `tbl_orderitem` WHERE order_id = ?");
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_orderitem on tbl_orderitem.order_id = tbl_order.order_id join tbl_perfume on tbl_perfume.pf_id = tbl_orderitem.pf_id WHERE tbl_orderitem.order_id = ? ");
             $sql->bind_param('i', $id_Order);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -86,7 +86,22 @@ class Order extends Db
         try {
             $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order 
             join tbl_user on tbl_user.user_id = tbl_order.user_id 
-            order by ordered_at desc");
+            order by ordered_at desc limit 10");
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
+    public function getAllOrder3($id)
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order 
+            join tbl_user on tbl_user.user_id = tbl_order.user_id where order_id like ?
+            order by ordered_at desc limit 10");
+             $keyword = "%$id%";
+             $sql->bind_param('s', $keyword);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $row;
@@ -97,9 +112,9 @@ class Order extends Db
     public function CountOrder()
     {
         try {
-            $sql = self::$connection->prepare(" SELECT COUNT(order_id) FROM `tbl_order` WHERE status = 'deliveried'");
+            $sql = self::$connection->prepare(" SELECT COUNT(order_id) as 'order' FROM `tbl_order`");
             $sql->execute();
-            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0][0];
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0]['order'];
             return $row;
         } catch (mysqli_sql_exception $e) {
             return false;

@@ -8,8 +8,9 @@ include './Template/head.php';
 include './model/config.php';
 include './model/dbconnect.php';
 include('./model/user.php');
-
+include './model/order.php';
 $user = new User;
+
 if (!isset($_SESSION['account'])) {
     if (isset($_POST['signin'])) {
         if (!isset($_POST['email']) || empty($_POST['email'])) {
@@ -50,34 +51,57 @@ if (!isset($_SESSION['account'])) {
                                     <th class="order-number">Order</th>
                                     <th class="order-date">Date</th>
                                     <th class="order-status">Status</th>
-                                    <th class="order-total">Total</th>
+                                    <th class="order-total">Details</th>
                                     <th class="order-actions">Actions</th>
                                     <th class="order-actions"></th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr class="order">
-                                    <td class="order-number" data-title="Order">
-                                        <a href="*">#2080</a>
-                                    </td>
+                                <?php
+                                $order = new Order;
+                                foreach ($order->getOrderByIdUser($_SESSION['account'][0]['user_id']) as $row) {
+                                ?>
+                                    <tr class="order">
+                                        <td class="order-number" data-title="Order">
+                                            <a href="*">#<?= $row['order_id'] ?></a>
+                                        </td>
 
-                                    <td class="order-date" data-title="Date">
-                                        <time datetime="2014-06-12" title="1402562157">June 12, 2014</time>
-                                    </td>
+                                        <td class="order-date" data-title="Date">
+                                            <time datetime="2014-06-12" title="1402562157"><?= $row['ordered_at'] ?></time>
+                                        </td>
 
-                                    <td class="order-status" data-title="Status">
-                                        On-hold
-                                    </td>
+                                        <td class="order-status" data-title="Status">
+                                            <?= $row['status'] ?>
+                                        </td>
 
-                                    <td class="order-total" data-title="Total">
-                                        <span class="amount">£176.00</span> for 8 items
-                                    </td>
+                                        <td class="order-total" data-title="Total">
+                                            <?php
+                                            foreach ($order->getAllItemByIdOrder($row['order_id']) as $item) {
+                                            ?>
+                                                <span class="amount">-<?= $item['pf_name'] ?>Qty(x<?= $item['quantity'] ?>) £<?= $item['item_price'] ?> </span><br>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
 
-                                    <td class="order-actions" data-title="Action">
-                                        <a href="*" class="button view">View</a>
-                                    </td>
-                                </tr>
+                                        <td class="order-actions" data-title="Action">
+                                            <?php
+                                            if ($row['status'] == 'Pending') {
+                                                echo '<a href="cancel.hp" class="button view">Cancel order</a>';
+                                            }
+                                            elseif ($row['status'] == 'Cancelled') {
+                                                echo 'Cancelled';
+                                            }
+                                            else{
+                                                echo "Can't cancel";
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

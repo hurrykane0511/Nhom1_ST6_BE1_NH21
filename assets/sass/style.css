@@ -1983,7 +1983,7 @@ button {
 .account-container .order-history .my_account_orders {
   border-collapse: collapse;
   border-spacing: 0;
-  max-width: 900px;
+  max-width: 1222px;
   width: 100%;
   font-size: 1.8rem;
   font-family: "Montserrat", sans-serif;
@@ -1998,9 +1998,19 @@ button {
 .account-container .order-history tr {
   border-bottom: 1px solid #ccc;
 }
+.account-container .order-history .amount {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+  margin: 10px 0;
+  display: block;
+}
 .account-container .order-history th,
 .account-container .order-history td {
   padding: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 @media only screen and (max-width: 600px) {
   .account-container .order-history {

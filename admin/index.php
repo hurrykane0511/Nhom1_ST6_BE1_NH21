@@ -25,7 +25,8 @@ if (!isset($_SESSION['admin'])) {
     header('location: login.php?rs=3');
   }
 }
-
+$user = new User;
+$order = new Order;
 ?>
 
 <div class="wraper">
@@ -42,7 +43,7 @@ if (!isset($_SESSION['admin'])) {
 
     <div class="card">
       <div>
-        <div class="numbers">10,890</div>
+        <div class="numbers"><?= $order->CountOrder() ?></div>
         <div class="cardName">Total orders</div>
       </div>
       <div class="iconBx">
@@ -52,7 +53,7 @@ if (!isset($_SESSION['admin'])) {
 
     <div class="card">
       <div>
-        <div class="numbers">340</div>
+        <div class="numbers"><?= $user->CountUser()['num']?></div>
         <div class="cardName">Customers</div>
       </div>
       <div class="iconBx">
@@ -74,16 +75,16 @@ if (!isset($_SESSION['admin'])) {
   <!-- Dashboard_innfor -->
   <!-- <div class="dashboard_infor"> -->
 
-    <!-- Revenue -->
-    <!-- <div class="revenue-chart">
+  <!-- Revenue -->
+  <!-- <div class="revenue-chart">
       <div class="title-chart">
         <h2>Revenue</h2>
       </div>
       <canvas id="myChart"></canvas>
     </div> -->
 
-    <!-- calendar -->
-    <!-- <div class="calendar">
+  <!-- calendar -->
+  <!-- <div class="calendar">
 
     </div>
 
@@ -93,8 +94,60 @@ if (!isset($_SESSION['admin'])) {
 
   <!-- orders details -->
   <div class="details">
-  
+    <label>Search Order: <input type="text" name="order_id" onkeyup="loadorder(this.value)"></label>
+
+    <table>
+      <thead>
+        <tr class="table-headers">
+          <th>Order ID</th>
+          <th>Customer's ID</th>
+          <th>Customer's Name</th>
+          <th>Phone contact</th>
+          <th>Email</th>
+          <th>Order date</th>
+
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody id="orderbody">
+
+
+      </tbody>
+    </table>
   </div>
 </div>
+<script>
+  loadorder('');
 
+  function loadorder(order_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("orderbody").innerHTML = this.responseText;
+
+      }
+    };
+    xhttp.open("GET", "loadorder.php?order_id=" + order_id, true);
+    xhttp.send();
+  }
+
+  function updatestatus(opt) {
+    
+    let text = opt.options[opt.selectedIndex].value;
+    let id = text.split('-')[1];
+    opt.className = '';
+    let status = text.split('-')[0];
+    opt.classList.add(status)
+    console.log(status,id);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+      }
+    };
+    xhttp.open("GET", "updateorder.php?status=" + status + "&id=" + id, true);
+    xhttp.send();
+    
+  }
+</script>
 <?php include './template/footer.php' ?>
