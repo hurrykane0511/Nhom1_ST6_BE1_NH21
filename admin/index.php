@@ -53,7 +53,7 @@ $order = new Order;
 
     <div class="card">
       <div>
-        <div class="numbers"><?= $user->CountUser()['num']?></div>
+        <div class="numbers"><?= $user->CountUser()['num'] ?></div>
         <div class="cardName">Customers</div>
       </div>
       <div class="iconBx">
@@ -94,8 +94,14 @@ $order = new Order;
 
   <!-- orders details -->
   <div class="details">
-    <label>Search Order: <input type="text" name="order_id" onkeyup="loadorder(this.value)"></label>
-
+    <div class="filter">
+      <label>Search Order: <input type="text" name="order_id" onkeyup="loadorder()"></label>
+      <label><input type="radio" name="stt" value="Pending" onchange="loadorder()" checked> Pending</label>
+      <label><input type="radio" name="stt" value="Confirm" onchange="loadorder()"> Confirm</label>
+      <label><input type="radio" name="stt" value="Delivery" onchange="loadorder()"> Delivery</label>
+      <label><input type="radio" name="stt" value="Delivered" onchange="loadorder()"> Delivered</label>
+      <label><input type="radio" name="stt" value="Cancelled" onchange="loadorder()"> Cancelled</label>
+    </div>
     <table>
       <thead>
         <tr class="table-headers">
@@ -119,26 +125,28 @@ $order = new Order;
 <script>
   loadorder('');
 
-  function loadorder(order_id) {
+  function loadorder() {
     var xhttp = new XMLHttpRequest();
+    const order_id = document.querySelector('input[name="order_id"]').value;
+    const stt = document.querySelector('input[name="stt"]:checked').value;
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("orderbody").innerHTML = this.responseText;
 
       }
     };
-    xhttp.open("GET", "loadorder.php?order_id=" + order_id, true);
+    xhttp.open("GET", "loadorder.php?order_id=" + order_id +"&stt=" + stt, true);
     xhttp.send();
   }
 
   function updatestatus(opt) {
-    
+
     let text = opt.options[opt.selectedIndex].value;
     let id = text.split('-')[1];
     opt.className = '';
     let status = text.split('-')[0];
     opt.classList.add(status)
-    console.log(status,id);
+    console.log(status, id);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -147,7 +155,7 @@ $order = new Order;
     };
     xhttp.open("GET", "updateorder.php?status=" + status + "&id=" + id, true);
     xhttp.send();
-    
+
   }
 </script>
 <?php include './template/footer.php' ?>

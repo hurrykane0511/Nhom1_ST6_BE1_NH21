@@ -9,6 +9,7 @@ if (isset($_POST['placeorder'])) {
     $acc;
     if (isset($_SESSION['cart'])) {
         $cart = $_SESSION['cart'];
+        var_dump($cart);
     } else {
         exit();
     }
@@ -50,12 +51,15 @@ if (isset($_POST['placeorder'])) {
     } else {
         echo 'order that bai';
     }
+    
     $newid = $order->getOrder_Id($acc['user_id']);
-    try {
-        foreach ($cart as $id => $item) {
-            $order->OrderItem($item['quantity'],$newid,$id, $item['regular_price'] - (($item['regular_price'] / 100) * $item['sales_price']));
-        }
-    } catch (Exception $th) {
-        echo '<script>window.onbeforeunload = function() { return "Your work will be lost."; };</script>';
+
+    echo '<br>'. $newid[0]['order_id'];
+
+    foreach ($cart as $id => $item) {
+        echo $order->OrderItem($item['quantity'], $newid[0]['order_id'], $id, $item['regular_price'] - (($item['regular_price'] / 100) * $item['sales_price']));
     }
 }
+echo '<script>window.onbeforeunload = function() { return "Your work will be lost."; };</script>';
+unset($_SESSION['cart']);
+header('location: account.php');

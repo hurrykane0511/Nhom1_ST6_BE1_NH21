@@ -88,7 +88,7 @@ if (!isset($_SESSION['account'])) {
                                         <td class="order-actions" data-title="Action">
                                             <?php
                                             if ($row['status'] == 'Pending') {
-                                                echo '<a href="cancel.hp" class="button view">Cancel order</a>';
+                                                echo '<a href="cancel.php?order_id='.$row['order_id'].'" class="button view">Cancel order</a>';
                                             }
                                             elseif ($row['status'] == 'Cancelled') {
                                                 echo 'Cancelled';

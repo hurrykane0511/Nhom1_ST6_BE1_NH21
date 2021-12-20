@@ -46,7 +46,7 @@ class Order extends Db
     public function getOrderByIdUser($id_User)
     {
         try {
-            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id  where tbl_order.user_id = ?");
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id  where tbl_order.user_id = ? order by tbl_order.order_id desc");
             $sql->bind_param('i', $id_User);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -81,12 +81,13 @@ class Order extends Db
             echo "Lỗi: " . $e;
         }
     }
-    public function getAllOrder2()
+    public function getAllOrder2($stt)
     {
         try {
             $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order 
-            join tbl_user on tbl_user.user_id = tbl_order.user_id 
+            join tbl_user on tbl_user.user_id = tbl_order.user_id where tbl_order.status = ?
             order by ordered_at desc limit 10");
+            $sql->bind_param('s', $stt);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $row;
@@ -94,14 +95,14 @@ class Order extends Db
             echo "Lỗi: " . $e;
         }
     }
-    public function getAllOrder3($id)
+    public function getAllOrder3($id, $stt)
     {
         try {
             $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order 
-            join tbl_user on tbl_user.user_id = tbl_order.user_id where order_id like ?
+            join tbl_user on tbl_user.user_id = tbl_order.user_id where tbl_order.order_id like ? and tbl_order.status = ?
             order by ordered_at desc limit 10");
              $keyword = "%$id%";
-             $sql->bind_param('s', $keyword);
+             $sql->bind_param('ss', $keyword, $stt);
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $row;
