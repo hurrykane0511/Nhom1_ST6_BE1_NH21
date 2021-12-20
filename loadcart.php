@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
 
   $id = explode("-", $_GET['id'])[1];
   $pf = $dbc->getPerfumeByID($id);
-  if($pf == null){
+  if ($pf == null) {
     return;
   }
   if (isset($_SESSION['cart'])) {
@@ -65,11 +65,12 @@ if (!empty($_SESSION['cart'])) {
   <div class="cart__scrollable">
     <div class="cart-items">
       <?php foreach ($sp_cart as $key => $item) {
-        $item['sales_price'] != null ? $price =  $item['sales_price'] : $price = $item['regular_price'];
+        $price = $item['sales_price'] != 0 ?   $item['regular_price'] - (($item['regular_price'] / 100) * 10) : $item['regular_price'];
         $total += $price  * $item['quantity'];
+
       ?>
         <div class="cart-item">
-          <a href="detail.php?productId=<?= $key ?>" class="img-item" style="background-image: url('./assets/images/products/<?php echo explode("#",$item['image'])[0] ?>')">
+          <a href="detail.php?productId=<?= $key ?>" class="img-item" style="background-image: url('./assets/images/products/<?php echo explode("#", $item['image'])[0] ?>')">
 
           </a>
           <div class="item-contents">
@@ -78,9 +79,9 @@ if (!empty($_SESSION['cart'])) {
               <span class="capacity"><?php echo $item['capacity'] ?></span>/
               <span class="price">
                 <?php
-                if ($item['sales_price'] != null) {
+                if ($item['sales_price'] != 0) {
                 ?>
-                  <del>£<?= $item['sales_price'] ?></del>&emsp;<big>£<?= $item['regular_price'] ?></big>
+                  <del>£<?= $item['regular_price'] ?></del>&emsp;<big>£<?= $item['regular_price'] - (($item['regular_price'] / 100) * 10) ?></big>
                 <?php
                 } else {
                 ?>
@@ -95,15 +96,17 @@ if (!empty($_SESSION['cart'])) {
             <a name="remove" class="remove-btn" href="javascript:del_cart(<?php echo $key ?>)">remove</a>
           </div>
         </div>
-      <?php } ?>
+      <?php }
+
+      ?>
 
     </div>
-      <div class="cart-note">
-        <label for="note">Order note</label>
-        <textarea name="note" id="note" cols="30" rows="3"></textarea>
-      </div>
+    <div class="cart-note">
+      <label for="note">Order note</label>
+      <textarea name="note" id="note" cols="30" rows="3"></textarea>
+    </div>
   </div>
- 
+
   <div class="cart-footer">
     <div class="cart-details">
       <div class="cart-title">Subtotal</div>

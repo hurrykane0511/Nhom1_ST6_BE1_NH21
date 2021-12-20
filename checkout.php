@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 include('./Template/head.php');
 define("header_here", true);
-if (isset($_SESSION['account'])) {
-    header("account.php");
+if (!isset($_SESSION['account'])) {
+    header("location: index.php");
 }
-$rs = true;
-$err = "";
+if (!isset($_SESSION['cart'])) {
+    header("location: result.php");
+}
+
 ?>
 
 <body>
@@ -16,23 +19,23 @@ $err = "";
             <div class="title">
                 <h2>Product Order Process</h2>
             </div>
-            <form class="d-flex">
-                <div action="pscheckout" method="GET" class="form">
+            <form class="d-flex" method="GET" action="processcout.php">
+                <div action="pscheckout" class="form">
                     <label>
                         <span class="fname">First Name <span class="required">*</span></span>
-                        <input type="text" name="fname" />
+                        <input type="text" name="fname" value="<?=$_SESSION['account'][0]['firstname'] ?>"/>
                     </label>
                     <label>
                         <span class="lname">Last Name <span class="required">*</span></span>
-                        <input type="text" name="lname" />
+                        <input type="text" name="lname" value="<?=$_SESSION['account'][0]['lastname'] ?>"/>
                     </label>
                     <label>
                         <span>Company Name (Optional)</span>
-                        <input type="text" name="cn" />
+                        <input type="text" name="company" />
                     </label>
                     <label>
                         <span>Country <span class="required">*</span></span>
-                        <select name="selection">
+                        <select name="country">
                             <option value="select">Select a country...</option>
                             <option value="AFG">Afghanistan</option>
                             <option value="ALA">Åland Islands</option>
@@ -299,7 +302,7 @@ $err = "";
                     </label>
                     <label>
                         <span>&nbsp;</span>
-                        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" />
+                        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" required />
                     </label>
                     <label>
                         <span>Town / City <span class="required">*</span></span>
@@ -307,37 +310,48 @@ $err = "";
                     </label>
                     <label>
                         <span>State / County <span class="required">*</span></span>
-                        <input type="text" name="city" />
+                        <input type="text" name="state" />
                     </label>
                     <label>
                         <span>Postcode / ZIP <span class="required">*</span></span>
-                        <input type="text" name="city" />
+                        <input type="text" name="zipcode" />
                     </label>
                     <label>
                         <span>Phone <span class="required">*</span></span>
-                        <input type="tel" name="city" />
+                        <input type="tel" name="phone" />
                     </label>
                     <label>
                         <span>Email Address <span class="required">*</span></span>
-                        <input type="email" name="city" />
+                        <input type="email" name="email" />
                     </label>
-                    <button type="button">Place Order</button>
+                    <button type="submit" name="placeorder">Place Order</button>
                 </div>
                 <div class="Yorder">
                     <table>
                         <tr>
                             <th colspan="3">Your order</th>
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="img-bx"><img src="./assets/images/products/Lancome-Idle-LIntense-Eau-de-Parfum-75ml.jfif" alt=""></div>
-                            </td>
-                            <td>Product Name x 2(Qty)</td>
-                            <td>$88.00</td>
-                        </tr>
+                        <?php
+                        $total = 0;
+                        foreach ($_SESSION['cart'] as $id => $item) {
+                        
+                            $price = $item['regular_price'] - (($item['regular_price'] / 100) * $item['sales_price']);
+                            $total += $price * $item['quantity'];
+                        ?>
+                            <tr>
+                                <td>
+                                    <div class="img-bx"><img src="./assets/images/products/<?= $item['image'] ?>" alt=""></div>
+                                </td>
+                                <td><?= $item['pf_name'] ?> x<?= $item['quantity'] ?>(Qty)</td>
+                                <td>£<?= $price ?></td>
+                            </tr>
+                        <?php
+                        }
+
+                        ?>
                         <tr>
                             <td>Subtotal</td>
-                            <td colspan="3">$88.00</td>
+                            <td colspan="3" style="text-align: ;">£<?= $total ?></td>
                         </tr>
                         <tr>
                             <td>Shipping</td>
@@ -346,10 +360,10 @@ $err = "";
                     </table>
                     <br />
                     <div>
-                        <input type="radio" name="dbt" value="cd" /> Cash on Delivery
+                        <input type="radio" name="paymethod" value="1" id="method1" checked />Cash on delivery
                     </div>
                     <div>
-                        <input type="radio" name="dbt" value="cd" /> Paypal
+                        <input type="radio" name="paymethod" value="2" id="method2" /> Paypal
                         <span>
                             <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50" />
                         </span>
@@ -365,5 +379,3 @@ $err = "";
 
 
 </html>
-
-<?php include './Template/ajax.php' ?>

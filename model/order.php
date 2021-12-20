@@ -13,30 +13,36 @@ class Order extends Db
         $user_id,
         $payment_id
     ) {
-        $sql = self::$connection->prepare("INSERT INTO `tbl_order`
+        try {
+            $sql = self::$connection->prepare("INSERT INTO `tbl_order`
         (`firstname`, `lastname`, `address`, `city`, `state`, `postzip`, `phone`, `email`,`user_id`, `payment_id`) 
         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sql->bind_param(
-            "ssssssssii",
-            $firstname,
-            $lastname,
-            $address,
-            $city,
-            $state,
-            $postzip,
-            $phone,
-            $email,
-            $user_id,
-            $payment_id
-        );
-        return $sql->execute();
+            $sql->bind_param(
+                "ssssssssii",
+                $firstname,
+                $lastname,
+                $address,
+                $city,
+                $state,
+                $postzip,
+                $phone,
+                $email,
+                $user_id,
+                $payment_id
+            );
+            
+            return $sql->execute();
+        } catch (Exception) {
+            return false;
+        }
     }
 
-    public function OrderItem($quantity,$order_id,$pf_id,$item_price){
+    public function OrderItem($quantity, $order_id, $pf_id, $item_price)
+    {
         $sql = self::$connection->prepare("INSERT INTO `tbl_orderitem`
         (`quantity`, `order_id`, `pf_id`, `item_price`) 
         VALUES(?, ?, ?, ?)");
-        $sql->bind_param("iiii",$quantity,$order_id,$pf_id,$item_price);
+        $sql->bind_param("iiii", $quantity, $order_id, $pf_id, $item_price);
 
         return $sql->execute();
     }
@@ -66,7 +72,8 @@ class Order extends Db
         }
     }
 
-    public function CountOrder(){
+    public function CountOrder()
+    {
         try {
             $sql = self::$connection->prepare(" SELECT COUNT(order_id) FROM `tbl_order` WHERE status = 'deliveried'");
             $sql->execute();
@@ -77,11 +84,12 @@ class Order extends Db
         }
     }
 
-    public function UpdateStatus($status,$id_Order){
+    public function UpdateStatus($status, $id_Order)
+    {
 
         $sql = self::$connection->prepare("update tbl_order set
         `status` = ?  where order_id = ?");
-        $sql->bind_param("si",$status,$id_Order);
+        $sql->bind_param("si", $status, $id_Order);
 
         return $sql->execute();
     }

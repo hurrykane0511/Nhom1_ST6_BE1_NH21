@@ -2,6 +2,10 @@
 session_start();
 
 include './template/header.php';
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php');
+}
+
 ?>
 <div class="wraper">
     <div class="product-panel">

@@ -19,9 +19,4 @@ class Subscriber extends Db
             
         }
     }
-
-    function FunctionName()
-    {
-        # code...
-    }
 }
