@@ -11,13 +11,14 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
-if (isset($_GET['order_id'])) {
+if (isset($_GET['order_id']) && isset($_GET['stt'])) {
     $id = $_GET['order_id'];
+    $stt = $_GET['stt'];
     $orders;
     if ($id == '') {
-        $orders = $order->getAllOrder2();
+        $orders = $order->getAllOrder2($stt);
     } else {
-        $orders = $order->getAllOrder3($id);
+        $orders = $order->getAllOrder3($id,$stt);
     }
 
     $order = new Order;

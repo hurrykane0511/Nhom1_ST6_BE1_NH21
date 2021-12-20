@@ -617,7 +617,6 @@ body {
 }
 .main .details label {
   font-weight: 500;
-  display: block;
   text-align: center;
   border-radius: 20px;
 }
@@ -626,8 +625,13 @@ body {
   padding: 5px 15px;
   outline: none;
   border: 1px solid gray;
+}
+.main .details .filter {
+  display: flex;
   width: 100%;
-  max-width: 400px;
+  max-width: 900px;
+  justify-content: space-around;
+  align-items: center;
 }
 .main .details table {
   width: 100%;
