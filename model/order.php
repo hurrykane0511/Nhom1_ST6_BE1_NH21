@@ -56,6 +56,20 @@ class Order extends Db
         }
     }
 
+
+    public function getAllItemByIdOrder($id_Order)
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM `tbl_orderitem` WHERE order_id = ?");
+            $sql->bind_param('i', $id_Order);
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
+
     public function getAllOrder()
     {
         try {
