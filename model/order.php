@@ -73,7 +73,7 @@ class Order extends Db
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0][0];
             return $row;
         } catch (mysqli_sql_exception $e) {
-            echo "Lỗi: " . $e;
+            return false;
         }
     }
 
@@ -84,5 +84,18 @@ class Order extends Db
         $sql->bind_param("si",$status,$id_Order);
 
         return $sql->execute();
+    }
+
+    public function getOrder_Id($user_id){
+        
+        try {
+            $sql = self::$connection->prepare("SELECT order_id FROM `tbl_order` WHERE user_id = ? order by order_id DESC LIMIT 1");
+            $sql->bind_param('i', $user_id);
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            return false;
+        }
     }
 }
