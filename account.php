@@ -52,6 +52,7 @@ if (!isset($_SESSION['account'])) {
                                     <th class="order-status">Status</th>
                                     <th class="order-total">Total</th>
                                     <th class="order-actions">Actions</th>
+                                    <th class="order-actions"></th>
                                 </tr>
                             </thead>
 

@@ -95,9 +95,9 @@ class User extends Db
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items == null;
+            return $items;
         } catch (Exception $e) {
-            return false;
+           
         }
     }
 

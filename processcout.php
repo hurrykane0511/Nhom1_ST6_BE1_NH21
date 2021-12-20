@@ -34,11 +34,13 @@ if (isset($_POST['placeorder'])) {
         ];
 
     foreach ($var as $fields) {
-        if (isset($_POST[$fields])) {
-            echo $_POST[$fields] . '<br>';
+        if (!isset($_POST[$fields])) {
+            echo 'Post that bai';
             exit();
         }
+        echo $_POST[$fields] . '<br>';
     }
+
     $address = empty($_POST['apartment']) ? $_POST['houseadd'] : $_POST['houseadd'] . ', ' . $_POST['apartment'];
 
     $order = new Order();
@@ -46,10 +48,14 @@ if (isset($_POST['placeorder'])) {
     if ($rs) {
         echo 'thanh cong';
     } else {
-        echo 'that bai';
+        echo 'order that bai';
     }
-
-    foreach ($cart as $id => $item) {
-        // $order->OrderItem($item['quantity'],)
+    $newid = $order->getOrder_Id($acc['user_id']);
+    try {
+        foreach ($cart as $id => $item) {
+            $order->OrderItem($item['quantity'],$newid,$id, $item['regular_price'] - (($item['regular_price'] / 100) * $item['sales_price']));
+        }
+    } catch (Exception $th) {
+        echo '<script>window.onbeforeunload = function() { return "Your work will be lost."; };</script>';
     }
 }

@@ -19,4 +19,5 @@ class Subscriber extends Db
             
         }
     }
+    
 }

@@ -13,28 +13,24 @@ class Order extends Db
         $user_id,
         $payment_id
     ) {
-        try {
-            $sql = self::$connection->prepare("INSERT INTO `tbl_order`
-        (`firstname`, `lastname`, `address`, `city`, `state`, `postzip`, `phone`, `email`,`user_id`, `payment_id`) 
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $sql->bind_param(
-                "ssssssssii",
-                $firstname,
-                $lastname,
-                $address,
-                $city,
-                $state,
-                $postzip,
-                $phone,
-                $email,
-                $user_id,
-                $payment_id
-            );
-            
-            return $sql->execute();
-        } catch (Exception) {
-            return false;
-        }
+
+        $sql = self::$connection->prepare("INSERT INTO `tbl_order` (`firstname`, `lastname`, `address`, `city`, `state`, `postzip`, `phone`, `email`,`user_id`, `payment_id`) 
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->bind_param(
+            "ssssssssii",
+            $firstname,
+            $lastname,
+            $address,
+            $city,
+            $state,
+            $postzip,
+            $phone,
+            $email,
+            $user_id,
+            $payment_id
+        );
+
+        return $sql->execute();
     }
 
     public function OrderItem($quantity, $order_id, $pf_id, $item_price)
@@ -63,7 +59,7 @@ class Order extends Db
     public function getAllOrder()
     {
         try {
-            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id join tbl_orderitem on tbl_orderitem.order_id = tbl_order.order_id join tbl_perfume on tbl_perfume.pf_id = tbl_orderitem.pf_id order by tbl_order.order_id desc");
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id join tbl_orderitem on tbl_orderitem.order_id = tbl_order.order_id join tbl_perfume on tbl_perfume.pf_id = tbl_orderitem.pf_id order by ordered_at desc");
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $row;
@@ -71,7 +67,19 @@ class Order extends Db
             echo "Lỗi: " . $e;
         }
     }
-
+    public function getAllOrder2()
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order 
+            join tbl_user on tbl_user.user_id = tbl_order.user_id 
+            order by ordered_at desc");
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
     public function CountOrder()
     {
         try {
@@ -94,8 +102,9 @@ class Order extends Db
         return $sql->execute();
     }
 
-    public function getOrder_Id($user_id){
-        
+    public function getOrder_Id($user_id)
+    {
+
         try {
             $sql = self::$connection->prepare("SELECT order_id FROM `tbl_order` WHERE user_id = ? order by order_id DESC LIMIT 1");
             $sql->bind_param('i', $user_id);
