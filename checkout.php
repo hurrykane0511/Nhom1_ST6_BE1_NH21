@@ -10,8 +10,7 @@ if (!isset($_SESSION['account'])) {
 if (!isset($_SESSION['cart'])) {
     header("location: result.php");
 }
-$rs = true;
-$err = "";
+
 ?>
 
 <body>
@@ -24,11 +23,11 @@ $err = "";
                 <div action="pscheckout" class="form">
                     <label>
                         <span class="fname">First Name <span class="required">*</span></span>
-                        <input type="text" name="fname" />
+                        <input type="text" name="fname" value="<?=$_SESSION['account'][0]['firstname'] ?>"/>
                     </label>
                     <label>
                         <span class="lname">Last Name <span class="required">*</span></span>
-                        <input type="text" name="lname" />
+                        <input type="text" name="lname" value="<?=$_SESSION['account'][0]['lastname'] ?>"/>
                     </label>
                     <label>
                         <span>Company Name (Optional)</span>
@@ -335,7 +334,8 @@ $err = "";
                         <?php
                         $total = 0;
                         foreach ($_SESSION['cart'] as $id => $item) {
-                            $price = $item['regular_price'] - (($item['regular_price'] / 100) * 10);
+                        
+                            $price = $item['regular_price'] - (($item['regular_price'] / 100) * $item['sales_price']);
                             $total += $price * $item['quantity'];
                         ?>
                             <tr>
@@ -379,5 +379,3 @@ $err = "";
 
 
 </html>
-
-<?php include './Template/ajax.php' ?>
