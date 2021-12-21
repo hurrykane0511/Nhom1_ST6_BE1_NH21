@@ -1294,6 +1294,18 @@ button {
   color: #362222;
   align-self: flex-start;
 }
+.visual-page .form-container .loginfb {
+  color: #fff;
+  background: #1674ea;
+  display: block;
+  padding: 10px 0;
+  font-weight: 600;
+  font-family: sans-serif;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 5px;
+}
 
 .visual-page .search-title {
   height: 15vh;
@@ -1966,6 +1978,12 @@ button {
   font-size: 5rem;
   font-weight: 600;
 }
+.account-container .title-area p {
+  text-align: center;
+  margin: 20px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
 .account-container .title-area a {
   color: #362222;
   display: block;
@@ -1974,13 +1992,31 @@ button {
   font-size: 2.6rem;
   font-weight: normal;
   font-family: "Montserrat", sans-serif;
+  width: max-content;
+  margin: 15px auto;
 }
 .account-container .order-history {
   display: flex;
   justify-content: center;
   margin-top: 36px;
+  flex-direction: column;
+  align-items: center;
+}
+.account-container .order-history .order-wraper {
+  width: 100%;
+  max-width: 1222px;
+}
+.account-container .order-history .history-title {
+  margin-right: auto;
+  font-weight: 400;
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+.account-container .order-history .no-order {
+  margin-top: 16px;
 }
 .account-container .order-history .my_account_orders {
+  margin-top: 16px;
   border-collapse: collapse;
   border-spacing: 0;
   max-width: 1222px;

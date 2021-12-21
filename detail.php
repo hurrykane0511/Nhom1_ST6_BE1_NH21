@@ -75,7 +75,7 @@ if (isset($_GET['productId'])) {
                                 </p>
                                 <p class="description"><?php echo $getPerfumeByID['description'] ?></p>
                                 <a href="javascript:void(0)" onclick="addCart(this);" class="addCart" id="item-<?php echo $_GET['productId'] ?>">Add to card</a>
-                                <a href="#" class="buyNow">Buy it now</a>
+                                <a href="#" class="buyNow">Add to list</a>
 
                             </div>
 

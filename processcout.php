@@ -14,7 +14,7 @@ if (isset($_POST['placeorder'])) {
         exit();
     }
     if (isset($_SESSION['account'])) {
-        $acc = $_SESSION['account'][0];
+        $acc = $_SESSION['account'];
     } else {
         exit();
     }
@@ -62,4 +62,5 @@ if (isset($_POST['placeorder'])) {
 }
 echo '<script>window.onbeforeunload = function() { return "Your work will be lost."; };</script>';
 unset($_SESSION['cart']);
+header_remove();
 header('location: account.php');

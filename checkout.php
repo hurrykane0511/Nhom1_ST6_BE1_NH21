@@ -23,11 +23,11 @@ if (!isset($_SESSION['cart'])) {
                 <div action="pscheckout" class="form">
                     <label>
                         <span class="fname">First Name <span class="required">*</span></span>
-                        <input type="text" name="fname" value="<?= $_SESSION['account'][0]['firstname'] ?>" />
+                        <input type="text" name="fname" value="<?= $_SESSION['account']['firstname'] ?>" />
                     </label>
                     <label>
                         <span class="lname">Last Name <span class="required">*</span></span>
-                        <input type="text" name="lname" value="<?= $_SESSION['account'][0]['lastname'] ?>" />
+                        <input type="text" name="lname" value="<?= $_SESSION['account']['lastname'] ?>" />
                     </label>
                     <label>
                         <span>Company Name (Optional)</span>

@@ -1,19 +1,22 @@
 <?php
-
-session_start();
-if (!isset($_SESSION['admin'])) {
-    header('location: login.php?rs=3');
-}
-
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
 include '../model/categories.php';
+include '../model/user.php';
 include '../model/brand.php';
+require '../phpmailer/PHPMailerAutoload.php';
+include '../model/subscribe.php';
+
+
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php?rs=3');
+}
 
 $cg = new categories();
 $pf = new Perfume();
 $brands = new Brand;
+$sb = new Subscriber;
 
 if (isset($_POST['addproduct'])) {
 
@@ -34,18 +37,18 @@ if (isset($_POST['addproduct'])) {
     foreach ($vars as $v) {
         if (!isset($_POST[$v])) {
             $verified = FALSE;
-            echo "<script>alert('No photos yet!!!');
-            history.go(-1);</script>";
+            echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+           
             exit();
         }
     }
 
 
-    $target_dir = "../assets/images/products";
+    $target_dir = "../assets/images/products/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
     if (file_exists($target_file)) {
-        echo "<script>alert('Sorry, file not exists.');history.go(-1);</script>";
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
         exit();
     }
 
@@ -58,7 +61,7 @@ if (isset($_POST['addproduct'])) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "<script>alert('File is not an image.');history.go(-1);</script>";
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
         $uploadOk = 0;
         exit();
     }
@@ -67,8 +70,7 @@ if (isset($_POST['addproduct'])) {
 
     // Check file size
     if ($_FILES["image"]["size"] > 500000) {
-        echo "<script>alert('Sorry, your file is too large !!!');
-        history.go(-1);</script>";
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
         $uploadOk = 0;
         exit();
     }
@@ -79,22 +81,20 @@ if (isset($_POST['addproduct'])) {
         && $imageFileType != "gif" && $imageFileType != "jfif"
     ) {
 
-        echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed !!!');
-        history.go(-1);</script>";
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
         $uploadOk = 0;
         exit();
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "<script>alert('Upload file failed !!!');
-        history.go(-1);</script>";
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
     } else {
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            header("location: index.php");
+
         } else {
-            echo "<script>alert('Sorry, there was an error uploading your file !!!');history.go(-1);</script>";
+            echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
             exit();
         }
     }
@@ -103,6 +103,7 @@ if (isset($_POST['addproduct'])) {
     $type = pathinfo($_FILES['image']['type'], PATHINFO_FILENAME);
 
     $pf = new Perfume();
+
     $rs = $pf->InsertPerfume(
         $_POST['pf_name'],
         $_POST['gender'],
@@ -117,11 +118,46 @@ if (isset($_POST['addproduct'])) {
     );
 
     if ($rs) {
-        header('location: product.php?addrs=1');
-    } else {
-        echo "<script>alert('Upload data failed !!!');
-        history.go(-1);</script>";
+
+        $subject  = 'Notifiction';
+        $message  = 'Hi, ' . "don't forget about us.. We just got a new product: " . $_POST['pf_name'] . "<br>";
+        $mail = new PHPMailer;
+        $sb = new Subscriber();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = EMAILID;
+        $mail->Password = PASSWORD;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+        $mail->setFrom(EMAILID, "Thai Son");
+        $mail->IsSMTP(true);
+        $mail->addReplyTo(EMAILID);
+        $mail->SMTPDebug = 3;
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        foreach ($sb->getSubscriber()  as $row) {
+            $mail->addAddress($row['email']);
+            if (!$mail->send()) {
+            } else {
+            }
+        }
+
+        $user = new User;
+        foreach ($user->getAllUser() as $row) {
+            $mail->addAddress($row['email']);
+            if (!$mail->send()) {
+            } 
+            else {
+                
+            }
+        }
+    } 
+    else {
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
     }
+    echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
 }
 
 if (isset($_POST['addbrand'])) {
@@ -225,7 +261,6 @@ if (isset($_POST['addtype'])) {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
-
 }
 
 
@@ -246,5 +281,4 @@ if (isset($_POST['addrange'])) {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
-    
 }

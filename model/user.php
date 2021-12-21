@@ -54,8 +54,6 @@ class User extends Db
     }
 
     public function adminLogin($user, $pass){
-
-
         try {
             $sql = self::$connection->prepare("SELECT * FROM `admin` WHERE ? = `idadmin` and `password` = ?");
 

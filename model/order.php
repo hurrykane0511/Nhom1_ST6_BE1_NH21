@@ -149,12 +149,12 @@ class Order extends Db
     public function getQuantilyOrder()
     {
         try {
-            $sql = self::$connection->prepare("SELECT SUM(quantity) as 'SumQuantity' FROM `tbl_orderitem`join tbl_order on tbl_orderitem.order_id = tbl_order.order_id WHERE tbl_order.status = 'Deliveried'");
+            $sql = self::$connection->prepare("SELECT SUM(quantity) as 'SumQuantity' FROM `tbl_orderitem` join tbl_order on tbl_orderitem.order_id = tbl_order.order_id WHERE tbl_order.status = 'Delivered'");
            $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
             return $row;
         } catch (mysqli_sql_exception $e) {
-            return false;
+           
         }
     }
 }

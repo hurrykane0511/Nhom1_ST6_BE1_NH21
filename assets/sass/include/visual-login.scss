@@ -116,5 +116,17 @@
       color: $fontclr;
       align-self: flex-start;
     }
+    .loginfb{
+      color: #fff;
+      background: #1674ea;
+      display: block;
+      padding: 10px 0;
+      font-weight: 600;
+      font-family: sans-serif;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 5px;
+    }
   }
 }

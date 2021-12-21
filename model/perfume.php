@@ -171,11 +171,13 @@ class Perfume extends Db
     {
         try {
             $sql = self::$connection->prepare("DELETE FROM `tbl_perfume` WHERE `pf_id`= ? ");
-            $sql->bind_param("i", intval($id));
+            $sql->bind_param("i", $id);
 
             return $sql->execute(); //return an array
         } catch (mysqli_sql_exception $e) {
             echo "Lỗi: " . $e;
         }
     }
+
+
 }

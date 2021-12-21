@@ -6,6 +6,12 @@
       font-size: 5rem;
       font-weight: 600;
     }
+    p{
+      text-align: center;
+      margin: 20px;
+      font-weight: 600;
+      font-family: sans-serif;
+    }
     a {
       color: $fontclr;
       display: block;
@@ -14,13 +20,31 @@
       font-size: 2.6rem;
       font-weight: normal;
       font-family: "Montserrat", sans-serif;
+      width: max-content;
+      margin: 15px auto;
     }
   }
   .order-history {
     display: flex;
     justify-content: center;
     margin-top: 36px;
+    flex-direction: column;
+    align-items: center;
+    .order-wraper{
+      width: 100%;
+      max-width: 1222px;
+    }
+    .history-title{
+      margin-right: auto;
+      font-weight: 400;
+      font-size: 2.6rem;
+      font-weight: 600;
+    }
+    .no-order{
+      margin-top: 16px;
+    }
     .my_account_orders {
+      margin-top: 16px;
       border-collapse: collapse;
       border-spacing: 0;
       max-width: 1222px;
@@ -31,6 +55,7 @@
     a {
       color: #28acd7;
       text-decoration: none;
+      
     }
     .my_account_orders th {
       text-align: left;

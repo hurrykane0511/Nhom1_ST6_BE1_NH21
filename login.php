@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
+
 include('./Template/head.php');
+include './model/config.php';
 define("header_here", true);
+
 if (isset($_SESSION['account'])) {
     header("location: account.php");
+}
+
+$facebook_output = '';
+$fb_helper = $fb->getRedirectLoginHelper();
+
+if (!isset($_GET['code'])) {
+    $fb_permission = ['email'];
+    $fb_login_url = $fb_helper->getLoginUrl('http://localhost/Nhom1_ST6_BE1_NH21/account.php', $fb_permission);
 }
 
 ?>
@@ -37,14 +47,16 @@ if (isset($_SESSION['account'])) {
                             <input type="submit" name="signin" class="login-btn" value="Sign In">
                         </div>
                         <a href="signup.php" class="handle-link create">Create account</a>
+                        <p style="text-align: center;">-OR-</p>
                     </form>
+                    <a href="<?= $fb_login_url ?>" class="loginfb">Login with facebook</a>
                 </div>
-
             </div>
         </div>
     </div>
     <?php include("./Template/footer.php") ?>
 </body>
+
 <script type="module" src="./modules/login.js"></script>
 <script>
     function validateMyForm(e) {
@@ -55,7 +67,7 @@ if (isset($_SESSION['account'])) {
         const email = document.querySelector('#email1');
         const invalid = document.querySelector('.msg-invalid');
         const password = document.querySelector('#pass');
-        
+
         if (!reemail.test(email.value)) {
             e.preventDefault();
             invalid.classList.add('show');

@@ -17,7 +17,7 @@ if (isset($_POST['subscribe'])) {
 if (isset($_POST['subscribe'])) {
 
     $to       = $_POST['email'];
-    $subject  = 'test mail';
+    $subject  = 'Thanks you';
     $message  = 'Hi, Thank you for subscribing. You will receive a notification from the Fragrange Shop';
     $mail = new PHPMailer;
 
@@ -47,11 +47,13 @@ if (isset($_POST['subscribe'])) {
         // $mail->AltBody = $headers;  
 
         if (!$mail->send()) {
-            
+            header('location: index.php');
+            exit();
         } else {
-            
-            exit;
+            header('location: index.php');
+            exit();
         }
     } catch (Exception $th) {
+
     }
 }
