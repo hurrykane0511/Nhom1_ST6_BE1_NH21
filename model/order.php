@@ -150,7 +150,20 @@ class Order extends Db
     {
         try {
             $sql = self::$connection->prepare("SELECT SUM(quantity) as 'SumQuantity' FROM `tbl_orderitem` join tbl_order on tbl_orderitem.order_id = tbl_order.order_id WHERE tbl_order.status = 'Delivered'");
-           $sql->execute();
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+           
+        }
+    }
+
+    public function sumPriceOrder($order_id)
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT SUM(item_price) as 'SumPrice' FROM `tbl_orderitem` WHERE order_id = ?");
+            $sql->bind_param('i', $order_id);
+            $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
             return $row;
         } catch (mysqli_sql_exception $e) {
