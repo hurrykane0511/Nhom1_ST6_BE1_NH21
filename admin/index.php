@@ -96,7 +96,8 @@ $order = new Order;
   <div class="details">
     <div class="filter">
       <label>Search Order: <input type="text" name="order_id" onkeyup="loadorder()"></label>
-      <label><input type="radio" name="stt" value="Pending" onchange="loadorder()" checked> Pending</label>
+      <label><input type="radio" name="stt" value="" onchange="loadorder()" checked> All</label>
+      <label><input type="radio" name="stt" value="Pending" onchange="loadorder()"> Pending</label>
       <label><input type="radio" name="stt" value="Confirm" onchange="loadorder()"> Confirm</label>
       <label><input type="radio" name="stt" value="Delivery" onchange="loadorder()"> Delivery</label>
       <label><input type="radio" name="stt" value="Delivered" onchange="loadorder()"> Delivered</label>
@@ -111,6 +112,8 @@ $order = new Order;
           <th>Phone contact</th>
           <th>Email</th>
           <th>Order date</th>
+          <th>Items</th>
+          <th>Total price</th>
 
           <th>Update</th>
         </tr>

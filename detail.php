@@ -50,15 +50,7 @@ if (isset($_GET['productId'])) {
 
                                 <h2 class="pf-name"><?php echo $getPerfumeByID['pf_name'] ?></h2>
                                 <p class="brand"><?php echo $getPerfumeByID['brand_name'] ?></p>
-                                <div class="pf-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span>&nbsp;4.7 (28)</span>
-                                    <span><a href="#" class="review-link">Read 28 reviews</a></span>
-                                </div>
+                               
                                 <p class="values"><span class="capacity"><?php echo $getPerfumeByID['capacity'] ?> - </span>
 
                                     <?php
@@ -75,7 +67,7 @@ if (isset($_GET['productId'])) {
                                 </p>
                                 <p class="description"><?php echo $getPerfumeByID['description'] ?></p>
                                 <a href="javascript:void(0)" onclick="addCart(this);" class="addCart" id="item-<?php echo $_GET['productId'] ?>">Add to card</a>
-                                <a href="#" class="buyNow">Add to list</a>
+                               
 
                             </div>
 
@@ -119,53 +111,6 @@ if (isset($_GET['productId'])) {
                     </div>
                     <!-- End showcase -->
 
-                    <div class="form-rating-wrap">
-
-                        <form id="ratingForm" onsubmit="javascript:void(0)" class="rating-form">
-
-                            <div class="head-form">
-                                <h2 class="form-title">Customer reviews</h2>
-                                <div class="review-parameter">
-                                    <p class="num-review">No review yet</p>
-                                    <a href="javascript:void(0)" class="write-review">Write review</a>
-                                </div>
-                            </div>
-                            <input type="hidden" name="id_product" value="<?php echo $_GET['productId'] ?>">
-                            <div class="input-wrap">
-                                <label for="name">name</label>
-                                <input type="text" name="name" id="name" placeholder="Enter your name" autocomplete="off">
-                            </div>
-
-                            <div class="input-wrap">
-                                <label for="email">email</label>
-                                <input type="text" name="email" id="email" placeholder="john.smith@example.com" autocomplete="off">
-                            </div>
-
-
-                            <fieldset class="rating">
-                                <legend>Please rate:</legend>
-                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-                            </fieldset>
-
-                            <div class="clearfix"></div>
-
-                            <div class="input-wrap">
-                                <label for="title">review title</label>
-                                <input type="text" name="title" id="title" placeholder="Give your review title" autocomplete="off">
-                            </div>
-
-                            <div class="input-wrap">
-                                <label for="body">review body</label>
-                                <textarea name="body" id="body" cols="30" placeholder="Write your comments here" rows="10"></textarea>
-                            </div>
-                            <button type="submit" class="submit clearfix" name="review_submit">Submit review</button>
-                        </form>
-
-                    </div>
                 </div>
 
             </div>

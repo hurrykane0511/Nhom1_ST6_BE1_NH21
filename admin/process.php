@@ -38,7 +38,7 @@ if (isset($_POST['addproduct'])) {
         if (!isset($_POST[$v])) {
             $verified = FALSE;
             echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
-           
+
             exit();
         }
     }
@@ -92,7 +92,6 @@ if (isset($_POST['addproduct'])) {
     } else {
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-
         } else {
             echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
             exit();
@@ -148,16 +147,14 @@ if (isset($_POST['addproduct'])) {
         foreach ($user->getAllUser() as $row) {
             $mail->addAddress($row['email']);
             if (!$mail->send()) {
-            } 
-            else {
-                
+            } else {
             }
         }
-    } 
-    else {
+    } else {
         echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
     }
-    echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+    echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=1');</script>";
+    exit();
 }
 
 if (isset($_POST['addbrand'])) {

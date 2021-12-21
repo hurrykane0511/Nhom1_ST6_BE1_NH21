@@ -81,6 +81,18 @@ class Order extends Db
             echo "Lỗi: " . $e;
         }
     }
+    public function getAllOrder1($id)
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order join tbl_user on tbl_user.user_id = tbl_order.user_id join tbl_orderitem on tbl_orderitem.order_id = tbl_order.order_id join tbl_perfume on tbl_perfume.pf_id = tbl_orderitem.pf_id where tbl_order.order_id = ? order by ordered_at desc");
+            $sql->bind_param('s', $id);
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
     public function getAllOrder2($stt)
     {
         try {
@@ -88,6 +100,20 @@ class Order extends Db
             join tbl_user on tbl_user.user_id = tbl_order.user_id where tbl_order.status = ?
             order by ordered_at desc limit 10");
             $sql->bind_param('s', $stt);
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
+    public function getAllOrder4()
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM db_fragranceshop.tbl_order 
+            join tbl_user on tbl_user.user_id = tbl_order.user_id
+            order by ordered_at desc");
+           
             $sql->execute();
             $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $row;
