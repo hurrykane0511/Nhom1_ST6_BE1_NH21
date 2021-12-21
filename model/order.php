@@ -196,4 +196,16 @@ class Order extends Db
            
         }
     }
+
+    public function sumAllPriceOrder()
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT SUM(item_price) as 'SumPrice' FROM `tbl_orderitem`");
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+           
+        }
+    }
 }
