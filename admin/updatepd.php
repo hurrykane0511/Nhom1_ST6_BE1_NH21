@@ -13,8 +13,7 @@ if (isset($_GET['pf_id'])) {
         echo "<script>alert('Invalid ID!!');history.go(-1)</script>";
         exit();
     }
-}
-else{
+} else {
     header('location: index.php');
 }
 ?>
@@ -27,14 +26,13 @@ else{
             <input type="hidden" name="pf_id" value="<?= $item['pf_id'] ?>">
             <div class="drop-zone">
                 <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                <input type="file" name="image" class="drop-zone__input" accept="image/png, image/gif, image/jpeg" multiple>
+                <input type="file" data-default-file="../assets/images/products/<?=explode('#',$item['image'])[0]?>" name="image" class="drop-zone__input" id="image" accept="image/png, image/gif, image/jpeg">
             </div>
-
-
+       
             <div class="content">
                 <label>
                     Perfume's name:
-                    <input type="text" name="pf_name" value="<?=$item['pf_name']?>">
+                    <input type="text" name="pf_name" value="<?= $item['pf_name'] ?>">
                 </label>
                 <label>
                     Gender:
@@ -54,7 +52,7 @@ else{
                         <?php
                         foreach ($brands->getAllBrand() as $row) {
                         ?>
-                            <option value="<?= $row['brand_id']?>" <?= $row['brand_id'] == $item['brand_id'] ?  'selected="selected"' : '' ?>><?= $row['brand_name'] ?></option>
+                            <option value="<?= $row['brand_id'] ?>" <?= $row['brand_id'] == $item['brand_id'] ?  'selected="selected"' : '' ?>><?= $row['brand_name'] ?></option>
                         <?php
                         }
                         ?>
@@ -78,7 +76,7 @@ else{
                         <?php
                         foreach ($ct->getAllRange() as $row) {
                         ?>
-                            <option value="<?= $row['range_id'] ?>" <?= $row['range_id'] == $item['range_id'] ?  'selected="selected"' : '' ?> ><?= $row['range_name'] ?></option>
+                            <option value="<?= $row['range_id'] ?>" <?= $row['range_id'] == $item['range_id'] ?  'selected="selected"' : '' ?>><?= $row['range_name'] ?></option>
                         <?php
                         }
                         ?>
@@ -88,11 +86,11 @@ else{
                 <div class="price-group">
                     <label>
                         Regular price(£):
-                        <input type="number" name="regular_price" value="<?= $item['regular_price'] ?>" min="0">
+                        <input type="number" name="regular_price" value="<?= $item['regular_price'] ?>" min="0" step="0.1">
                     </label>
                     <label>
                         Sales price(%):
-                        <input type="number" name="sales_price" value="<?= $item['sales_price'] ?>" min="0">
+                        <input type="number" name="sales_price" value="<?= $item['sales_price'] ?>" min="0" step="0.1">
                     </label>
                 </div>
                 <label>
@@ -112,6 +110,7 @@ else{
     </form>
 </div>
 <script>
+
     ClassicEditor
         .create(document.querySelector('#editor'))
         .catch(error => {
@@ -159,6 +158,7 @@ else{
      * @param {HTMLElement} dropZoneElement
      * @param {File} file
      */
+
     function updateThumbnail(dropZoneElement, file) {
         let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 

@@ -114,8 +114,4 @@ img_links.forEach((el, idx) => {
   });
 });
 
-const onform = document.querySelector('.write-review');
-const ratingForm = document.querySelector('.rating-form');
-onform.addEventListener('click',()=>{
-    ratingForm.classList.toggle('active');
-})
+

@@ -47,8 +47,8 @@ $brands = new Brand();
             <span class="title">Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li class="<?=  curr_page("user.php") ? "hovered" : "" ?>">
+          <a href="user.php">
             <span class="icon">
               <ion-icon name="people-outline"></ion-icon>
             </span>

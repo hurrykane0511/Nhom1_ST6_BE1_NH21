@@ -33,8 +33,8 @@ $order = new Order;
   <div class="cardBox">
     <div class="card">
       <div>
-        <div class="numbers">1,504</div>
-        <div class="cardName">Daily views</div>
+        <div class="numbers">£ <?= number_format($order->sumAllPriceOrder()['SumPrice']) ?></div>
+        <div class="cardName">Revenue</div>
       </div>
       <div class="iconBx">
         <ion-icon name="eye-outline"></ion-icon>

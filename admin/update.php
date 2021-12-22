@@ -41,10 +41,9 @@ if (isset($_POST['updateproduct'])) {
 
     $target_dir = "../assets/images/products/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
-  
+
     if (file_exists($target_file)) {
-        header('location: product.php?uprs=0');
-        exit();
+        
     }
 
 
@@ -53,20 +52,18 @@ if (isset($_POST['updateproduct'])) {
 
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+ 
         $uploadOk = 1;
     } else {
-        header('location: product.php?uprs=0');
+
         $uploadOk = 0;
-        exit();
     }
 
 
 
     // Check file size
     if ($_FILES["image"]["size"] > 500000) {
-        echo "<script>alert('Sorry, your file is too large !!!');
-        history.go(-1);</script>";
+      
         $uploadOk = 0;
         exit();
     }
@@ -76,27 +73,29 @@ if (isset($_POST['updateproduct'])) {
         $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" && $imageFileType != "jfif"
     ) {
-
-        header('location: product.php?uprs=0');
         $uploadOk = 0;
-        exit();
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "<script>alert('Upload file failed !!!');
-        history.go(-1);</script>";
     } else {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             // header("location: product.php");
         } else {
-            header('location: product.php?uprs=0');
-            exit();
         }
     }
-
+    $imgsrc = $pf->getPerfumeByID($_POST['pf_id'])['image'];
     $filename = pathinfo($_FILES['image']['name'], PATHINFO_FILENAME);
     $type = pathinfo($_FILES['image']['type'], PATHINFO_FILENAME);
+
+    $final = '';
+
+    if (empty($filename)) {
+        $final = $imgsrc;
+    }
+    else{
+        $final = $filename . '.' . $type;
+    }
 
     $pf = new Perfume();
 
@@ -109,7 +108,7 @@ if (isset($_POST['updateproduct'])) {
         $_POST['range'],
         $_POST['regular_price'],
         $_POST['sales_price'],
-        $filename . '.' . $type,
+        $final,
         $_POST['description'],
         $_POST['pf_id']
     );
@@ -117,8 +116,7 @@ if (isset($_POST['updateproduct'])) {
     if ($rs) {
         header('location: product.php?uprs=1');
     } else {
-        echo "<script>alert('Upload data failed !!!');
-        history.go(-1);</script>";
+        header('location: product.php?uprs=0');
     }
 }
 
@@ -158,7 +156,8 @@ if (isset($_POST['updatebrand'])) {
     // Check file size
     if ($_FILES["image"]["size"] > 500000) {
         header('location: product.php?uprs=0');
-        exit();      $uploadOk = 0;
+        exit();
+        $uploadOk = 0;
     }
 
     // Allow certain file formats
@@ -176,7 +175,6 @@ if (isset($_POST['updatebrand'])) {
     if ($uploadOk == 0) {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
-    
     } else {
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
@@ -184,7 +182,6 @@ if (isset($_POST['updatebrand'])) {
         } else {
             echo "<script>alert('Upload data failed !!!');
             history.go(-1);</script>";
-        
         }
     }
 
@@ -228,7 +225,6 @@ if (isset($_POST['updatetype'])) {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
-
 }
 
 
@@ -255,5 +251,4 @@ if (isset($_POST['updaterange'])) {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
-    
 }

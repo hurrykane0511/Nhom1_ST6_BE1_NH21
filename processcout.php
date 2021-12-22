@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include './model/config.php';
 include './model/dbconnect.php';
@@ -62,5 +63,10 @@ if (isset($_POST['placeorder'])) {
 }
 echo '<script>window.onbeforeunload = function() { return "Your work will be lost."; };</script>';
 unset($_SESSION['cart']);
-header_remove();
-header('location: account.php');
+try {
+    header('location: account.php');
+    exit;
+} catch (Exception $th) {
+  
+}
+ob_end_flush();

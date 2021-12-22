@@ -9,8 +9,13 @@ include './model/perfume.php';
 if (!isset($_GET['productId'])) {
     header('location: index.php');
 }
+
 $pf = new Perfume;
 if (isset($_GET['productId'])) {
+    if (!$pf->getPerfumeByID($_GET['productId'])) {
+        header('location: ./');
+        exit;
+    }
     $getPerfumeByID = $pf->getPerfumeByID($_GET['productId'])
 ?>
 
@@ -118,29 +123,6 @@ if (isset($_GET['productId'])) {
     <?php }
 include("./Template/footer.php") ?>
     </body>
-    <script>
-        function ValidateForm() {
-
-            const rate = document.querySelectorAll('input[name="rating"]:checked');
-            const form = document.querySelector('#ratingForm');
-            if (!rate.length > 0) {
-                return;
-            }
-
-            var xhr = new XMLHttpRequest();
-            var formData = new FormData(form);
-
-
-            xhr.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    console.log(this.response);
-                }
-            };
-            xhr.open('POST', 'rating.php', true);
-            xhr.send(formData);
-
-        }
-    </script>
     <script src="./node_modules/gsap/dist/ScrollTrigger.min.js"></script>
     <script src="./node_modules/gsap/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/drift-zoom/1.3.1/Drift.min.js"></script>

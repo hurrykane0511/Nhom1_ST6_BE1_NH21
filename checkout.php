@@ -283,7 +283,7 @@ if (!isset($_SESSION['cart'])) {
                     </label>
                     <label>
                         <span>&nbsp;</span>
-                        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" required />
+                        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)"/>
                     </label>
                     <label>
                         <span>Town / City <span class="required">*</span></span>

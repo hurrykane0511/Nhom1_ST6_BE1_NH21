@@ -35,11 +35,12 @@ if (isset($_GET['order_id']) && isset($_GET['stt'])) {
             <td><?= $row['order_id'] ?></td>
             <th class="mobile-header">Customer's ID</th>
             <td><?= $row['user_id'] ?></td>
+            <th class="mobile-header">Customer's Name</th>
             <td><?= $row['firstname'] . ' ' . $row['lastname'] ?></td>
             <th class="mobile-header">Phone contact</th>
-            <td><?= $row['phone'] ?></td>
+            <td><a href="tel:+<?= $row['phone'] ?>"><?= $row['phone'] ?></a></td>
             <th class="mobile-header">Email</th>
-            <td><?= $row['email'] ?></td>
+            <td><a href="mailto:<?= $row['email'] ?>"><?= $row['email'] ?></a></td>
             <th class="mobile-header">Order date</th>
             <td><?= $row['ordered_at'] ?></td>
             <th class="mobile-header">Items</th>

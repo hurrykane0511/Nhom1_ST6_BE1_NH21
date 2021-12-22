@@ -208,4 +208,17 @@ class Order extends Db
            
         }
     }
+
+    public function sumOrderById($user_id)
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT count(order_id) as 'SumOrder' FROM `tbl_order` WHERE user_id = ?");
+            $sql->bind_param('i', $user_id);
+            $sql->execute();
+            $row = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+            return $row;
+        } catch (mysqli_sql_exception $e) {
+           
+        }
+    }
 }

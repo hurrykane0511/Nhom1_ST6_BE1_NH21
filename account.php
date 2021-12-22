@@ -58,7 +58,7 @@ if (!isset($_SESSION['account'])) {
 
         $account = $user->Login($_POST['email'], $_POST['password']);
         if ($account == false) {
-            echo 'That bai';
+            header('location: login.php?surs=Username or password is incorrect');
             exit();
         } else {
             $_SESSION['account'] = $account[0];
