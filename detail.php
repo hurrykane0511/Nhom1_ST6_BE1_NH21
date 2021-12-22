@@ -55,7 +55,7 @@ if (isset($_GET['productId'])) {
 
                                 <h2 class="pf-name"><?php echo $getPerfumeByID['pf_name'] ?></h2>
                                 <p class="brand"><?php echo $getPerfumeByID['brand_name'] ?></p>
-                               
+
                                 <p class="values"><span class="capacity"><?php echo $getPerfumeByID['capacity'] ?> - </span>
 
                                     <?php
@@ -72,7 +72,7 @@ if (isset($_GET['productId'])) {
                                 </p>
                                 <p class="description"><?php echo $getPerfumeByID['description'] ?></p>
                                 <a href="javascript:void(0)" onclick="addCart(this);" class="addCart" id="item-<?php echo $_GET['productId'] ?>">Add to card</a>
-                               
+
 
                             </div>
 
@@ -119,10 +119,21 @@ if (isset($_GET['productId'])) {
                 </div>
 
             </div>
+
+
         </div>
+        <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1309726042773427&autoLogAppEvents=1" nonce="om69d1be"></script>
+<?PHP    
+        $url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+        echo "<div class='fb-comments' data-href='$url' data-num-posts='10' data-width=''></div>";
+?>
     <?php }
-include("./Template/footer.php") ?>
+include("./Template/footer.php")
+    ?>
+
     </body>
+
     <script src="./node_modules/gsap/dist/ScrollTrigger.min.js"></script>
     <script src="./node_modules/gsap/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/drift-zoom/1.3.1/Drift.min.js"></script>

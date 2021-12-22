@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+ob_start();
+session_start();
 define("header_here", true);
 ?>
 <!DOCTYPE html>
@@ -12,8 +14,6 @@ include('./model/user.php');
 if (isset($_SESSION['account'])) {
     header('location: account.php');
 }
-
-
 
 ?>
 

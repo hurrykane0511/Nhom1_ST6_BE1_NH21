@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';
@@ -151,9 +154,11 @@ if (isset($_POST['addproduct'])) {
             }
         }
     } else {
-        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+        header('location: product.php?addrs=0');
+        exit();
     }
-    echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=1');</script>";
+    // echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=1');</script>";
+    header('location: product.php?addrs=1');
     exit();
 }
 

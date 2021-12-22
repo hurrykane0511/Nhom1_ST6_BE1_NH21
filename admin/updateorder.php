@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include  '../model/config.php';
 include '../model/dbconnect.php';

@@ -1,6 +1,7 @@
 <?php
-
+ob_start();
 session_start();
+
 include './template/header.php';
 
 if (isset($_SESSION['admin'])) {
