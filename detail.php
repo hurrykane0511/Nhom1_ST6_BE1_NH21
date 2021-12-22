@@ -123,11 +123,13 @@ if (isset($_GET['productId'])) {
 
         </div>
         <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1309726042773427&autoLogAppEvents=1" nonce="om69d1be"></script>
-<?PHP    
-        $url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-        echo "<div class='fb-comments' data-href='$url' data-num-posts='10' data-width=''></div>";
-?>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1309726042773427&autoLogAppEvents=1" nonce="om69d1be"></script>
+        <div class="comments">
+            <?PHP
+            $url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+            echo "<div class='fb-comments' data-href='$url' data-num-posts='10' data-width='1222'></div>";
+            ?>
+        </div>
     <?php }
 include("./Template/footer.php")
     ?>
