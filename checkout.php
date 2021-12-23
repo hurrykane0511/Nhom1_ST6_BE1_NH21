@@ -1,12 +1,7 @@
-<?php
-ob_start();
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
+session_start();
 include('./Template/head.php');
 define("header_here", true);
 if (!isset($_SESSION['account'])) {

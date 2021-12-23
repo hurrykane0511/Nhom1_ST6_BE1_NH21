@@ -40,7 +40,8 @@ if (isset($_POST['addproduct'])) {
     foreach ($vars as $v) {
         if (!isset($_POST[$v])) {
             $verified = FALSE;
-            header('location: product.php?addrs=0');
+            echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+
             exit();
         }
     }
@@ -50,7 +51,7 @@ if (isset($_POST['addproduct'])) {
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
     if (file_exists($target_file)) {
-        header('location: product.php?addrs=0');
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
         exit();
     }
 
@@ -63,7 +64,8 @@ if (isset($_POST['addproduct'])) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        header('location: product.php?addrs=0');
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+        $uploadOk = 0;
         exit();
     }
 
@@ -71,7 +73,8 @@ if (isset($_POST['addproduct'])) {
 
     // Check file size
     if ($_FILES["image"]["size"] > 500000) {
-        header('location: product.php?addrs=0');
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+        $uploadOk = 0;
         exit();
     }
 
@@ -81,20 +84,19 @@ if (isset($_POST['addproduct'])) {
         && $imageFileType != "gif" && $imageFileType != "jfif"
     ) {
 
-        header('location: product.php?addrs=0');
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+        $uploadOk = 0;
         exit();
-
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        header('location: product.php?addrs=0');
-        exit();
+        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
     } else {
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         } else {
-            header('location: product.php?addrs=0');
+            echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
             exit();
         }
     }
@@ -222,8 +224,9 @@ if (isset($_POST['addbrand'])) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             header("location: index.php");
         } else {
-            header('location: product.php?addrs=0');
-        exit();
+            // echo "<script>alert('Sorry, there was an error uploading your file !!!');
+            // history.go(-1);</script>";
+            exit();
         }
     }
 
@@ -235,8 +238,7 @@ if (isset($_POST['addbrand'])) {
         $filename . '.' . $type
     );
     if ($rs) {
-        header('location: product.php?addrs=0');
-        exit();
+        header('location: product.php?addrs=1');
     } else {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";

@@ -50,7 +50,7 @@ if (isset($_POST['subscribe'])) {
             header('location: index.php');
             exit();
         } else {
-            header('location: index.php?tb=Thanks for your subscribe !!');
+            header('location: index.php');
             exit();
         }
     } catch (Exception $th) {

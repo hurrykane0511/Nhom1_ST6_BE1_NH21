@@ -1,7 +1,4 @@
-<?php 
-ob_start();
-session_start();
-
+<?php session_start();
 define("header_here", true)
 ?>
 <!DOCTYPE html>
