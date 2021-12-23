@@ -337,9 +337,7 @@ body {
 }
 
 #form-addproduct {
-  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 #form-addproduct h2 {
@@ -354,8 +352,6 @@ body {
 #form-addproduct .form-add-product {
   font-family: "Roboto Condensed", sans-serif;
   overflow: hidden;
-  height: 100%;
-  max-height: 900px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
