@@ -46,14 +46,15 @@ class Perfume extends Db
         $sales_price,
         $image,
         $description,
+        $status,
         $pf_id
     ) {
         $sql = self::$connection->prepare("Update tbl_perfume set 
-        `pf_name` = ?,`gender` = ?,`regular_price` = ?,`description` = ?, `image`= ?,`brand_id` = ?, `capacity` = ?,  `sales_price` =?, `type_id` = ?, `range_id`  =  ?
+        `pf_name` = ?,`gender` = ?,`regular_price` = ?,`description` = ?, `image`= ?,`brand_id` = ?, `capacity` = ?,  `sales_price` =?, `type_id` = ?, `range_id`  =  ?, status = ?
             where pf_id = ?
         ");
         $sql->bind_param(
-            "ssdssiidiii",
+            "ssdssiidiiii",
             $itemName,
             $gender,
             $regular_price,
@@ -64,6 +65,7 @@ class Perfume extends Db
             $sales_price,
             $type,
             $range,
+            $status,
             $pf_id
         );
 

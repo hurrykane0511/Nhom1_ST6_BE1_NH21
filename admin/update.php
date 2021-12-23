@@ -26,6 +26,7 @@ if (isset($_POST['updateproduct'])) {
         'regular_price',
         'sales_price',
         'description',
+        'status',
         'pf_id'
     );
 
@@ -111,6 +112,7 @@ if (isset($_POST['updateproduct'])) {
         $_POST['sales_price'],
         $final,
         $_POST['description'],
+        $_POST['status'],
         $_POST['pf_id']
     );
 

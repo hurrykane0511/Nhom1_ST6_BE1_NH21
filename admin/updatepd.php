@@ -95,6 +95,14 @@ if (isset($_GET['pf_id'])) {
                     </label>
                 </div>
                 <label>
+                    Status:
+                    <select name="status">
+                        
+                            <option value="0" <?= $row['status'] == 0 ?  'selected="selected"' : '' ?>>Available</option>
+                            <option value="1" <?= $row['status'] == 1 ?  'selected="selected"' : '' ?>>Sold Out</option>
+                    </select>
+                </label>
+                <label>
                     Capacity(ml):
                     <input type="number" name="capacity" value="<?= intval($item['capacity']) ?>">
                 </label>
