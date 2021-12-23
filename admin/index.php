@@ -64,7 +64,7 @@ $order = new Order;
 
     <div class="card">
       <div>
-        <div class="numbers"><?= $order->getQuantilyOrder()['SumQuantity'] ?></div>
+        <div class="numbers"><?= $pf->getSales()['sumQty'] ?></div>
         <div class="cardName">Sold</div>
       </div>
       <div class="iconBx">

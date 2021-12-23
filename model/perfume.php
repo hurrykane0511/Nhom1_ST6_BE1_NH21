@@ -74,12 +74,13 @@ class Perfume extends Db
 
     function getSales()
     {
-        $sql = self::$connection->prepare("select sum(sales_qty) from tbl_perfume");
+        $sql = self::$connection->prepare("select sum(sales_qty) as 'sumQty' from tbl_perfume");
         $sql->execute();
         $sum = array();
-        $sum = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        $sum = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
         return $sum;
     }
+    
     function getNewProduct()
     {
         try {
@@ -92,6 +93,7 @@ class Perfume extends Db
             echo "Lỗi: " . $e;
         }
     }
+
     function getTopSell()
     {
         try {
