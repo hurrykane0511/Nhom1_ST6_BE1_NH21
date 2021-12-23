@@ -98,8 +98,8 @@ if (isset($_GET['pf_id'])) {
                     Status:
                     <select name="status">
                         
-                            <option value="0" <?= $row['status'] == 0 ?  'selected="selected"' : '' ?>>Available</option>
-                            <option value="1" <?= $row['status'] == 1 ?  'selected="selected"' : '' ?>>Sold Out</option>
+                            <option value="0" <?= $item['status'] == 0 ?  'selected="selected"' : '' ?>>Available</option>
+                            <option value="1" <?= $item['status'] == 1 ?  'selected="selected"' : '' ?>>Sold Out</option>
                     </select>
                 </label>
                 <label>
