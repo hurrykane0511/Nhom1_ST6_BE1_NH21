@@ -15,7 +15,8 @@ class Subscriber extends Db
             $sql = self::$connection->prepare("INSERT INTO tbl_subscriber(email) values( ? )");
             $sql->bind_param('s', $email);
             return $sql->execute();
-        } catch (Exception $er) {
+        } 
+        catch (Exception $er) {
             
         }
     }

@@ -80,7 +80,6 @@
                 <li><a href="result.php?gender=men" class="menu-link">MEN'S COLOGNE</a></li>
                 <li><a href="result.php?gender=women" class="menu-link">WOMEN'S PERFUME</a></li>
                 <li><a href="result.php?gender=unisex" class="menu-link">UNISEX</a></li>
-                <li><a href="result.php?gender=men" class="menu-link">BRANDS</a></li>
             </ul>
         </div>
     </div>

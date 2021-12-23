@@ -45,12 +45,12 @@ if (isset($_POST['subscribe'])) {
         $mail->Subject = $subject;
         $mail->Body    = $message;
         // $mail->AltBody = $headers;  
-
+        
         if (!$mail->send()) {
             header('location: index.php');
             exit();
         } else {
-            header('location: index.php');
+            header('location: index.php?rp=thank for your subscribe');
             exit();
         }
     } catch (Exception $th) {

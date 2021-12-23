@@ -294,12 +294,11 @@
   }
 }
 .comments{
-
   display: flex;
   justify-content: center;
 }
 .fb-comments{
   background: #fff;
-  height: 100px;
+  min-height: 100px;
   width: 1222px;
 }

@@ -1,4 +1,4 @@
-let list = document.querySelectorAll(".navigation li");
+// let list = document.querySelectorAll(".navigation li");
 let toggle = document.querySelector(".toggle");
 let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
@@ -12,11 +12,11 @@ function activeLink() {
   // navigation.classList.remove("active");
 }
 
-list.forEach((item) => item.addEventListener("click", activeLink));
-toggle.addEventListener("click", function () {
-  navigation.classList.toggle("active");
-  main.classList.toggle("active");
-});
+// list.forEach((item) => item.addEventListener("click", activeLink));
+// toggle.addEventListener("click", function () {
+//   navigation.classList.toggle("active");
+//   main.classList.toggle("active");
+// });
 
 function loadchart() {
   if (document.querySelector("#myChart")) {

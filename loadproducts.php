@@ -114,7 +114,8 @@ if (isset($_GET['page'])) {
             'sales_price'        =>    $row['sales_price'],
             'brand_name'        =>    $row['brand_name'],
             'regular_price'        =>    $row['regular_price'],
-            'image' => $image_array[0]
+            'image' => $image_array[0],
+            'status' => $row['status']
         );
     }
 

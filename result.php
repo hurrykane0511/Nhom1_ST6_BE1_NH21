@@ -184,9 +184,15 @@ $ctg = new categories();
         req.onload = function() {
             var jsonResponse = req.response;
             let html = '';
+            console.log(jsonResponse);
             if (jsonResponse) {
                 for (var i = 0; i < jsonResponse.length - 1; i++) {
-                    html += '<div class="pf-cart">';
+                    if(jsonResponse[i].status == 1){
+                        html += '<div class="pf-cart">';
+                    }
+                    else{
+                        html += '<div class="pf-cart" style="opacity: 0.5;">';
+                    }
                     html += '<a href="detail.php?productId=' + jsonResponse[i].pf_id + '" class="img_link">'
                     html += '<img src="./assets/images/products/' + jsonResponse[i].image + '" alt="#">'
                     html += '</a>';
@@ -197,13 +203,6 @@ $ctg = new categories();
                     html += '<a href="detail.php?productId=' + jsonResponse[i].pf_id + '" class="pf-name">'
                     html += '<p>' + jsonResponse[i].pf_name + '</p>';
                     html += '</a>'
-                    html += '<div class="review">'
-                    html += '<button class="star"><span class="stararea checked">★</span></button>'
-                    html += '<button class="star"><span class="stararea checked">★</span></button>'
-                    html += '<button class="star"><span class="stararea checked">★</span></button>'
-                    html += '<button class="star"><span class="stararea checked">★</span></button>'
-                    html += '<button class="star"><span class="stararea checked">★</span></button>'
-                    html += '</div>';
                     html += '<p class="price">';
 
                     if (jsonResponse[i].sales_price) {
@@ -215,7 +214,12 @@ $ctg = new categories();
                     }
 
                     html += '</p>';
-                    html += '<a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-' + jsonResponse[i].pf_id + '">add to cart</a>';
+                    if(jsonResponse[i].status == 1){
+                         html += '<a href="javascript:void(0)" onclick="addCart(this);" class="add-cart-link" id="item-' + jsonResponse[i].pf_id + '">Add to cart</a>';
+                    }
+                    else{
+                        html += '<a href="javascript:void(0)" class="add-cart-link" disabled>Sold Out</a>';
+                    }
                     html += '</div>';
                     html += '</div>';
                 }

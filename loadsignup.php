@@ -1,4 +1,10 @@
 <?php
+
+ob_start();
+session_start();
+if (!isset($_SESSION['account'])) {
+    header('location: ./');
+}
 include './model/config.php';
 include './model/dbconnect.php';
 include './model/user.php';

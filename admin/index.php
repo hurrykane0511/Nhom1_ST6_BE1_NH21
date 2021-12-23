@@ -127,8 +127,7 @@ $order = new Order;
   </div>
 </div>
 <script>
-  loadorder('');
-
+  loadorder();
   function loadorder() {
     var xhttp = new XMLHttpRequest();
     const order_id = document.querySelector('input[name="order_id"]').value;

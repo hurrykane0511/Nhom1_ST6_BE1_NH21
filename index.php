@@ -1,4 +1,8 @@
-<?php session_start();
+<?php
+
+ob_start();
+session_start();
+
 define("header_here", true)
 ?>
 <!DOCTYPE html>
@@ -19,7 +23,7 @@ $brand = new Brand;
   <div class="wraper">
     <div class="wrap">
       <div class="visual">
-    
+
         <?= include './Template/header.php' ?>
 
         <div class="-scroll">
@@ -148,11 +152,20 @@ $brand = new Brand;
       <!--end Brands List -->
 
       <!-- FOOTER -->
-          <?php include './Template/footer.php' ?>
+      <?php include './Template/footer.php' ?>
       <!-- ENDFOOTER -->
     </div>
 </body>
+<script>
+  <?php
 
+  if (isset($_GET['rp'])) {
+    echo 'alert("' . $_GET["rp"] . '")';
+    echo 'window.location.href = "http://fragranceshop.000webhostapp.com/";';
+  }
+
+  ?>
+</script>
 <script src="./node_modules/gsap/dist/ScrollTrigger.min.js"></script>
 <script src="./node_modules/gsap/dist/gsap.min.js"></script>
 <script type="module" src="./modules/main.js"></script>

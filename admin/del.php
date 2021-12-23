@@ -1,7 +1,9 @@
 <?php
 ob_start();
 session_start();
-
+if (!isset($_SESSION['admin'])) {
+    header('location: product.php?delrs=0');
+}
 include '../model/config.php';
 include '../model/dbconnect.php';
 include '../model/perfume.php';

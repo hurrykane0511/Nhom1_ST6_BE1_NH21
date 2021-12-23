@@ -1,6 +1,7 @@
 <?php 
 @ob_start();
 session_start();
+
 define("header_here", true);
 
 ?>
@@ -17,7 +18,9 @@ $user = new User;
 $facebook_output = '';
 
 $fb_helper = $fb->getRedirectLoginHelper();
-
+if (isset($_GET['state'])) {
+    $_SESSION['FBRLH_state'] = $_GET['state'];
+}
 try {
     if (isset($_GET['code']) && !isset($_SESSION['account'])) {
 
@@ -37,7 +40,9 @@ try {
             if ($account) {
                 $_SESSION['account'] = $account[0];
             } else {
-                $user->AccessAccount($fb_user_info['first_name'],  $fb_user_info['last_name'], $fb_user_info['email'],  $fb_user_info['id']);
+                if (!$user->AccessAccount($fb_user_info['first_name'],  $fb_user_info['last_name'], $fb_user_info['email'],  $fb_user_info['id'])) {
+                    header('location: login.php?surs=Email was exists !!!');
+                }
                 $account = $user->Login($fb_user_info['email'], $fb_user_info['id']);
                 $_SESSION['account'] = $account[0];
             }

@@ -2,10 +2,6 @@
 
 use Facebook\Facebook;
 
-if (session_status() === PHP_SESSION_NONE) {
-	session_start();
-}
-
 define('DB_NAME', 'db_fragranceshop');
 /** MySQL database username */
 define('DB_USER', 'root');

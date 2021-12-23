@@ -71,7 +71,12 @@ class Perfume extends Db
 
         return $sql->execute();
     }
-
+    function UpdateQty($pf_id, $qty)
+    {
+        $sql = self::$connection->prepare("Update tbl_perfume set sales_qty = sales_qty + ? where pf_id = ? ");
+        $sql->bind_param("ii", $qty, $pf_id);
+        return $sql->execute();
+    }
     function getSales()
     {
         $sql = self::$connection->prepare("select sum(sales_qty) as 'sumQty' from tbl_perfume");
@@ -80,7 +85,7 @@ class Perfume extends Db
         $sum = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
         return $sum;
     }
-    
+
     function getNewProduct()
     {
         try {
@@ -182,6 +187,4 @@ class Perfume extends Db
             echo "Lỗi: " . $e;
         }
     }
-
-
 }

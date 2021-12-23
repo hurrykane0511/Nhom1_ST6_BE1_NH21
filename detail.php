@@ -1,3 +1,7 @@
+<?php
+ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -71,7 +75,19 @@ if (isset($_GET['productId'])) {
                                     ?>
                                 </p>
                                 <p class="description"><?php echo $getPerfumeByID['description'] ?></p>
-                                <a href="javascript:void(0)" onclick="addCart(this);" class="addCart" id="item-<?php echo $_GET['productId'] ?>">Add to card</a>
+                                <?php
+                                if ($getPerfumeByID['status'] == 1) {
+                                ?>
+                                    <a href="javascript:void(0)" onclick="addCart(this);" class="addCart" id="item-<?php echo $_GET['productId'] ?>">Add to card</a>
+                                <?php
+                                }
+                                else{
+                                    ?>
+                                     <a href="javascript:void(0)" class="addCart" disabled>Sold Out</a>
+                                    <?php
+                                }
+                                ?>
+
 
 
                             </div>

@@ -33,9 +33,9 @@ if (!isset($_GET['code'])) {
 
                 <div class="form-container">
                     <form action="./account.php" method="POST" onsubmit="validateMyForm(event)" class="login-form">
-                        <h2 class="form-title">Login</h2>
+                        <h2 class="form-title">Reset password</h2>
                         <div class="msg-valid     <?= isset($_POST['success']) ? 'show' : '' ?> ">
-                            Sign up successfully
+                            Email request to change password has been sent
                         </div>
                         <div class="msg-invalid <?= isset($_GET['surs']) ? 'show' : '' ?>"><?= $_GET['surs'] ?></div>
                         <div class="input-group">
@@ -43,17 +43,10 @@ if (!isset($_GET['code'])) {
                             <input type="text" name="email" id="email1">
                         </div>
                         <div class="input-group">
-                            <label for="pass">Password</label>
-                            <input type="password" name="password" id="pass">
+                            <input type="submit" name="findemail" class="login-btn" value="Submit">
                         </div>
-                        <a href="signup.php" class="handle-link forgot">Forgot password?</a>
-                        <div class="input-group">
-                            <input type="submit" name="signin" class="login-btn" value="Sign In">
-                        </div>
-                        <a href="signup.php" class="handle-link create">Create account</a>
-                        <p style="text-align: center;">-OR-</p>
                     </form>
-                    <a href="<?= $fb_login_url ?>" class="loginfb">Login with facebook</a>
+
                 </div>
             </div>
         </div>
@@ -66,23 +59,10 @@ if (!isset($_GET['code'])) {
     function validateMyForm(e) {
         var reemail = /\S+@\S+\.\S+/;
 
-        var repass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-        document.querySelector('.msg-valid').classList.remove('show');
-        const email = document.querySelector('#email1');
-        const invalid = document.querySelector('.msg-invalid');
-        const password = document.querySelector('#pass');
-
         if (!reemail.test(email.value)) {
             e.preventDefault();
             invalid.classList.add('show');
             invalid.textContent = "Invalid email format !!!";
-            return;
-        }
-
-        if (!repass.test(password.value)) {
-            e.preventDefault();
-            invalid.classList.add('show');
-            invalid.textContent = "Password: minimum eight characters, at least one letter and one number";
             return;
         }
     }
