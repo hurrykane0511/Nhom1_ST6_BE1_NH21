@@ -258,17 +258,16 @@ if (isset($_POST['addtype'])) {
     }
     
     if ($verified) {
+        $rs = $cg->InsertType(
+            $_POST['type_name']
+        );
         header('location: product.php?addrs=1');
+        exit;
     } else {
-        echo "<script>alert('Upload data failed !!!');
+         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
+        
     }
-    
-    $rs = $cg->InsertType(
-        $_POST['type_name']
-    );
-
-  
 }
 
 
@@ -280,13 +279,12 @@ if (isset($_POST['addrange'])) {
     }
  if ($verified) {
         header('location: product.php?addrs=1');
+        $rs = $cg->InsertRange(
+            $_POST['range_name']
+        );
+        exit();
     } else {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
-    $rs = $cg->InsertRange(
-        $_POST['range_name']
-    );
-
-   
 }
