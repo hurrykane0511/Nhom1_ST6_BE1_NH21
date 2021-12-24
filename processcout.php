@@ -4,7 +4,9 @@ session_start();
 include './model/config.php';
 include './model/dbconnect.php';
 include './model/order.php';
+require './phpmailer/PHPMailerAutoload.php';
 include './model/perfume.php';
+
 if (isset($_POST['placeorder'])) {
     $cart;
     $acc;
@@ -66,8 +68,32 @@ if (isset($_POST['placeorder'])) {
 echo '<script>window.onbeforeunload = function() { return "Your work will be lost."; };</script>';
 unset($_SESSION['cart']);
 try {
-    header('location: account.php');
-    exit;
+    $mail = new PHPMailer;
+    $to = $_POST['email'];
+    $subject  = 'Notifiction';
+    $message  = 'Hi, ' . "Thanks for your order, track order here:"."<br>" . 
+    '<a href="https://fragranceshop.000webhostapp.com/account.php">Visit your order</a>';
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPAuth = true;                            // Enable SMTP authentication
+    $mail->Username = EMAILID;                 // SMTP username
+    $mail->Password = PASSWORD;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    $mail->setFrom(EMAILID, "Thai Son");
+    $mail->addAddress($to);     // Add a recipient
+    $mail->IsSMTP(true);
+    $mail->addReplyTo(EMAILID);
+    $mail->SMTPDebug = 3;
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+        
+    if (!$mail->send()) {
+        
+    } else {
+        header('location: account.php');
+        exit;
+    }
 } catch (Exception $th) {
     header('location: account.php');
     exit;

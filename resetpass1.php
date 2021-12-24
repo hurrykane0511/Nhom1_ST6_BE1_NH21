@@ -32,14 +32,14 @@ if (!isset($_GET['code'])) {
                 <?php include './Template/header.php' ?>
 
                 <div class="form-container">
-                    <form action="./account.php" method="POST" onsubmit="validateMyForm(event)" class="login-form">
+                    <form action="processrepass.php" method="POST" onsubmit="validateMyForm(event)" class="login-form">
                         <h2 class="form-title">Reset password</h2>
-                        <div class="msg-valid     <?= isset($_POST['success']) ? 'show' : '' ?> ">
+                        <div class="msg-valid <?= isset($_GET['reset']) ? 'show' : '' ?> ">
                             Email request to change password has been sent
                         </div>
                         <div class="msg-invalid <?= isset($_GET['surs']) ? 'show' : '' ?>"><?= $_GET['surs'] ?></div>
                         <div class="input-group">
-                            <label for="email">Email</label>
+                            <label for="email1">Email</label>
                             <input type="text" name="email" id="email1">
                         </div>
                         <div class="input-group">
@@ -57,8 +57,9 @@ if (!isset($_GET['code'])) {
 <script type="module" src="./modules/login.js"></script>
 <script>
     function validateMyForm(e) {
-        var reemail = /\S+@\S+\.\S+/;
 
+        var reemail = /\S+@\S+\.\S+/;
+        let email = document.querySelector('#email1')
         if (!reemail.test(email.value)) {
             e.preventDefault();
             invalid.classList.add('show');

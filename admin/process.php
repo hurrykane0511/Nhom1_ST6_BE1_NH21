@@ -40,8 +40,7 @@ if (isset($_POST['addproduct'])) {
     foreach ($vars as $v) {
         if (!isset($_POST[$v])) {
             $verified = FALSE;
-            echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
-
+        header('location: product.php?addrs=0');
             exit();
         }
     }
@@ -51,7 +50,7 @@ if (isset($_POST['addproduct'])) {
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
     if (file_exists($target_file)) {
-        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+        header('location: product.php?addrs=0');
         exit();
     }
 
@@ -64,7 +63,7 @@ if (isset($_POST['addproduct'])) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+       header('location: product.php?addrs=0');
         $uploadOk = 0;
         exit();
     }
@@ -73,7 +72,7 @@ if (isset($_POST['addproduct'])) {
 
     // Check file size
     if ($_FILES["image"]["size"] > 500000) {
-        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+       header('location: product.php?addrs=0');
         $uploadOk = 0;
         exit();
     }
@@ -84,19 +83,19 @@ if (isset($_POST['addproduct'])) {
         && $imageFileType != "gif" && $imageFileType != "jfif"
     ) {
 
-        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+    header('location: product.php?addrs=0');
         $uploadOk = 0;
         exit();
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+        header('location: product.php?addrs=0');
     } else {
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         } else {
-            echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=0');</script>";
+            header('location: product.php?addrs=0');
             exit();
         }
     }
@@ -120,9 +119,10 @@ if (isset($_POST['addproduct'])) {
     );
 
     if ($rs) {
-
+        $item = $pf->getPerfumeByName($_POST['pf_name']);
         $subject  = 'Notifiction';
-        $message  = 'Hi, ' . "don't forget about us.. We just got a new product: " . $_POST['pf_name'] . "<br>";
+        $message  = 'Hi, ' . "don't forget about us.. We just got a new product: " . $_POST['pf_name'] . "<br>" . 
+        '<a href="https://fragranceshop.000webhostapp.com/detail.php?productId='. $item['pf_id'].'">Visit this product</a>';
         $mail = new PHPMailer;
         $sb = new Subscriber();
         $mail->Host = "smtp.gmail.com";
@@ -150,14 +150,19 @@ if (isset($_POST['addproduct'])) {
         foreach ($user->getAllUser() as $row) {
             $mail->addAddress($row['email']);
             if (!$mail->send()) {
-            } else {
+                
+            } 
+            else {
+                
             }
         }
-    } else {
+    } 
+    else 
+    {
         header('location: product.php?addrs=0');
         exit();
     }
-    // echo "<script>window.location.replace('http://localhost/Nhom1_ST6_BE1_NH21/admin/product.php?addrs=1');</script>";
+    
     header('location: product.php?addrs=1');
     exit();
 }
@@ -167,7 +172,7 @@ if (isset($_POST['addbrand'])) {
     $verified = TRUE;
 
     if (!isset($_POST['brand_name']) || empty($_POST['brand_name'])) {
-        echo "<script>alert('Empty field's name.');history.go(-1);</script>";
+        echo "<script>alert('Empty fields !!! .');history.go(-1);</script>";
         exit();
     }
 
@@ -175,7 +180,7 @@ if (isset($_POST['addbrand'])) {
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
     if (file_exists($target_file)) {
-        echo "<script>alert('Sorry, file not exists.');history.go(-1);</script>";
+        echo "<script>alert('Sorry, file exists.');history.go(-1);</script>";
         exit();
     }
 
@@ -222,10 +227,9 @@ if (isset($_POST['addbrand'])) {
     } else {
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            header("location: index.php");
+          
         } else {
-            // echo "<script>alert('Sorry, there was an error uploading your file !!!');
-            // history.go(-1);</script>";
+        header('location: product.php?addrs=0');
             exit();
         }
     }
@@ -252,17 +256,19 @@ if (isset($_POST['addtype'])) {
     if (!isset($_POST['type_name']) || empty($_POST['type_name'])) {
         $verified = FALSE;
     }
-
-    $rs = $cg->InsertType(
-        $_POST['type_name'],
-    );
-
-    if ($rs) {
+    
+    if ($verified) {
         header('location: product.php?addrs=1');
     } else {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
+    
+    $rs = $cg->InsertType(
+        $_POST['type_name']
+    );
+
+  
 }
 
 
@@ -272,15 +278,15 @@ if (isset($_POST['addrange'])) {
     if (!isset($_POST['range_name']) || empty($_POST['range_name'])) {
         $verified = FALSE;
     }
-
-    $rs = $cg->InsertRange(
-        $_POST['range_name'],
-    );
-
-    if ($rs) {
+ if ($verified) {
         header('location: product.php?addrs=1');
     } else {
         echo "<script>alert('Upload data failed !!!');
         history.go(-1);</script>";
     }
+    $rs = $cg->InsertRange(
+        $_POST['range_name']
+    );
+
+   
 }

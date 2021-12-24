@@ -111,6 +111,20 @@ class Perfume extends Db
             echo "Lỗi: " . $e;
         }
     }
+    function getPerfumeByName($name)
+    {
+        try {
+            $sql = self::$connection->prepare("SELECT * FROM `tbl_perfume` pf join `tbl_brand` br on `pf`.`brand_id` = `br`.`brand_id` WHERE pf.pf_name = ?  order by created_at desc");
+            
+            $sql->bind_param('s', $name);
+            $sql->execute();
+            $items = array();
+            $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+            return $items;
+        } catch (mysqli_sql_exception $e) {
+            echo "Lỗi: " . $e;
+        }
+    }
     function getAllPerfumes()
     {
         try {

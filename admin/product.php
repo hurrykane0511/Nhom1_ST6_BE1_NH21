@@ -35,7 +35,7 @@ if (!isset($_SESSION['admin'])) {
                                 <td><?= $row['pf_name'] ?></td>
                                 <td class="c"><img src="../assets/images/products/<?= explode("#", $row['image'])[0] ?>" alt=""></td>
                                 <td class="r">£ <?= $row['regular_price'] ?></td>
-                                <td class="r"><?= $row['sales_price'] == null ? "none" : "£ " . $row['sales_price'] ?></td>
+                                <td class="r"><?= $row['sales_price'] == null ? "none" :  $row['sales_price'].'%' ?></td>
                                 <td class="r"><?= $row['capacity'] ?></td>
                                 <td class="status r"><?= $row['status'] == 1 ? "available" : "sold out" ?></td>
                                 <td class="c"><a href="del.php?delpf=<?= $row['pf_id'] ?>" class="del">

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include './model/config.php';
 require './phpmailer/PHPMailerAutoload.php';
 include './model/dbconnect.php';

@@ -1,8 +1,6 @@
 <?php
-
 ob_start();
 session_start();
-
 define("header_here", true)
 ?>
 <!DOCTYPE html>
@@ -161,7 +159,6 @@ $brand = new Brand;
 
   if (isset($_GET['rp'])) {
     echo 'alert("' . $_GET["rp"] . '")';
-    echo 'window.location.href = "http://fragranceshop.000webhostapp.com/";';
   }
 
   ?>

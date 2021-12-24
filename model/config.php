@@ -2,11 +2,11 @@
 
 use Facebook\Facebook;
 
-define('DB_NAME', 'db_fragranceshop');
+define('DB_NAME', 'id18165016_db_fraganceshop');
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'id18165016_son2k');
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'os&8z\}+%09?[]P&');
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 /** port number of DB */

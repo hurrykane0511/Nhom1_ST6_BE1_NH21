@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include './Template/head.php';
 include './model/config.php';
 include './model/dbconnect.php';

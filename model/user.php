@@ -16,7 +16,6 @@ class User extends Db
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items;
-
         } catch (Exception $e) {
             return false;
         }
@@ -47,47 +46,87 @@ class User extends Db
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-            return $items == null;
+            return $items;
         } catch (Exception $e) {
             return false;
         }
     }
 
-    public function adminLogin($user, $pass){
+    public function CheckResetPass($email, $token)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `reset_pass` WHERE ? = `m_email` and `m_token` = ? and ? - `m_time` < 120");
+
+        $time = time();
+        $sql->bind_param("ssi", $email, $token, $time);
+        $sql->execute();
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items;
+    }
+
+    public function UpdatePass($email, $password)
+    {
+        $sql = self::$connection->prepare(" update tbl_user set password = ? where email = ?");
+        $email = base64_decode($email);
+        $realemail = mysqli_real_escape_string(self::$connection, $email);
+        $realpass = mysqli_real_escape_string(self::$connection, $password);
+        $passmd5 = md5($realpass);
+        try{
+            $sql->bind_param("ss", $passmd5, $realemail);
+            return $sql->execute();
+        }
+        catch(Exception $err){
+
+        }
+    }
+    public function ResetPassword($email, $token)
+    {
+        $sql = self::$connection->prepare("insert into reset_pass (m_email, m_token, m_time)
+        values( ? , ? , ? )");
+        $time = time();
+        try{
+            $sql->bind_param("ssi",$email, $token, $time);
+            return $sql->execute();
+        }
+        catch(Exception $err){
+
+        }
+    }
+    public function adminLogin($user, $pass)
+    {
         try {
             $sql = self::$connection->prepare("SELECT * FROM `admin` WHERE ? = `idadmin` and `password` = ?");
 
             $username = mysqli_real_escape_string(self::$connection, $user);
             $password = mysqli_real_escape_string(self::$connection, $pass);
             $password1 = md5($password);
-            
+
             $sql->bind_param("ss", $username, $password1);
             $sql->execute();
             $items = array();
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items;
-
-        } catch(Exception $e) {
-            
+        } catch (Exception $e) {
         }
     }
 
-    public function deleteUser($id_User){
+    public function deleteUser($id_User)
+    {
         $sql = self::$connection->prepare("DELETE FROM `tbl_user` WHERE `user_id` = ?");
         $sql->bind_param("i", $id_User);
         return $sql->execute();
-
     }
 
-    public function UpdateUser($first, $last, $email, $pass,$id_User)
+    public function UpdateUser($first, $last, $email, $pass, $id_User)
     {
         $sql = self::$connection->prepare("UPDATE `tbl_user` SET `firstname`= ?,`lastname`= ? ,`password`= ? ,`email`= ?  WHERE  `user_id`= ?");
-        $sql->bind_param("ssssi", $first, $last, $email, $pass,$id_User);
+        $sql->bind_param("ssssi", $first, $last, $email, $pass, $id_User);
 
         return $sql->execute();
     }
 
-    public function getAllUser(){
+    public function getAllUser()
+    {
         try {
             $sql = self::$connection->prepare("SELECT * FROM `tbl_user` order by `user_id` desc");
             $sql->execute();
@@ -95,11 +134,11 @@ class User extends Db
             $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
             return $items;
         } catch (Exception $e) {
-           
         }
     }
 
-    public function CountUser(){
+    public function CountUser()
+    {
         try {
             $sql = self::$connection->prepare("SELECT COUNT(user_id) as 'num' FROM `tbl_user`");
             $sql->execute();

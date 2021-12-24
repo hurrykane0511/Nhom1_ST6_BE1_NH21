@@ -87,7 +87,14 @@ if (isset($_GET['productId'])) {
                                     <?php
                                 }
                                 ?>
-
+                                <?php  
+     $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || 
+     $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";  
+     $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];  
+?>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1309726042773427&autoLogAppEvents=1" nonce="WMaUa2w0"></script>
+<div class="fb-share-button" data-href="<?= $CurPageURL ?>" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F<?= $CurPageURL ?>%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 
 
                             </div>
@@ -140,11 +147,13 @@ if (isset($_GET['productId'])) {
         </div>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1309726042773427&autoLogAppEvents=1" nonce="om69d1be"></script>
-        <div class="comments">
-            <?PHP
+        <div class="comments" >
+          <div style="padding:30px;background:#fff;margin: 20px">
+                <?PHP
             $url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
             echo "<div class='fb-comments' data-href='$url' data-num-posts='10' data-width='1222'></div>";
             ?>
+          </div>
         </div>
     <?php }
 include("./Template/footer.php")

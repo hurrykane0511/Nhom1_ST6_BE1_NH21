@@ -28,14 +28,18 @@ try {
             $access_token =  $_SESSION['access_token'];
         } else {
             $access_token = $fb_helper->getAccessToken();
-            $_SESSION['access_token'] = $access_token;
+            $_SESSION['access_token'] = (string)  $access_token;
             $fb->setDefaultAccessToken($_SESSION['access_token']);
         }
 
         $graph_response = $fb->get('/me?fields=first_name,last_name,email', $access_token);
         $fb_user_info = $graph_response->getGraphUser();
-
+   
         if (!empty($fb_user_info['id'])) {
+            if($fb_user_info['email'] == ''){
+                header('location: login.php?surs=Facebook does not contain email!!!');
+                exit;
+            }
             $account = $user->Login($fb_user_info['email'], $fb_user_info['id']);
             if ($account) {
                 $_SESSION['account'] = $account[0];
@@ -50,7 +54,7 @@ try {
     } else {
         $fb_permission = ['email'];
     }
-} catch (\Throwable $th) {
+} catch (Exception $th) {
     header('location: login.php');
 }
 
@@ -73,7 +77,20 @@ if (!isset($_SESSION['account'])) {
     }
 }
 
-
+if(isset($_SESSION['account'])){
+    if(empty($_SESSION['account']['firstname'])){
+         header('location: logout.php');
+    }
+      if(empty($_SESSION['account']['lastname'])){
+         header('location: logout.php');
+    }
+    if(empty($_SESSION['account']['lastname'])){
+         header('location: logout.php');
+    }
+}
+else{
+     header('location: login.php?surs=Login session expired');
+}
 ?>
 
 <body>

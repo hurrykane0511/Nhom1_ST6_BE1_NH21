@@ -1,5 +1,4 @@
 <?php
-ob_start();
 session_start();
 include './model/config.php';
 include './model/dbconnect.php';
@@ -122,7 +121,8 @@ if (!empty($_SESSION['cart'])) {
 
 } else {
 ?>
-  <div class="empty-cart">Your cart is empty now, <a href="#">continue buy</a></div>
+  <div class="empty-cart">Your cart is empty now, <a href="result.php">continue buy</a></div>
 <?php
 }
+
 ?>
